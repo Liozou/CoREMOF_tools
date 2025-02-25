@@ -6,12 +6,17 @@
 CoREMOF_tools documentation
 ===========================
 
-Add your content using ``reStructuredText`` syntax. See the
-`reStructuredText <https://www.sphinx-doc.org/en/master/usage/restructuredtext/index.html>`_
-documentation for details.
-
+Welcome to the CoREMOF_tools documentation! Below you will find the API reference and user guides.
 
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
 
+   modules
+
+Indices and tables
+==================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`
