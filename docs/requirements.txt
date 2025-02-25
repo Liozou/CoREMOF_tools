@@ -1,3 +1,6 @@
+sphinx
+sphinx-rtd-theme
+sphinx-autodoc-typehints
 pymatgen
 ase
 juliacall
