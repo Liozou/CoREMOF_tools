@@ -6,14 +6,14 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CoREMOF package &mdash; CoREMOF_tools 0.0.5 documentation</title>
+  <title>CoREMOF package &mdash; CoREMOF_tools 0.0.6 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
 
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=282f96c0"></script>
+      <script src="_static/documentation_options.js?v=1fd71caa"></script>
       <script src="_static/doctools.js?v=9a2dae69"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
       <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -41,69 +41,11 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <!-- Local TOC -->
-              <div class="local-toc"><ul>
-<li><a class="reference internal" href="#">CoREMOF package</a><ul>
-<li><a class="reference internal" href="#subpackages">Subpackages</a></li>
-<li><a class="reference internal" href="#submodules">Submodules</a></li>
-<li><a class="reference internal" href="#module-CoREMOF.curate">CoREMOF.curate module</a><ul>
-<li><a class="reference internal" href="#CoREMOF.curate.clean"><code class="docutils literal notranslate"><span class="pre">clean</span></code></a><ul>
-<li><a class="reference internal" href="#CoREMOF.curate.clean.CustomMatrix"><code class="docutils literal notranslate"><span class="pre">clean.CustomMatrix()</span></code></a></li>
-<li><a class="reference internal" href="#CoREMOF.curate.clean.all_clean"><code class="docutils literal notranslate"><span class="pre">clean.all_clean()</span></code></a></li>
-<li><a class="reference internal" href="#CoREMOF.curate.clean.build_ASE_neighborlist"><code class="docutils literal notranslate"><span class="pre">clean.build_ASE_neighborlist()</span></code></a></li>
-<li><a class="reference internal" href="#CoREMOF.curate.clean.cluster_to_formula"><code class="docutils literal notranslate"><span class="pre">clean.cluster_to_formula()</span></code></a></li>
-<li><a class="reference internal" href="#CoREMOF.curate.clean.cmp"><code class="docutils literal notranslate"><span class="pre">clean.cmp()</span></code></a></li>
-<li><a class="reference internal" href="#CoREMOF.curate.clean.find_clusters"><code class="docutils literal notranslate"><span class="pre">clean.find_clusters()</span></code></a></li>
-<li><a class="reference internal" href="#CoREMOF.curate.clean.find_metal_connected_atoms"><code class="docutils literal notranslate"><span class="pre">clean.find_metal_connected_atoms()</span></code></a></li>
-<li><a class="reference internal" href="#CoREMOF.curate.clean.free_clean"><code class="docutils literal notranslate"><span class="pre">clean.free_clean()</span></code></a></li>
-<li><a class="reference internal" href="#CoREMOF.curate.clean.mod_adjacency_matrix"><code class="docutils literal notranslate"><span class="pre">clean.mod_adjacency_matrix()</span></code></a></li>
-<li><a class="reference internal" href="#CoREMOF.curate.clean.process"><code class="docutils literal notranslate"><span class="pre">clean.process()</span></code></a></li>
-<li><a class="reference internal" href="#CoREMOF.curate.clean.run_asr"><code class="docutils literal notranslate"><span class="pre">clean.run_asr()</span></code></a></li>
-<li><a class="reference internal" href="#CoREMOF.curate.clean.run_fsr"><code class="docutils literal notranslate"><span class="pre">clean.run_fsr()</span></code></a></li>
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">CoREMOF_tools API Documentation</a></li>
 </ul>
-</li>
-<li><a class="reference internal" href="#CoREMOF.curate.mof_check"><code class="docutils literal notranslate"><span class="pre">mof_check</span></code></a><ul>
-<li><a class="reference internal" href="#CoREMOF.curate.mof_check.Chen_Manz"><code class="docutils literal notranslate"><span class="pre">mof_check.Chen_Manz()</span></code></a></li>
-<li><a class="reference internal" href="#CoREMOF.curate.mof_check.check"><code class="docutils literal notranslate"><span class="pre">mof_check.check()</span></code></a></li>
-<li><a class="reference internal" href="#CoREMOF.curate.mof_check.mof_checker"><code class="docutils literal notranslate"><span class="pre">mof_check.mof_checker()</span></code></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#CoREMOF.curate.preprocess"><code class="docutils literal notranslate"><span class="pre">preprocess</span></code></a><ul>
-<li><a class="reference internal" href="#CoREMOF.curate.preprocess.process"><code class="docutils literal notranslate"><span class="pre">preprocess.process()</span></code></a></li>
-<li><a class="reference internal" href="#CoREMOF.curate.preprocess.split_pri_p1"><code class="docutils literal notranslate"><span class="pre">preprocess.split_pri_p1()</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a class="reference internal" href="#module-CoREMOF.prediction">CoREMOF.prediction module</a><ul>
-<li><a class="reference internal" href="#CoREMOF.prediction.cp"><code class="docutils literal notranslate"><span class="pre">cp()</span></code></a></li>
-<li><a class="reference internal" href="#CoREMOF.prediction.download_file"><code class="docutils literal notranslate"><span class="pre">download_file()</span></code></a></li>
-<li><a class="reference internal" href="#CoREMOF.prediction.f1"><code class="docutils literal notranslate"><span class="pre">f1()</span></code></a></li>
-<li><a class="reference internal" href="#CoREMOF.prediction.get_files_from_github"><code class="docutils literal notranslate"><span class="pre">get_files_from_github()</span></code></a></li>
-<li><a class="reference internal" href="#CoREMOF.prediction.pacman"><code class="docutils literal notranslate"><span class="pre">pacman()</span></code></a></li>
-<li><a class="reference internal" href="#CoREMOF.prediction.precision"><code class="docutils literal notranslate"><span class="pre">precision()</span></code></a></li>
-<li><a class="reference internal" href="#CoREMOF.prediction.recall"><code class="docutils literal notranslate"><span class="pre">recall()</span></code></a></li>
-<li><a class="reference internal" href="#CoREMOF.prediction.stability"><code class="docutils literal notranslate"><span class="pre">stability()</span></code></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#module-CoREMOF.structure">CoREMOF.structure module</a><ul>
-<li><a class="reference internal" href="#CoREMOF.structure.download_from_CSD"><code class="docutils literal notranslate"><span class="pre">download_from_CSD()</span></code></a></li>
-<li><a class="reference internal" href="#CoREMOF.structure.download_from_SI"><code class="docutils literal notranslate"><span class="pre">download_from_SI</span></code></a><ul>
-<li><a class="reference internal" href="#CoREMOF.structure.download_from_SI.get_from_SI"><code class="docutils literal notranslate"><span class="pre">download_from_SI.get_from_SI()</span></code></a></li>
-<li><a class="reference internal" href="#CoREMOF.structure.download_from_SI.list_zip"><code class="docutils literal notranslate"><span class="pre">download_from_SI.list_zip()</span></code></a></li>
-<li><a class="reference internal" href="#CoREMOF.structure.download_from_SI.run"><code class="docutils literal notranslate"><span class="pre">download_from_SI.run()</span></code></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#CoREMOF.structure.get_list_CSD"><code class="docutils literal notranslate"><span class="pre">get_list_CSD()</span></code></a></li>
-<li><a class="reference internal" href="#CoREMOF.structure.information"><code class="docutils literal notranslate"><span class="pre">information()</span></code></a></li>
-<li><a class="reference internal" href="#CoREMOF.structure.make_primitive_p1"><code class="docutils literal notranslate"><span class="pre">make_primitive_p1()</span></code></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#module-CoREMOF">Module contents</a></li>
-</ul>
-</li>
-</ul>
-</div>
+
         </div>
       </div>
     </nav>
@@ -275,105 +217,182 @@
 </section>
 <section id="module-CoREMOF.curate">
 <span id="coremof-curate-module"></span><h2>CoREMOF.curate module<a class="headerlink" href="#module-CoREMOF.curate" title="Link to this heading"></a></h2>
+<p>Process your CIF to “CoRE MOF” CIF.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="CoREMOF.curate.clean">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">CoREMOF.curate.</span></span><span class="sig-name descname"><span class="pre">clean</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">structure</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initial_skin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.25</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_folder</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'result_curation'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">saveto</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'clean_result.csv'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#CoREMOF.curate.clean" title="Link to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">CoREMOF.curate.</span></span><span class="sig-name descname"><span class="pre">clean</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">structure</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initial_skin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.25</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_folder</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'result_curation'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">saveto</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'clean_result.csv'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/CoREMOF/curate.html#clean"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#CoREMOF.curate.clean" title="Link to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Removing free solvent and coordinated solvent but keep ions based on a list.
+:type structure: 
+:param structure: path to your CIF.
+:type structure: str
+:type initial_skin: 
+:param initial_skin: skin distance is added to the sum of vdW radii of two atoms.
+:type initial_skin: float
+:type output_folder: 
+:param output_folder: the path to save processed CIF.
+:type output_folder: str
+:type saveto: <span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></span>
+:param saveto: the name of csv file with clean result.
+:type saveto: bool or str</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><ul class="simple">
+<li><p>result of curating (name, skin, removed solvent).</p></li>
+<li><p>CIF by curating.</p></li>
+</ul>
+</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>CSV or cif</p>
+</dd>
+</dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="CoREMOF.curate.clean.CustomMatrix">
-<span class="sig-name descname"><span class="pre">CustomMatrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">neighborlist</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">atom_count</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#CoREMOF.curate.clean.CustomMatrix" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">CustomMatrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">neighborlist</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">atom_count</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/CoREMOF/curate.html#clean.CustomMatrix"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#CoREMOF.curate.clean.CustomMatrix" title="Link to this definition"></a></dt>
+<dd><p>convert to matrix.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="CoREMOF.curate.clean.all_clean">
-<span class="sig-name descname"><span class="pre">all_clean</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_folder</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ions_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">skin</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#CoREMOF.curate.clean.all_clean" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">all_clean</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_folder</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ions_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">skin</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/CoREMOF/curate.html#clean.all_clean"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#CoREMOF.curate.clean.all_clean" title="Link to this definition"></a></dt>
+<dd><p>workflow of removing all solvent.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="CoREMOF.curate.clean.build_ASE_neighborlist">
-<span class="sig-name descname"><span class="pre">build_ASE_neighborlist</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cif</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">skin</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#CoREMOF.curate.clean.build_ASE_neighborlist" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">build_ASE_neighborlist</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cif</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">skin</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/CoREMOF/curate.html#clean.build_ASE_neighborlist"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#CoREMOF.curate.clean.build_ASE_neighborlist" title="Link to this definition"></a></dt>
+<dd><p>get list of neighbor.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="CoREMOF.curate.clean.cluster_to_formula">
-<span class="sig-name descname"><span class="pre">cluster_to_formula</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cluster</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cif</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#CoREMOF.curate.clean.cluster_to_formula" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">cluster_to_formula</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cluster</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cif</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/CoREMOF/curate.html#clean.cluster_to_formula"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#CoREMOF.curate.clean.cluster_to_formula" title="Link to this definition"></a></dt>
+<dd><p>convert to chemical formula.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="CoREMOF.curate.clean.cmp">
-<span class="sig-name descname"><span class="pre">cmp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#CoREMOF.curate.clean.cmp" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">cmp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/CoREMOF/curate.html#clean.cmp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#CoREMOF.curate.clean.cmp" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="CoREMOF.curate.clean.find_clusters">
-<span class="sig-name descname"><span class="pre">find_clusters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">adjacency_matrix</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">atom_count</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#CoREMOF.curate.clean.find_clusters" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">find_clusters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">adjacency_matrix</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">atom_count</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/CoREMOF/curate.html#clean.find_clusters"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#CoREMOF.curate.clean.find_clusters" title="Link to this definition"></a></dt>
+<dd><p>define cluster by the connected components of a sparse graph.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="CoREMOF.curate.clean.find_metal_connected_atoms">
-<span class="sig-name descname"><span class="pre">find_metal_connected_atoms</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">structure</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">neighborlist</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#CoREMOF.curate.clean.find_metal_connected_atoms" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">find_metal_connected_atoms</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">structure</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">neighborlist</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/CoREMOF/curate.html#clean.find_metal_connected_atoms"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#CoREMOF.curate.clean.find_metal_connected_atoms" title="Link to this definition"></a></dt>
+<dd><p>get the atom connected with metal atom.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="CoREMOF.curate.clean.free_clean">
-<span class="sig-name descname"><span class="pre">free_clean</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_folder</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ions_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">skin</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#CoREMOF.curate.clean.free_clean" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">free_clean</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_folder</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ions_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">skin</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/CoREMOF/curate.html#clean.free_clean"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#CoREMOF.curate.clean.free_clean" title="Link to this definition"></a></dt>
+<dd><p>workflow of removing free solvent.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="CoREMOF.curate.clean.mod_adjacency_matrix">
-<span class="sig-name descname"><span class="pre">mod_adjacency_matrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">adj_matrix</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">MetalConAtoms</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">MetalAtoms</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">atom_count</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">struct</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#CoREMOF.curate.clean.mod_adjacency_matrix" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">mod_adjacency_matrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">adj_matrix</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">MetalConAtoms</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">MetalAtoms</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">atom_count</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">struct</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/CoREMOF/curate.html#clean.mod_adjacency_matrix"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#CoREMOF.curate.clean.mod_adjacency_matrix" title="Link to this definition"></a></dt>
+<dd><p>modify matrix by breakdown the bond that atom connect with metal atom.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="CoREMOF.curate.clean.process">
-<span class="sig-name descname"><span class="pre">process</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#CoREMOF.curate.clean.process" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">process</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/CoREMOF/curate.html#clean.process"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#CoREMOF.curate.clean.process" title="Link to this definition"></a></dt>
+<dd><p>start to run curation.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="CoREMOF.curate.clean.run_asr">
-<span class="sig-name descname"><span class="pre">run_asr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mof</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_folder</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initial_skin</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metal_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ions_list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#CoREMOF.curate.clean.run_asr" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">run_asr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mof</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_folder</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initial_skin</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metal_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ions_list</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/CoREMOF/curate.html#clean.run_asr"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#CoREMOF.curate.clean.run_asr" title="Link to this definition"></a></dt>
+<dd><p>all solvent function.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="CoREMOF.curate.clean.run_fsr">
-<span class="sig-name descname"><span class="pre">run_fsr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mof</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_folder</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initial_skin</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metal_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ions_list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#CoREMOF.curate.clean.run_fsr" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">run_fsr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mof</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_folder</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initial_skin</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metal_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ions_list</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/CoREMOF/curate.html#clean.run_fsr"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#CoREMOF.curate.clean.run_fsr" title="Link to this definition"></a></dt>
+<dd><p>free solvent function.</p>
+</dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="CoREMOF.curate.mof_check">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">CoREMOF.curate.</span></span><span class="sig-name descname"><span class="pre">mof_check</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">structure</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_folder</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'result_curation'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#CoREMOF.curate.mof_check" title="Link to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">CoREMOF.curate.</span></span><span class="sig-name descname"><span class="pre">mof_check</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">structure</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_folder</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'result_curation'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/CoREMOF/curate.html#mof_check"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#CoREMOF.curate.mof_check" title="Link to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Not Computation-Ready (NCR) MOFs classification.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>structure</strong> (<em>str</em>) – path to your CIF.</p></li>
+<li><p><strong>output_folder</strong> (<em>str</em>) – the path to save checking result.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p>result of NCR classification.</p></li>
+</ul>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Dictionary</p>
+</dd>
+</dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="CoREMOF.curate.mof_check.Chen_Manz">
-<span class="sig-name descname"><span class="pre">Chen_Manz</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">structure</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#CoREMOF.curate.mof_check.Chen_Manz" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">Chen_Manz</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">structure</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/CoREMOF/curate.html#mof_check.Chen_Manz"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#CoREMOF.curate.mof_check.Chen_Manz" title="Link to this definition"></a></dt>
+<dd><p>checking MOF by Chen and Manz method: RSC Adv., 2019,9, 36492-36507. <a class="reference external" href="https://doi.org/10.1039/C9RA07327B">https://doi.org/10.1039/C9RA07327B</a>.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="CoREMOF.curate.mof_check.check">
-<span class="sig-name descname"><span class="pre">check</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#CoREMOF.curate.mof_check.check" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">check</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/CoREMOF/curate.html#mof_check.check"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#CoREMOF.curate.mof_check.check" title="Link to this definition"></a></dt>
+<dd><p>run checking.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="CoREMOF.curate.mof_check.mof_checker">
-<span class="sig-name descname"><span class="pre">mof_checker</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">structure</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#CoREMOF.curate.mof_check.mof_checker" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">mof_checker</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">structure</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/CoREMOF/curate.html#mof_check.mof_checker"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#CoREMOF.curate.mof_check.mof_checker" title="Link to this definition"></a></dt>
+<dd><p>checking MOF by mofchecker 1.0: <a class="reference external" href="https://github.com/lamalab-org/mofchecker">https://github.com/lamalab-org/mofchecker</a>.</p>
+</dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="CoREMOF.curate.preprocess">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">CoREMOF.curate.</span></span><span class="sig-name descname"><span class="pre">preprocess</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">structure</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_folder</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'result_curation'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#CoREMOF.curate.preprocess" title="Link to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">CoREMOF.curate.</span></span><span class="sig-name descname"><span class="pre">preprocess</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">structure</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_folder</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'result_curation'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/CoREMOF/curate.html#preprocess"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#CoREMOF.curate.preprocess" title="Link to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Precheck your CIF.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>structure</strong> (<em>str</em>) – path to your CIF.</p></li>
+<li><p><strong>output_folder</strong> (<em>str</em>) – the path to save processed CIF.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p>result of pre-check, has metal and carbon, has multi-structures.</p></li>
+<li><p>CIF by spliting, making primitive and making P1.</p></li>
+</ul>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Dictionary &amp; cif</p>
+</dd>
+</dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="CoREMOF.curate.preprocess.process">
-<span class="sig-name descname"><span class="pre">process</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#CoREMOF.curate.preprocess.process" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">process</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/CoREMOF/curate.html#preprocess.process"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#CoREMOF.curate.preprocess.process" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="CoREMOF.curate.preprocess.split_pri_p1">
-<span class="sig-name descname"><span class="pre">split_pri_p1</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">structure</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_folder</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#CoREMOF.curate.preprocess.split_pri_p1" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">split_pri_p1</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">structure</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_folder</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/CoREMOF/curate.html#preprocess.split_pri_p1"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#CoREMOF.curate.preprocess.split_pri_p1" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -381,89 +400,364 @@
 </section>
 <section id="module-CoREMOF.prediction">
 <span id="coremof-prediction-module"></span><h2>CoREMOF.prediction module<a class="headerlink" href="#module-CoREMOF.prediction" title="Link to this heading"></a></h2>
+<p>ML-predicted features.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="CoREMOF.prediction.cp">
-<span class="sig-prename descclassname"><span class="pre">CoREMOF.prediction.</span></span><span class="sig-name descname"><span class="pre">cp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">structure</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">T</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[300,</span> <span class="pre">350,</span> <span class="pre">400]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#CoREMOF.prediction.cp" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<span class="sig-prename descclassname"><span class="pre">CoREMOF.prediction.</span></span><span class="sig-name descname"><span class="pre">cp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">structure</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">T</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[300,</span> <span class="pre">350,</span> <span class="pre">400]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/CoREMOF/prediction.html#cp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#CoREMOF.prediction.cp" title="Link to this definition"></a></dt>
+<dd><p>predict heat capacity by GBR models at different temperatures: <a class="reference external" href="https://doi.org/10.1038/s41563-022-01374-3">https://doi.org/10.1038/s41563-022-01374-3</a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>structure</strong> (<em>str</em>) – path to your structure.</p></li>
+<li><p><strong>T</strong> (<em>list</em>) – the temperatures of your system.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p>unit by [“unit”], always “J/g/K”, “J/mol/K”.</p></li>
+<li><p>predicted heat capacity of your structure.</p></li>
+</ul>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Dictionary</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="CoREMOF.prediction.download_file">
-<span class="sig-prename descclassname"><span class="pre">CoREMOF.prediction.</span></span><span class="sig-name descname"><span class="pre">download_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">url</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#CoREMOF.prediction.download_file" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<span class="sig-prename descclassname"><span class="pre">CoREMOF.prediction.</span></span><span class="sig-name descname"><span class="pre">download_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">url</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/CoREMOF/prediction.html#download_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#CoREMOF.prediction.download_file" title="Link to this definition"></a></dt>
+<dd><p>download models from github due to limit of uploading size by PyPi.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>url</strong> (<em>str</em>) – link of downloading file.</p></li>
+<li><p><strong>save_path</strong> (<em>str</em>) – the path to save files.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="CoREMOF.prediction.f1">
-<span class="sig-prename descclassname"><span class="pre">CoREMOF.prediction.</span></span><span class="sig-name descname"><span class="pre">f1</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y_true</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_pred</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#CoREMOF.prediction.f1" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<span class="sig-prename descclassname"><span class="pre">CoREMOF.prediction.</span></span><span class="sig-name descname"><span class="pre">f1</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y_true</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_pred</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/CoREMOF/prediction.html#f1"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#CoREMOF.prediction.f1" title="Link to this definition"></a></dt>
+<dd><p>Computes the F1-score for binary classification.</p>
+<p>The F1-score is the harmonic mean of precision and recall, providing a balanced
+metric when the dataset is imbalanced. It is given by:</p>
+<blockquote>
+<div><p>F1 = 2 * (precision * recall) / (precision + recall)</p>
+</div></blockquote>
+<dl class="simple">
+<dt>where:</dt><dd><ul class="simple">
+<li><p>Precision = TP / (TP + FP)</p></li>
+<li><p>Recall    = TP / (TP + FN)</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>y_true</strong> (<em>tensor</em>) – Ground truth binary labels (0 or 1).</p></li>
+<li><p><strong>y_pred</strong> (<em>tensor</em>) – Predicted probabilities or binary predictions.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>F1-score (between 0 and 1).</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tensor</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="CoREMOF.prediction.get_files_from_github">
-<span class="sig-prename descclassname"><span class="pre">CoREMOF.prediction.</span></span><span class="sig-name descname"><span class="pre">get_files_from_github</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">repo</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#CoREMOF.prediction.get_files_from_github" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<span class="sig-prename descclassname"><span class="pre">CoREMOF.prediction.</span></span><span class="sig-name descname"><span class="pre">get_files_from_github</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">repo</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/CoREMOF/prediction.html#get_files_from_github"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#CoREMOF.prediction.get_files_from_github" title="Link to this definition"></a></dt>
+<dd><p>query files from github due to limit of uploading size by PyPi.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>repo</strong> (<em>str</em>) – github repository.</p></li>
+<li><p><strong>path</strong> (<em>str</em>) – the path of models.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p>response of downloading.</p></li>
+</ul>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Dictionary</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="CoREMOF.prediction.pacman">
-<span class="sig-prename descclassname"><span class="pre">CoREMOF.prediction.</span></span><span class="sig-name descname"><span class="pre">pacman</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">structure</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_folder</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'result_pacman'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">charge_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'DDEC6'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">digits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">atom_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">neutral</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keep_connect</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#CoREMOF.prediction.pacman" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<span class="sig-prename descclassname"><span class="pre">CoREMOF.prediction.</span></span><span class="sig-name descname"><span class="pre">pacman</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">structure</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_folder</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'result_pacman'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">charge_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'DDEC6'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">digits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">atom_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">neutral</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keep_connect</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/CoREMOF/prediction.html#pacman"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#CoREMOF.prediction.pacman" title="Link to this definition"></a></dt>
+<dd><p>predict partial atom charge by PACMAN Charge: <a class="reference external" href="https://doi.org/10.1021/acs.jctc.4c00434">https://doi.org/10.1021/acs.jctc.4c00434</a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>structure</strong> (<em>str</em>) – path to your structure.</p></li>
+<li><p><strong>output_folder</strong> (<em>str</em>) – the path to save CIF with predicted charges.</p></li>
+<li><p><strong>charge_type</strong> (<em>str</em>) – models of DDEC6, Bader, CM5 or REPEAT.</p></li>
+<li><p><strong>digits</strong> (<em>int</em>) – number of decimal places to print for partial atomic charges. ML models were trained on a 6-digit dataset.</p></li>
+<li><p><strong>atom_type</strong> (<em>bool</em>) – keep the same partial atomic charge for the same atom types (based on the similarity of partial atomic charges up to 2 decimal places).</p></li>
+<li><p><strong>neutral</strong> (<em>bool</em>) – keep the net charge is zero. We use “mean” method to neuralize the system where the excess charges are equally distributed across all atoms.</p></li>
+<li><p><strong>keep_connect</strong> (<em>bool</em>) – retain the atomic and connection information (such as _atom_site_adp_type, bond) for the structure.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p>predicted PBE energy and bandgap of your structure.</p></li>
+<li><p>CIF with predicted charges.</p></li>
+</ul>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Dictionary &amp; cif</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="CoREMOF.prediction.precision">
-<span class="sig-prename descclassname"><span class="pre">CoREMOF.prediction.</span></span><span class="sig-name descname"><span class="pre">precision</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y_true</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_pred</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#CoREMOF.prediction.precision" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<span class="sig-prename descclassname"><span class="pre">CoREMOF.prediction.</span></span><span class="sig-name descname"><span class="pre">precision</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y_true</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_pred</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/CoREMOF/prediction.html#precision"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#CoREMOF.prediction.precision" title="Link to this definition"></a></dt>
+<dd><p>Computes the precision metric for binary classification.</p>
+<p>Precision is defined as the ratio of correctly predicted positive observations
+to the total predicted positive observations. It is given by:</p>
+<blockquote>
+<div><p>precision = TP / (TP + FP)</p>
+</div></blockquote>
+<dl class="simple">
+<dt>where:</dt><dd><ul class="simple">
+<li><p>TP (True Positives)  : Correctly predicted positive cases</p></li>
+<li><p>FP (False Positives)  : Incorrectly predicted positive cases</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>y_true</strong> (<em>tensor</em>) – Ground truth binary labels (0 or 1).</p></li>
+<li><p><strong>y_pred</strong> (<em>tensor</em>) – Predicted probabilities or binary predictions.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Precision score (between 0 and 1).</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tensor</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="CoREMOF.prediction.recall">
-<span class="sig-prename descclassname"><span class="pre">CoREMOF.prediction.</span></span><span class="sig-name descname"><span class="pre">recall</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y_true</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_pred</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#CoREMOF.prediction.recall" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<span class="sig-prename descclassname"><span class="pre">CoREMOF.prediction.</span></span><span class="sig-name descname"><span class="pre">recall</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y_true</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_pred</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/CoREMOF/prediction.html#recall"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#CoREMOF.prediction.recall" title="Link to this definition"></a></dt>
+<dd><p>Computes the recall metric for binary classification.</p>
+<p>Recall (also known as Sensitivity or True Positive Rate) measures the proportion
+of actual positives that are correctly identified by the model. It is given by:</p>
+<blockquote>
+<div><p>recall = TP / (TP + FN)</p>
+</div></blockquote>
+<dl class="simple">
+<dt>where:</dt><dd><ul class="simple">
+<li><p>TP (True Positives)  : Correctly predicted positive cases</p></li>
+<li><p>FN (False Negatives)  : Actual positive cases that were predicted as negative</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>y_true</strong> (<em>tensor</em>) – Ground truth binary labels (0 or 1).</p></li>
+<li><p><strong>y_pred</strong> (<em>tensor</em>) – Predicted probabilities or binary predictions.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Recall score (between 0 and 1).</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tensor</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="CoREMOF.prediction.stability">
-<span class="sig-prename descclassname"><span class="pre">CoREMOF.prediction.</span></span><span class="sig-name descname"><span class="pre">stability</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">structure</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#CoREMOF.prediction.stability" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<span class="sig-prename descclassname"><span class="pre">CoREMOF.prediction.</span></span><span class="sig-name descname"><span class="pre">stability</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">structure</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/CoREMOF/prediction.html#stability"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#CoREMOF.prediction.stability" title="Link to this definition"></a></dt>
+<dd><p>predict stability of MOFs: <a class="reference external" href="https://doi.org/10.1021/jacs.1c07217">https://doi.org/10.1021/jacs.1c07217</a>, <a class="reference external" href="https://doi.org/10.1021/jacs.4c05879">https://doi.org/10.1021/jacs.4c05879</a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>structure</strong> (<em>str</em>) – path to your structure.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p>unit by [“unit”], always “nan, °C, nan”.</p></li>
+<li><p>predicted thermal, solvent and water stabilities.</p></li>
+</ul>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Dictionary</p>
+</dd>
+</dl>
+</dd></dl>
 
 </section>
 <section id="module-CoREMOF.structure">
 <span id="coremof-structure-module"></span><h2>CoREMOF.structure module<a class="headerlink" href="#module-CoREMOF.structure" title="Link to this heading"></a></h2>
+<p>Download structures and query information of CoRE MOF Database.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="CoREMOF.structure.download_from_CSD">
-<span class="sig-prename descclassname"><span class="pre">CoREMOF.structure.</span></span><span class="sig-name descname"><span class="pre">download_from_CSD</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">refcode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_folder</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'./CoREMOF2024DB'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#CoREMOF.structure.download_from_CSD" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<span class="sig-prename descclassname"><span class="pre">CoREMOF.structure.</span></span><span class="sig-name descname"><span class="pre">download_from_CSD</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">refcode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_folder</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'./CoREMOF2024DB'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/CoREMOF/structure.html#download_from_CSD"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#CoREMOF.structure.download_from_CSD" title="Link to this definition"></a></dt>
+<dd><p>download structures from CSD, you need to install [CSD python API](<a class="reference external" href="https://downloads.ccdc.cam.ac.uk/documentation/API/installation_notes.html">https://downloads.ccdc.cam.ac.uk/documentation/API/installation_notes.html</a>) with licence.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>refcode</strong> (<em>str</em>) – path to refcode.</p></li>
+<li><p><strong>output_folder</strong> (<em>str</em>) – path to save structures.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p>downloading CIF.</p></li>
+</ul>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>cif</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="CoREMOF.structure.download_from_SI">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">CoREMOF.structure.</span></span><span class="sig-name descname"><span class="pre">download_from_SI</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output_folder</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'./CoREMOF2024DB'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#CoREMOF.structure.download_from_SI" title="Link to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">CoREMOF.structure.</span></span><span class="sig-name descname"><span class="pre">download_from_SI</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output_folder</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'./CoREMOF2024DB'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/CoREMOF/structure.html#download_from_SI"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#CoREMOF.structure.download_from_SI" title="Link to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>download structures that we got from supporting information.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>output_folder</strong> (<em>str</em>) – path to save structures.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>cif</dt><dd><ul class="simple">
+<li><p>CoRE MOF SI dataset.</p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd>
+</dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="CoREMOF.structure.download_from_SI.get_from_SI">
-<span class="sig-name descname"><span class="pre">get_from_SI</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">zip_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">entry</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_folder</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#CoREMOF.structure.download_from_SI.get_from_SI" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">get_from_SI</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">zip_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">entry</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_folder</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/CoREMOF/structure.html#download_from_SI.get_from_SI"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#CoREMOF.structure.download_from_SI.get_from_SI" title="Link to this definition"></a></dt>
+<dd><p>unzip files from a ZIP.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>zip_path</strong> (<em>str</em>) – path to ZIP.</p></li>
+<li><p><strong>entry</strong> (<em>str</em>) – name of structure.</p></li>
+<li><p><strong>output_folder</strong> (<em>str</em>) – path to save structures.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="CoREMOF.structure.download_from_SI.list_zip">
-<span class="sig-name descname"><span class="pre">list_zip</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">zip_path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#CoREMOF.structure.download_from_SI.list_zip" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">list_zip</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">zip_path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/CoREMOF/structure.html#download_from_SI.list_zip"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#CoREMOF.structure.download_from_SI.list_zip" title="Link to this definition"></a></dt>
+<dd><p>list of files from a ZIP.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>zip_path</strong> (<em>str</em>) – path to ZIP.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p>name list from a ZIP.</p></li>
+</ul>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="CoREMOF.structure.download_from_SI.run">
-<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#CoREMOF.structure.download_from_SI.run" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/CoREMOF/structure.html#download_from_SI.run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#CoREMOF.structure.download_from_SI.run" title="Link to this definition"></a></dt>
+<dd><p>start to run.</p>
+</dd></dl>
 
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="CoREMOF.structure.get_list_CSD">
-<span class="sig-prename descclassname"><span class="pre">CoREMOF.structure.</span></span><span class="sig-name descname"><span class="pre">get_list_CSD</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#CoREMOF.structure.get_list_CSD" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<span class="sig-prename descclassname"><span class="pre">CoREMOF.structure.</span></span><span class="sig-name descname"><span class="pre">get_list_CSD</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/CoREMOF/structure.html#get_list_CSD"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#CoREMOF.structure.get_list_CSD" title="Link to this definition"></a></dt>
+<dd><p>get the name list of structures from CSD.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><ul class="simple">
+<li><p>CR dataset from CSD.</p></li>
+<li><p>NCR dataset from CSD.</p></li>
+<li><p>unmodified dataset from CSD.</p></li>
+</ul>
+</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>List</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="CoREMOF.structure.information">
-<span class="sig-prename descclassname"><span class="pre">CoREMOF.structure.</span></span><span class="sig-name descname"><span class="pre">information</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">entry</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#CoREMOF.structure.information" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<span class="sig-prename descclassname"><span class="pre">CoREMOF.structure.</span></span><span class="sig-name descname"><span class="pre">information</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">entry</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/CoREMOF/structure.html#information"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#CoREMOF.structure.information" title="Link to this definition"></a></dt>
+<dd><p>get information of CoRE MOF database.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dataset</strong> (<em>str</em>) – name of subset.</p></li>
+<li><p><strong>entry</strong> (<em>str</em>) – name of structure</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p>properties, DOI, issues and so on.</p></li>
+</ul>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Dictionary</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="CoREMOF.structure.make_primitive_p1">
-<span class="sig-prename descclassname"><span class="pre">CoREMOF.structure.</span></span><span class="sig-name descname"><span class="pre">make_primitive_p1</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#CoREMOF.structure.make_primitive_p1" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<span class="sig-prename descclassname"><span class="pre">CoREMOF.structure.</span></span><span class="sig-name descname"><span class="pre">make_primitive_p1</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/CoREMOF/structure.html#make_primitive_p1"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#CoREMOF.structure.make_primitive_p1" title="Link to this definition"></a></dt>
+<dd><p>make primitive and make P1.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>filename</strong> (<em>str</em>) – path to your structure.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p>CIF after making primitive and make P1.</p></li>
+</ul>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>cif</p>
+</dd>
+</dl>
+</dd></dl>
 
 </section>
 <section id="module-CoREMOF">
@@ -479,7 +773,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2025, Guobin Zhao.</p>
+    <p>&#169; Copyright 2025, MTAP @ Pusan National University.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

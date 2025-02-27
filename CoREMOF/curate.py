@@ -1,7 +1,8 @@
-import os, re, csv, glob, functools, warnings, itertools, collections
+"""Process your CIF to "CoRE MOF" CIF.
+"""
+
+import os, re, csv, functools, warnings, itertools, collections
 from ase.io import read, write
-from pymatgen.core import Structure
-from pymatgen.io.cif import CifWriter
 
 from pymatgen.symmetry.analyzer import SpacegroupAnalyzer
 
@@ -22,6 +23,18 @@ from CoREMOF.utils.atoms_definitions import ATR, Coef_A, Coef_C #, BO_list, meta
 
 
 class preprocess():
+
+    """Precheck your CIF.
+
+    Args:
+        structure (str): path to your CIF.
+        output_folder (str): the path to save processed CIF.
+
+    Returns:
+        Dictionary & cif:
+            -   result of pre-check, has metal and carbon, has multi-structures.
+            -   CIF by spliting, making primitive and making P1.
+    """
 
     def __init__(self, structure, output_folder="result_curation"):
         self.structure = structure
@@ -95,6 +108,20 @@ class preprocess():
     
 
 class clean():
+
+    """Removing free solvent and coordinated solvent but keep ions based on a list.
+    Args:
+        structure (str): path to your CIF.
+        initial_skin (float): skin distance is added to the sum of vdW radii of two atoms.
+        output_folder (str): the path to save processed CIF.
+        saveto (bool or str): the name of csv file with clean result.
+
+    Returns:
+        CSV or cif:
+            -   result of curating (name, skin, removed solvent).
+            -   CIF by curating.
+    """
+
     def __init__(self, structure, initial_skin = 0.25, output_folder="result_curation", saveto: str="clean_result.csv")-> pd.DataFrame:
         
         self.cambridge_radii = COVALENTRADII
@@ -112,6 +139,9 @@ class clean():
 
     def process(self):
 
+        """start to run curation.
+        """
+            
         try:
             with open(self.csv_path, mode='w', newline='') as csv_file:
                 csv_writer = csv.writer(csv_file)
@@ -138,6 +168,10 @@ class clean():
             print(f"ASR results for {self.structure}: {asr_results}")
 
     def run_fsr(self, mof, save_folder, initial_skin, metal_list, ions_list):
+
+        """free solvent function.
+        """
+
         m = mof.replace(".cif", "")
         skin = initial_skin
         try:
@@ -158,6 +192,10 @@ class clean():
 
 
     def run_asr(self, mof, save_folder, initial_skin, metal_list, ions_list):
+
+        """all solvent function.
+        """
+
         m = mof.replace(".cif", "")
         skin = initial_skin
         try:
@@ -177,12 +215,20 @@ class clean():
             print(f"{m} Fail: {e}")
 
     def build_ASE_neighborlist(self, cif, skin):
+
+        """get list of neighbor.
+        """
+
         radii = [self.cambridge_radii[i] for i in cif.get_chemical_symbols()]
         ASE_neighborlist = NeighborList(radii, self_interaction=False, bothways=True, skin=skin)
         ASE_neighborlist.update(cif)
         return ASE_neighborlist
 
     def find_clusters(self, adjacency_matrix, atom_count):
+
+        """define cluster by the connected components of a sparse graph.
+        """
+
         clusters = []
         cluster_count, clusterIDs = connected_components(adjacency_matrix, directed=True)
         for n in range(cluster_count):
@@ -190,6 +236,10 @@ class clean():
         return clusters
 
     def find_metal_connected_atoms(self, structure, neighborlist):
+
+        """get the atom connected with metal atom.
+        """
+
         metal_connected_atoms = []
         metal_atoms = []
         for i, elem in enumerate(structure.get_chemical_symbols()):
@@ -200,6 +250,10 @@ class clean():
         return metal_connected_atoms, metal_atoms, structure
 
     def CustomMatrix(self, neighborlist, atom_count):
+
+        """convert to matrix.
+        """
+
         matrix = np.zeros((atom_count, atom_count), dtype=int)
         for i in range(atom_count):
             neighbors, _ = neighborlist.get_neighbors(i)
@@ -208,6 +262,10 @@ class clean():
         return matrix
 
     def mod_adjacency_matrix(self, adj_matrix, MetalConAtoms, MetalAtoms, atom_count, struct):
+
+        """modify matrix by breakdown the bond that atom connect with metal atom.
+        """
+
         clusters = self.find_clusters(adj_matrix, atom_count)
         for i, element_1 in enumerate(MetalAtoms):
             for j, element_2 in enumerate(MetalConAtoms[i]):
@@ -231,12 +289,20 @@ class clean():
         return (x > y) - (x < y)
 
     def cluster_to_formula(self, cluster, cif):
+
+        """convert to chemical formula.
+        """
+
         symbols = [cif[i].symbol for i in cluster]
         count = collections.Counter(symbols)
         formula = ''.join([atom + (str(count[atom]) if count[atom] > 1 else '') for atom in sorted(count)])
         return formula
 
     def free_clean(self, input_file, save_folder, ions_list, skin):
+
+        """workflow of removing free solvent.
+        """
+
         try:
             print(input_file+".cif")
             cif = read(input_file+".cif")
@@ -294,6 +360,10 @@ class clean():
             print(f"{input_file} Fail: {e}")
 
     def all_clean(self, input_file, save_folder, ions_list, skin):
+
+        """workflow of removing all solvent.
+        """
+
         try:
             fn = input_file
             cif = read(input_file+".cif")
@@ -399,6 +469,17 @@ class clean():
 
 class mof_check():
 
+    """Not Computation-Ready (NCR) MOFs classification.
+
+    Args:
+        structure (str): path to your CIF.
+        output_folder (str): the path to save checking result.
+
+    Returns:
+        Dictionary:
+            -   result of NCR classification.
+    """
+    
     def __init__(self, structure, output_folder="result_curation"):
         self.output = output_folder + os.sep
         self.structure = structure
@@ -406,6 +487,10 @@ class mof_check():
         self.check()
 
     def check(self):
+
+        """run checking.
+        """
+        
         result_check = {}
 
         chen_manz_result = self.Chen_Manz(self.structure)
@@ -418,6 +503,10 @@ class mof_check():
             json.dump(result_check,f,indent=2)
 
     def Chen_Manz(self, structure):
+
+        """checking MOF by Chen and Manz method: RSC Adv., 2019,9, 36492-36507. https://doi.org/10.1039/C9RA07327B.
+        """
+
         try:
             
             has_problem =[]
@@ -471,6 +560,9 @@ class mof_check():
 
     def mof_checker(self, structure):
         
+        """checking MOF by mofchecker 1.0: https://github.com/lamalab-org/mofchecker.
+        """
+
         try:
             atoms = read(structure)
             structure_ = AseAtomsAdaptor.get_structure(atoms)

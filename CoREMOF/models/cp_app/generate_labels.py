@@ -10,16 +10,19 @@ import phonopy
 from phonopy.units import CP2KToTHz
 
 def compute_total_dos_structure(phonopy_params: str, unitfactor=CP2KToTHz, dx:float=0.5, fmax:float=100.0, freq_pitch:float=0.5, saveto: str=None):
-    """Compute projected dos from phonopy parameter file
 
-    :param phonopy_params: list of phonopy parameter files (output of DFT)
-    :param cif: list of crystal structure in cif format
-    :param temperatures: the target temperature 
-    :param factor: the unit conversion factor
-    :param dx: spacing to compute dos
-    :param fmax: max frequency in dos calculations
-    :param freq_pitch: pitch frequency in dos calculations
+    """Compute projected dos from phonopy parameter file.
+
+    Args:
+        phonopy_params: list of phonopy parameter files (output of DFT).
+        cif: list of crystal structure in cif format.
+        temperatures: the target temperature .
+        factor: the unit conversion factor.
+        dx: spacing to compute dos.
+        fmax: max frequency in dos calculations.
+        freq_pitch: pitch frequency in dos calculations.
     """
+
     phonon = None
     phonon = phonopy.load(phonopy_params, factor=unitfactor)
     phonon.run_mesh([1,1,1], with_eigenvectors=True)
@@ -34,17 +37,20 @@ def compute_total_dos_structure(phonopy_params: str, unitfactor=CP2KToTHz, dx:fl
 
 
 def compute_projected_dos_structure(phonopy_params: str, unitfactor=CP2KToTHz, dx=0.5, fmax=100, freq_pitch=0.5, saveto: str=None):
-    """Compute projected dos from phonopy parameter file
 
-    :param phonopy_params: list of phonopy parameter files (output of DFT)
-    :cif: list of crystal structure in cif format
-    :temperatures: the target temperature 
-    :factor: the unit conversion factor
-    :dx: spacing to compute dos
-    :fmax: max frequency in dos calculations
-    :freq_pitch: pitch frequency in dos calculations
-    :saveto: save the projected dos to a file
+    """Compute projected dos from phonopy parameter file.
+
+    Args:
+        phonopy_params: list of phonopy parameter files (output of DFT).
+        cif: list of crystal structure in cif format.
+        temperatures: the target temperature.
+        factor: the unit conversion factor.
+        dx: spacing to compute dos.
+        fmax: max frequency in dos calculations.
+        freq_pitch: pitch frequency in dos calculations.
+        saveto: save the projected dos to a file.
     """
+
     phonon = None
     phonon = phonopy.load(phonopy_params, factor=unitfactor)
     phonon.run_mesh([1,1,1], with_eigenvectors=True)
@@ -59,12 +65,15 @@ def compute_projected_dos_structure(phonopy_params: str, unitfactor=CP2KToTHz, d
     return pdos 
 
 def compute_atomic_cv_dataset(phonopy_params: list[str], cifs: list[str], temperatures: list, verbos=False, saveto: str="labels.csv") -> pd.DataFrame:
-    """Compute atomic contribution to total cv from phonopy parameter file
 
-    :param phonopy_params: list of phonopy parameter files (output of DFT)
-    :cifs: list of crystal structure in cif format
-    :temperatures: the target temperature 
+    """Compute atomic contribution to total cv from phonopy parameter file.
+
+    Args:
+         phonopy_params: list of phonopy parameter files (output of DFT).
+        cifs: list of crystal structure in cif format.
+        temperatures: the target temperature .
     """
+
     labels={}
     for phonopy_param,cif in zip(phonopy_params,cifs):
         if verbos:

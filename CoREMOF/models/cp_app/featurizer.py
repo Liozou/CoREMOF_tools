@@ -15,11 +15,13 @@ from pymatgen.analysis.local_env import VoronoiNN
 
 
 def featurize_dataset(cifs: list, verbos=False, saveto: str="features.csv")-> pd.DataFrame:
+
     """Featurize crystal structures using elemetal, geometric, and chemical descriptors for local environments.
 
-    :params cifs: list of paths to crystal structure in cif format
-    :params verbos: printing the steps
-    :params saveto: filename to save the generated features
+    Args:
+        cifs: list of paths to crystal structure in cif format.
+        verbos: printing the steps.
+        saveto: filename to save the generated features.
     """
 
     features={}
@@ -109,10 +111,12 @@ def featurize_dataset(cifs: list, verbos=False, saveto: str="features.csv")-> pd
 def featurize_structure(cif: string, verbos=False, saveto: str="features.csv")-> pd.DataFrame:
     """Featurize a crystal structure using elemetal, geometric, and chemical descriptors for local environments.
 
-    :params cifs: list of paths to crystal structure in cif format
-    :params verbos: printing the steps
-    :params saveto: filename to save the generated features
+    Args:
+        cifs: list of paths to crystal structure in cif format.
+        verbos: printing the steps.
+        saveto: filename to save the generated features.
     """
+
     structure = CifParser(cif).get_structures()[0]
     structure_name = Path(cif).name
     features = {structure_name:{}}
@@ -131,7 +135,6 @@ def featurize_structure(cif: string, verbos=False, saveto: str="features.csv")->
             features_dict[site_name].update({"structure_path": row["structure_path"]})
 
     ## 2. Site Elemental Property
-    print("site elemental properties")
     property_list=("Number","AtomicWeight","Row","Column","Electronegativity","CovalentRadius")
     SEP = SiteElementalProperty(properties=property_list)
     colnames=SEP._generate_column_labels(multiindex=False,return_errors=False)
@@ -145,7 +148,6 @@ def featurize_structure(cif: string, verbos=False, saveto: str="features.csv")->
             features_dict[site_name].update(dict(zip(colnames, feat)))
 
     ## 3. AGNI
-    print("AGNI")
     property_list=("Number","AtomicWeight","Row","Column","Electronegativity","CovalentRadius")
     AGNI = AGNIFingerprints(cutoff=5,directions=[None])
     colnames=AGNI._generate_column_labels(multiindex=False,return_errors=False)
@@ -160,7 +162,6 @@ def featurize_structure(cif: string, verbos=False, saveto: str="features.csv")->
 
 
     ## 4. Gaussian Symmetry Functions 
-    print("GSF")
     GSF = GaussianSymmFunc(cutoff=5)
     colnames=GSF._generate_column_labels(multiindex=False,return_errors=False)
     for index,row in data.iterrows():
@@ -173,7 +174,6 @@ def featurize_structure(cif: string, verbos=False, saveto: str="features.csv")->
             features_dict[site_name].update(dict(zip(colnames, feat)))
 
     ## 5. site difference stats 
-    print("LPD")
     LPD = LocalPropertyStatsNew(properties=property_list)
     colnames=LPD._generate_column_labels(multiindex=False,return_errors=False)
     for index,row in data.iterrows():
@@ -194,6 +194,7 @@ def featurize_structure(cif: string, verbos=False, saveto: str="features.csv")->
 
 
 class LocalPropertyStatsNew(BaseFeaturizer):
+
     """
     Differences, minima and maxima in elemental properties between site and its neighboring sites.
     Uses the Voronoi tessellation of the structure to determine the
@@ -205,12 +206,12 @@ class LocalPropertyStatsNew(BaseFeaturizer):
     where :math:`p_n` is the property (e.g., atomic number) of a neighbor
     and :math:`p_0` is the property of a site. If signed parameter is assigned
     True, signed difference of the properties is returned instead of absolute
-    difference.
-    Taken from oximachine featurizer: https://github.com/kjappelbaum/oximachine_featurizer
+    difference. Taken from oximachine featurizer: https://github.com/kjappelbaum/oximachine_featurizer                          
+                                             
     Features:
-        - "local property stat in [property]"
+        -   "local property stat in [property]"                               
     References:
-         `Ward et al. _PRB_ 2017 <http://link.aps.org/doi/10.1103/PhysRevB.96.024104>`_
+        -   `Ward et al. _PRB_ 2017 <http://link.aps.org/doi/10.1103/PhysRevB.96.024104>`_
     """
 
     def __init__(
@@ -220,14 +221,13 @@ class LocalPropertyStatsNew(BaseFeaturizer):
         properties: List[str] = ("Electronegativity",),
         cutoff: List[str] = 5,
     ):
-        """Initialize the featurizer
+        """Initialize the featurizer.
+
         Args:
-            data_source (AbstractData) - Class from which to retrieve
-                elemental properties
-            weight (str) - What aspect of each voronoi facet to use to
-                weigh each neighbor (see VoronoiNN)
-            properties (List[str]) - List of properties to use (default=['Electronegativity'])
-            cutoff (float)
+            data_source (AbstractData): Class from which to retrieve elemental properties.
+            weight (str): What aspect of each voronoi facet to use to weigh each neighbor (see VoronoiNN).
+            properties (List[str]): List of properties to use.
+            cutoff (float): cut off value.
         """
         self.data_source = data_source
         self.properties = properties
@@ -237,10 +237,11 @@ class LocalPropertyStatsNew(BaseFeaturizer):
     @staticmethod
     def from_preset(preset: str, cutoff: float = 13):
         """
-        Create a new LocalPropertyStats class according to a preset
+        Create a new LocalPropertyStats class according to a preset.
+
         Args:
-            preset (str) - Name of preset
-            cutoff (float) - Cutoff for the nearest neighbor search
+            preset (str): Name of preset
+            cutoff (float): Cutoff for the nearest neighbor search
         """
 
         if preset == "interpretable":

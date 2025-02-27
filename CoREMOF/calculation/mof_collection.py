@@ -1,4 +1,3 @@
-
 import os
 import glob
 import json
@@ -19,17 +18,17 @@ pd.options.display.max_rows = 1000
 
 
 class MofCollection:
-    """A collection to hold and analyse MOF structures from CIF files"""
+
+    """A collection to hold and analyse MOF structures from CIF files. Create a MofCollection from a list of path names.
+
+    Args:
+        path_list: List of paths to MOF CIF files to be added to the collection.
+        analysis_folder: Path to the folder where the results will be stored."""
 
     separator = "".join(['-'] * 50)
 
     def __init__(self, path_list, analysis_folder='analysis_folder'):
-        """Create a MofCollection from a list of path names.
-
-        :param path_list: List of paths to MOF CIF files to be added to the
-        collection.
-        :param analysis_folder: Path to the folder where the results will
-        be stored. (default: 'analysis_folder')
+        """
         """
         self._analysis_folder = analysis_folder
         self.path_list = path_list
@@ -105,8 +104,7 @@ class MofCollection:
 
     @property
     def properties(self):
-        """Get value for the MOF properties. If the property variable is not
-        None and the pickle file exists, then load the file and return it."""
+        """Get value for the MOF properties. If the property variable is not None and the pickle file exists, then load the file and return it."""
         if not self._properties and os.path.isfile(self._properties_filename):
             with open(self._properties_filename, 'rb') as properties_file:
                 self._properties = pickle.load(properties_file)
@@ -114,8 +112,7 @@ class MofCollection:
 
     @property
     def mof_oms_df(self):
-        """Get a pandas DataFrame that lists for each MOF whether it has an OMS
-        or not and if it has an OMS what metal types it is.
+        """Get a pandas DataFrame that lists for each MOF whether it has an OMS or not and if it has an OMS what metal types it is.
         """
         if self._mof_oms_df is not None:
             return self._mof_oms_df
@@ -151,8 +148,7 @@ class MofCollection:
 
     @property
     def metal_site_df(self):
-        """Get a pandas DataFrame that lists the OMS results for each metal
-        type.
+        """Get a pandas DataFrame that lists the OMS results for each metal type.
         """
         if self._metal_site_df is not None:
             return self._metal_site_df
@@ -179,18 +175,17 @@ class MofCollection:
         return self._metal_site_df
 
     @classmethod
-    def from_folder(cls, collection_folder, analysis_folder='analysis_folder',
-                    name_list=None):
+    def from_folder(cls, collection_folder, analysis_folder='analysis_folder', name_list=None):
+        
         """Create a MofCollection from a the CIF files in a folder.
 
-        :param collection_folder: Path to the folder containing the CIF files to
-        be added to the collection.
-        :param analysis_folder: Path to the folder where the results will
-        be stored. (default: 'analysis_folder')
-        :param name_list: List of MOF names to include in the collection. If
-        set, all the other CIF files in the folder will be excluded.
-        (default: None)
-        :return: A MofCollection object holding the specified MOF structures.
+        Args:
+            collection_folder: Path to the folder containing the CIF files to be added to the collection.
+            analysis_folder: Path to the folder where the results will be stored.
+            name_list: List of MOF names to include in the collection. If set, all the other CIF files in the folder will be excluded.
+
+        Returns:
+            A MofCollection object holding the specified MOF structures.
         """
 
         if name_list:
@@ -204,15 +199,15 @@ class MofCollection:
         return cls(path_list, analysis_folder)
 
     def analyse_mofs(self, overwrite=False, num_batches=1, analysis_limit=None):
+
         """Run OMS analysis for the MOFs in the collection.
 
-        :param overwrite: Controls if the results will be overwritten or not
-        (default: False)
-        :param num_batches: Sets the number of batches the structures will be
-        split in and analyzed on a separate process. (default: 1)
-        :param analysis_limit: Analyze only up to the number of MOFs set by
-        analysis_limit, if set to None all MOFs will be analyzed (default: None)
+        Args:
+            overwrite: Controls if the results will be overwritten or not.
+            num_batches: Sets the number of batches the structures will be split in and analyzed on a separate process.
+            analysis_limit: Analyze only up to the number of MOFs set by analysis_limit, if set to None all MOFs will be analyzed.
         """
+
         print(self.separator)
         print("Running OMS Analysis...")
         self.analysis_limit = analysis_limit
@@ -259,8 +254,7 @@ class MofCollection:
         print(self.separator)
 
     def check_structures(self):
-        """Iterate over all the MOFs in the collection and validate that they
-        can be read and a MofStructure can be created.
+        """Iterate over all the MOFs in the collection and validate that they can be read and a MofStructure can be created.
         """
         self._validate_properties(['cif_okay'])
         not_read = [mi for mi in self.mof_coll
@@ -295,8 +289,7 @@ class MofCollection:
         print('\nFinished checking structures.')
 
     def check_analysis_status(self):
-        """Iterate over all the MOFs in the collection and check if the results
-        from the OMS analysis exist.
+        """Iterate over all the MOFs in the collection and check if the results from the OMS analysis exist.
         """
         print(self.separator)
         not_done = [mi['mof_file'] for mi in self.mof_coll
@@ -314,12 +307,13 @@ class MofCollection:
         print(self.separator)
 
     def sample_collection(self, sample_size=50):
-        """Randomly select a sample of MOFs in the collection and
-        return a new collection with the MOFs in the sample.
 
-        :param sample_size: Number of MOFs to be selected. Default value is 50.
+        """Randomly select a sample of MOFs in the collection and return a new collection with the MOFs in the sample.
 
+        Args:
+            sample_size: Number of MOFs to be selected. Default value is 50.
         """
+
         ll = len(self.mof_coll)
         if sample_size > ll:
             sample_size = ll
@@ -332,34 +326,18 @@ class MofCollection:
     def filter_collection(self, using_filter=None,
                           new_collection_folder=None,
                           new_analysis_folder=None):
-        """Filter a collection given a number of filters.
+        
+        """Filter a collection given a number of filters. Calling this method of a MofCollection applies the filter and creates a new collection for the MOFs that match the filter. The cif files that match the filter are  copied to the new_collection_folder. The filters can be one or more of the following: 'density': [min, max] (range of values), 'oms_density': [min, max] (range of values), 'uc_volume':  [min, max] (range of values), 'metal_species': ["Cu", "Zn", ...] (list of metal species), 'non_metal_species': ["C", "N", ...] (list of non metal species), 'cif_okay': True (boolean value), 'has_oms': True (boolean value), 'mof_name':  [mof_name1, mof_name2] (string values)
 
-        Calling this method of a MofCollection applies the filter and creates a
-        new collection for the MOFs that match the filter. The cif files that
-        match the filter are  copied to the new_collection_folder.
-        The filters can be one or more of the following:
+        Args:
+            using_filter: Filter used to identify MOFs with certain characteristics. Has to be a python dictionary.
+            new_collection_folder: Path to the folder where the CIF files of the filtered collection will be stored. If set to None the CIF files will not be copied.
+            new_analysis_folder: Path to the folder where the OMS result files of the filtered collection will be stored. If set to None the result files will not be copied.
 
-        'density': [min, max] (range of values)
-        'oms_density': [min, max] (range of values)
-        'uc_volume':  [min, max] (range of values)
-        'metal_species': ["Cu", "Zn", ...] (list of metal species)
-        'non_metal_species': ["C", "N", ...] (list of non metal species)
-        'cif_okay': True (boolean value)
-        'has_oms': True (boolean value)
-        'mof_name':  [mof_name1, mof_name2] (string values)
-
-        :param using_filter: Filter used to identify MOFs with certain
-        characteristics. Has to be a python dictionary (default: None)
-        :param new_collection_folder: Path to the folder where the CIF files of
-        the filtered collection will be stored. If set to None the CIF files
-        will not be copied. (default: None)
-        :param new_analysis_folder: Path to the folder where the OMS result
-        files of the filtered collection will be stored. If set to None the
-        result files will not be copied. (default: None)
-        :return: A MofCollection with only the filtered MOFs. If
-        new_collection_folder or new_analysis_folder is not set then the
-        collection will point to the original location of these files.
+        Returns:
+            A MofCollection with only the filtered MOFs. If new_collection_folder or new_analysis_folder is not set then the collection will point to the original location of these files.
         """
+
         print(self.separator)
         if any([f not in self.filter_functions for f in using_filter]):
             print('Unknown filter. Try again using one of the following '
@@ -404,8 +382,7 @@ class MofCollection:
         return sub_collection
 
     def read_cif_files(self):
-        """Iterate over all MOF files in the collection, load each CIF and
-        store MOF properties such as density, unit cell volume etc.
+        """Iterate over all MOF files in the collection, load each CIF and store MOF properties such as density, unit cell volume etc.
         """
         print(self.separator)
         print('Reading CIF files and updating properties...')
@@ -415,8 +392,7 @@ class MofCollection:
         print(self.separator)
 
     def read_oms_results(self):
-        """Iterate over all MOF files in the collection, load each OMS result
-        file and store OMS information to the MOF properties.
+        """Iterate over all MOF files in the collection, load each OMS result file and store OMS information to the MOF properties.
         """
         print(self.separator)
         print('Adding results to properties.')
@@ -426,11 +402,13 @@ class MofCollection:
         print(self.separator)
 
     def copy_cifs(self, target_folder):
-        """Copy cif files from their existing location to the specified
-        target_folder.
 
-        :param target_folder: Path of folder to copy collection CIF files to.
+        """Copy cif files from their existing location to the specified target_folder.
+
+        Args:
+            target_folder: Path of folder to copy collection CIF files to.
         """
+
         if target_folder is None:
             return
         tf_abspath = os.path.abspath(target_folder)
@@ -450,12 +428,13 @@ class MofCollection:
         print(self.separator)
 
     def copy_results(self, target_folder):
-        """Copy OMS result files from their existing location to the specified
-        target_folder.
 
-        :param target_folder: Path of folder to copy collection OMS result
-        files to.
+        """Copy OMS result files from their existing location to the specified target_folder.
+
+        Args:
+            target_folder: Path of folder to copy collection OMS result files to.
         """
+
         if target_folder is None:
             return
 
@@ -480,13 +459,13 @@ class MofCollection:
         print(self.separator)
 
     def summarize_results(self, max_atomic_number=None):
-        """Create a summary table for the OMS results of the collection, group
-        results by metal type.
 
-        :param max_atomic_number: Maximum atomic number to be included in
-        summary table. If not defined all metal atoms will be considered
-        (default: None)
+        """Create a summary table for the OMS results of the collection, group results by metal type.
+
+        Args:
+            max_atomic_number: Maximum atomic number to be included in summary table. If not defined all metal atoms will be considered.
         """
+
         df = self.metal_site_df.copy()
         site_df_u = df.loc[df['unique']]
         site_df_o = site_df_u.loc[site_df_u['is_open']]
@@ -540,8 +519,7 @@ class MofCollection:
         s_df.to_csv(fname, sep=' ')
 
     def summarize_tfactors(self):
-        """Summarize the t-factor information and make histograms for all the
-        MOFs in the collection.
+        """Summarize the t-factor information and make histograms for all the MOFs in the collection.
         """
         tfac_analysis_folder = self.summary_folder + '/tfac_analysis'
         Helper.make_folder(self.summary_folder)
@@ -583,8 +561,7 @@ class MofCollection:
         self._store_properties()
 
     def _compare_checksums(self, mof_file, mof_name, checksum):
-        """If OMS results exist for one of the CIF names in the collection then
-        ensure that the CIF checksum matches the one in the result file.
+        """If OMS results exist for one of the CIF names in the collection then ensure that the CIF checksum matches the one in the result file.
         """
         mof_folder = "{0}/{1}/".format(self.oms_results_folder,
                                        mof_name)
@@ -610,8 +587,7 @@ class MofCollection:
         status[b] = -1
 
     def _analyse(self, mi, overwrite):
-        """For a given CIF file, create MofStructure object and run OMS
-        analysis. If overwrite is false check if results already exist first.
+        """For a given CIF file, create MofStructure object and run OMS analysis. If overwrite is false check if results already exist first.
         """
         mof_folder = "{}/{}".format(self.oms_results_folder, mi['mof_name'])
         results_exist = self._check_if_results_exist(mi['mof_name'])
@@ -624,12 +600,14 @@ class MofCollection:
             mof.analyze_metals(output_folder=mof_folder)
 
     def _make_batches(self, num_batches=1, overwrite=False):
+
         """Split collection into number of batches
 
-        :param num_batches: Number of batches (default: 1)
-        :param overwrite: Controls if the results will be overwritten or not
-        (default: False)
+        Args:
+            num_batches: Number of batches (default: 1)
+            overwrite: Controls if the results will be overwritten or not (default: False)
         """
+
         print(self.separator)
         if cpu_count() < num_batches:
             warnings.warn('You requested {} batches but there are only {}'
@@ -694,10 +672,12 @@ class MofCollection:
         return False
 
     def _loop_over_collection(self, func):
-        """Iterate over all the MOFs in the collection and run the specified
-        function.
-        :param func: Function to use.
+
+        """Iterate over all the MOFs in the collection and run the specified function.
+        Args:
+            func: Function to use.
         """
+        
         li = max(int(len(self.mof_coll) / 1000), 1)
         lm = len(self.mof_coll) / 100
         for i, mi in enumerate(self.mof_coll):
@@ -740,10 +720,7 @@ class MofCollection:
         return min(f) <= v <= max(f)
 
     def _validate_properties(self, keys):
-        """Check if a given property can be found in the properties dictionary.
-        If not try to read the CIF file and check again. If the check fails
-        again try to read the OMS results and check again. If the check fails
-        a third time return False, the property cannot be validated."""
+        """Check if a given property can be found in the properties dictionary. If not try to read the CIF file and check again. If the check fails again try to read the OMS results and check again. If the check fails a third time return False, the property cannot be validated."""
         msg = {1: "Validating property", 2: "Validating properties"}
         print('\n{} : '.format(msg[min(2, len(keys))]), end='')
         print("\"{}\"".format(", ".join([k for k in keys])))
@@ -814,8 +791,7 @@ class MofCollection:
         return mof
 
     def _write_t_factors(self, sites, n, target):
-        """Summarize the findings in table form and histograms for a give
-        t-factor.
+        """Summarize the findings in table form and histograms for a give t-factor.
         """
         s_n = sites.loc[sites['number_of_linkers'] == n].copy()
         s_n['is_open_yn'] = np.where(s_n['is_open'], 'yes', 'no')
@@ -839,8 +815,7 @@ class MofCollection:
 
     @staticmethod
     def _write_histogram(sites, dens, target):
-        """Generate histograms to be used for summarizing the t-factor
-        results.
+        """Generate histograms to be used for summarizing the t-factor results.
         """
         hist, edges = np.histogram(sites, bins=50, range=(0, 1), density=dens)
         with open(target, 'w') as hist_file:
@@ -850,8 +825,7 @@ class MofCollection:
 
     @staticmethod
     def _group_and_summarize(df, names=None):
-        """Group the DataFrame holding the OMS results by metal type and rename
-        its columns.
+        """Group the DataFrame holding the OMS results by metal type and rename its columns.
         """
         rename = {"mof_name": names[0], "is_open": names[1]}
         agg_dict = {"mof_name": pd.Series.nunique, "is_open": "count"}

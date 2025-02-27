@@ -1,3 +1,6 @@
+"""Feature list used in heat capacity models.
+"""
+
 cv_features_minimal = ['site Number',
         'site AtomicWeight',
         'site Row',
@@ -21,6 +24,7 @@ cv_features_minimal = ['site Number',
         'G4_0.005_4.0_1.0',
         'G4_0.005_4.0_-1.0',
         ]
+
 cv_features= ['site Number',
         'site AtomicWeight',
         'site Row',

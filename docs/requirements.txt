@@ -1,13 +1,3 @@
 sphinx
 sphinx-rtd-theme
 sphinx-autodoc-typehints
-pymatgen
-ase
-juliacall
-molSimplify
-PACMAN-charge
-cloudpickle
-matminer
-xgboost
-scikit-learn==1.3.2
-mofchecker

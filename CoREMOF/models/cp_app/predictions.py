@@ -8,7 +8,19 @@ import copy
 FEATURES = cv_features
 
 def predict_Cv_ensemble_structure(models: list, FEATURES: list, df_features: pd.DataFrame, temperature: float) -> list:
-  
+     
+    """Predict heat capacity using an ensemble of ML models for one structure.
+
+    Args:
+        models: list (ensemble) of ML models.
+        FEATURES: features for ML model.
+        df_features: pandas dataframe containing the features.
+        temperature: target temperature.
+
+    Returns:
+        a list containing the gravimetric and molar heat capacity together with the uncertainty of the models.
+    """
+     
     if len(df_features["structure_name"].unique())>2:
         raise ValueError("More than one structure in the features file...")
         
@@ -37,6 +49,18 @@ def predict_Cv_ensemble_structure(models: list, FEATURES: list, df_features: pd.
 def predict_Cv_ensemble_structure_multitemperatures(path_to_models: str, structure_name: str, features_file: str="features.csv", 
                 FEATURES: list=cv_features, temperatures: list=[300.00], save_to: str="cv_predicted.csv") -> pd.DataFrame:
 
+    """Predict heat capacity using an ensemble of ML models for a dataset.
+
+    Args:
+        models: ensemble of ML models.
+        FEATURES: features for ML model.
+        df_features: pandas dataframe containing the features.
+        temperature: target temperature.
+
+    Returns:
+        a list containing the gravimetric and molar heat capacity together with the uncertainty of the models.
+    """
+     
     df_features = pd.read_csv(features_file)
     df_features["structure_name"]=["_".join(n.split("_")[:-1]) for n in df_features["Unnamed: 0"]]
     df_features=df_features.loc[df_features["structure_name"]==structure_name]

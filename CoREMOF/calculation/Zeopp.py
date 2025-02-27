@@ -1,7 +1,26 @@
+"""Geometery properties calculation based on Zeo++ software
+You need install Zeo++ package independently from source (https://www.zeoplusplus.org/download.html) or conda (https://anaconda.org/conda-forge/zeopp-lsmo)
+Befor run this class please test "network" commond is works or not.
+"""
+
 import os
 import subprocess
 
 def ChanDim(structure, probe_radius = 0, high_accuracy = True):
+
+    """Analysis dimension of channel.
+
+    Args:
+        structure (str): path to your CIF.
+        probe_radius (float): probe of radiu.
+        high_accuracy (bool): use high accuracy or not.
+
+    Returns:
+        Dictionary:
+            -   unit by ["unit"], always nan.
+            -   dimention by ["Dimention"].
+    """
+    
     results_chan = {}
     results_chan["unit"]="nan"
     
@@ -29,6 +48,22 @@ def ChanDim(structure, probe_radius = 0, high_accuracy = True):
     return results_chan
 
 def FrameworkDim(structure, high_accuracy = True):
+
+    """Analysis dimension of framework.
+
+    Args:
+        structure (str): path to your CIF.
+        high_accuracy (bool): use high accuracy or not.
+
+    Returns:
+        Dictionary:
+            -   unit by ["unit"], always nan
+            -   dimention by ["Dimention"]
+            -   number of 2D framewor by ["N_1D"]
+            -   number of 1D framework by ["N_2D"]
+            -   number of 3D framewor by ["N_3D"]
+    """
+
     results_strinfo = {}
     results_strinfo["unit"]="nan"
     
@@ -67,6 +102,20 @@ def FrameworkDim(structure, high_accuracy = True):
 
 def PoreDiameter(structure, high_accuracy = True):
 
+    """Analysis pore diameter of structure.
+
+    Args:
+        structure (str): path to your CIF.
+        high_accuracy (bool): use high accuracy or not.
+
+    Returns:
+        Dictionary:
+            -   unit by ["unit"], always angstrom, Å
+            -   largest cavity diameter by ["LCD"]
+            -   pore-limiting diameter by ["PLD"]
+            -   largest free pore diameter by ["LFPD"]
+    """
+
     results_pd = {}
     results_pd["unit"]="angstrom, Å"
     
@@ -89,6 +138,23 @@ def PoreDiameter(structure, high_accuracy = True):
     return results_pd
 
 def SurfaceArea(structure, chan_radius = 1.655, probe_radius = 1.655, num_samples = 5000, high_accuracy = True):
+
+    """Analysis surface area of structure.
+
+    Args:
+        structure (str): path to your CIF.
+        chan_radius (float): probe of channel, it is advised to keep chan_radius=probe_radius.
+        probe_radius (float): probe of radiu.
+        num_samples (int): number of MC samples per atom.
+        high_accuracy (bool): use high accuracy or not.
+
+    Returns:
+        Dictionary:
+            -   unit by ["unit"], always Å^2, m^2/cm^3, m^2/g
+            -   accessible surface area by ["ASA"]
+            -   non-accessible surface area by ["NASA"]
+    """
+
     results_sa = {}
     results_sa["unit"]="Å^2, m^2/cm^3, m^2/g"
     
@@ -121,6 +187,25 @@ def SurfaceArea(structure, chan_radius = 1.655, probe_radius = 1.655, num_sample
     return results_sa
 
 def PoreVolume(structure, chan_radius = 0, probe_radius = 0, num_samples = 5000, high_accuracy = True):
+
+    """Analysis pore volume of structure.
+
+    Args:
+        structure (str): path to your CIF.
+        chan_radius (float): probe of channel, it is advised to keep chan_radius=probe_radius.
+        probe_radius (float): probe of radiu.
+        num_samples (int): number of MC samples per atom.
+        high_accuracy (bool): use high accuracy or not.
+
+    Returns:
+        Dictionary:
+            -   unit by ["unit"], always PV: Å^3, cm^3/g; VF: nan
+            -   accessible pore volume by ["PV"]
+            -   non-accessible pore volume by ["NPV"]
+            -   accessible void fraction by ["VF"]
+            -   non-accessible void fraction by ["NVF"]
+    """
+
     results_pv = {}
     results_pv["unit"]="PV: Å^3, cm^3/g; VF: nan"
     

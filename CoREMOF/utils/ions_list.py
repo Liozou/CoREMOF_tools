@@ -1,7 +1,7 @@
 '''
-From CoRE MOF Database paper
-Chem. Mater. 2014, 26, 21, 6185–6192 (https://doi.org/10.1021/cm502594j)
-J. Chem. Eng. Data 2019, 64, 12, 5985–5998 (https://pubs.acs.org/doi/full/10.1021/acs.jced.9b00835)
+From CoRE MOF Database paper 
+    -   Chem. Mater. 2014, 26, 21, 6185–6192 (https://doi.org/10.1021/cm502594j)
+    -   J. Chem. Eng. Data 2019, 64, 12, 5985–5998 (https://pubs.acs.org/doi/full/10.1021/acs.jced.9b00835)
 '''
 
 ALLIONS = [

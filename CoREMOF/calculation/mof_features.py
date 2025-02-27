@@ -1,3 +1,6 @@
+"""Analysis topology, open metal sites, revised autocorrelation and so on.
+"""
+
 from pymatgen.symmetry.analyzer import SpacegroupAnalyzer
 from pymatgen.io.ase import AseAtomsAdaptor
 from ase.io import read
@@ -11,6 +14,20 @@ from molSimplify.Informatics.MOF.MOF_descriptors import get_MOF_descriptors
 
 
 def SpaceGroup(structure):
+
+    """Analysis space group of structure.
+
+    Args:
+        structure (str): path to your CIF.
+       
+    Returns:
+        Dictionary:
+            -   unit by ["unit"], always nan
+            -   hall symbol by ["hall_symbol"]
+            -   space group number by ["space_group_number"]
+            -   crystal system by ["crystal_system"]
+    """
+           
     result_sg = {}
     result_sg["unit"]="nan"
     atoms = read(structure)
@@ -26,6 +43,18 @@ def SpaceGroup(structure):
     return result_sg
 
 def Mass(structure):
+
+    """Analysis total mass of structure.
+
+    Args:
+        structure (str): path to your CIF.
+       
+    Returns:
+        Dictionary:
+            -   unit by ["unit"], always amu
+            -   total mass by ["total_mass"]
+    """
+
     result_m = {}
     result_m["unit"]="amu"
     atoms = read(structure)
@@ -35,6 +64,18 @@ def Mass(structure):
     return result_m
 
 def Volume(structure):
+
+    """Analysis total volume of structure.
+
+    Args:
+        structure (str): path to your CIF.
+       
+    Returns:
+        Dictionary:
+            -   unit by ["unit"], always Å^3
+            -   total volume by ["total_volume"]
+    """
+
     result_v = {}
     result_v["unit"]="Å^3"
     with open(structure, "r", encoding="utf-8") as f:
@@ -46,6 +87,18 @@ def Volume(structure):
     return result_v
 
 def n_atom(structure):
+
+    """Analysis number of atoms of structure.
+
+    Args:
+        structure (str): path to your CIF.
+       
+    Returns:
+        Dictionary:
+            -   unit by ["unit"], always nan
+            -   number of atoms by ["number_atoms"]
+    """
+
     result_na = {}
     result_na["unit"]="nan"
     atoms = read(structure)
@@ -54,7 +107,19 @@ def n_atom(structure):
 
     return result_na
 
-def topology(structure,node_type="single"):
+def topology(structure, node_type="single"):
+
+    """Analysis topology of structure by CrystalNets.jl (https://github.com/coudertlab/CrystalNets.jl?tab=readme-ov-file).
+
+    Args:
+        structure (str): path to your CIF.
+        node_type (str): the clustering algorithm used to group atoms into vertices. single: each already-defined cluster is mapped to a vertex; all: keep points of extension for organic clusters.
+       
+    Returns:
+        Dictionary:
+            -   dimension by ["dimension"]
+            -   topology by ["topology"]
+    """
 
     package_directory = os.path.abspath(__file__).replace("mof_features.py","")
     os.environ["JULIA_DEPOT_PATH"] = package_directory
@@ -76,17 +141,30 @@ def topology(structure,node_type="single"):
             result_ = x[0][jl.Clustering.AllNodes]
             result_save.append(result_)
 
-    result_tp["dimention"]=[]
+    result_tp["dimension"]=[]
     result_tp["topology"] = []
     for info in result_save:
         
-        result_tp["dimention"].append(jl.ndims(info.genome))
+        result_tp["dimension"].append(jl.ndims(info.genome))
         result_tp["topology"].append(str(info))
 
     return result_tp
 
 
 def get_oms_file(structure):
+
+    """Analysis open metal site of structure from CoRE MOF 2019 (https://github.com/emmhald/open_metal_detector).
+
+    Args:
+        structure (str): path to your CIF.
+       
+    Returns:
+        Dictionary:
+            -   all types of metal by ["Metal Types"]
+            -    has OMS or not by ["Has OMS"], -> True or False
+            -    of type of OMS if has by ["OMS Types"]
+    """
+        
     a_mof_collection = MofCollection(path_list = [structure], 
                                  analysis_folder="tmp_oms")
     a_mof_collection.analyse_mofs(num_batches=1,overwrite=False)
@@ -102,6 +180,20 @@ def get_oms_file(structure):
 
 
 def get_oms_folder(input_folder, n_batch = 1):
+
+    """Analysis open metal site of folder with structures from CoRE MOF 2019 (https://github.com/emmhald/open_metal_detector).
+
+    Args:
+        input_folder (str): path to your folder.
+        n_batch (int): number of batches.
+       
+    Returns:
+        Dictionary:
+            -   all types of metal of each structure by [structure]["Metal Types"]
+            -   has OMS or not of each structure by [structure]["Has OMS"], -> True or False
+            -   type of OMS if has of each structure by [structure]["OMS Types"]
+    """
+
     mof_collection = MofCollection.from_folder(collection_folder = input_folder, 
                                                 analysis_folder="tmp_oms")
     mof_collection.analyse_mofs(num_batches=n_batch,overwrite=False)
@@ -120,6 +212,19 @@ def get_oms_folder(input_folder, n_batch = 1):
 
 
 def RACs(structure):
+
+    """Analysis open metal site of folder with structures from CoRE MOF 2019 (https://github.com/emmhald/open_metal_detector).
+
+    Args:
+        input_folder (str): path to your folder.
+        n_batch (int): number of batches.
+       
+    Returns:
+        Dictionary:
+            -   metal by ["Metal"]
+            -   linker by ["Linker"]
+            -   function group by ["Function-group"]
+    """
 
     metal_fnames = ['D_mc-I-0-all', 'D_mc-I-1-all', 'D_mc-I-2-all', 'D_mc-I-3-all', 'D_mc-S-0-all', 'D_mc-S-1-all', 'D_mc-S-2-all',
     'D_mc-S-3-all', 'D_mc-T-0-all', 'D_mc-T-1-all', 'D_mc-T-2-all', 'D_mc-T-3-all', 'D_mc-Z-0-all', 'D_mc-Z-1-all', 'D_mc-Z-2-all',

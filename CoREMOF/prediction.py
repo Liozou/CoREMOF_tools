@@ -1,3 +1,6 @@
+"""ML-predicted features.
+"""
+
 from PACMANCharge import pmcharge
 
 import os, warnings, shutil, joblib, requests, cloudpickle
@@ -16,6 +19,18 @@ from CoREMOF.calculation.mof_features import RACs, Volume
 package_directory = os.path.abspath(__file__).replace("prediction.py","")
 
 def get_files_from_github(repo, path):
+
+    """query files from github due to limit of uploading size by PyPi.
+
+    Args:
+        repo (str): github repository.
+        path (str): the path of models.
+
+    Returns:
+        Dictionary:
+            -   response of downloading.
+    """
+        
     url = f"https://api.github.com/repos/{repo}/contents/{path}"
     headers = {'Accept': 'application/vnd.github.v3+json'}
     response = requests.get(url, headers=headers)
@@ -23,6 +38,15 @@ def get_files_from_github(repo, path):
     return response.json()
 
 def download_file(url, save_path):
+
+    """download models from github due to limit of uploading size by PyPi.
+
+    Args:
+        url (str): link of downloading file.
+        save_path (str): the path to save files.
+
+    """    
+
     if not os.path.exists(save_path):
         response = requests.get(url)
         response.raise_for_status()
@@ -65,6 +89,23 @@ from CoREMOF.models.cp_app.predictions import predict_Cv_ensemble_structure_mult
 
 def pacman(structure, output_folder="result_pacman", charge_type="DDEC6", digits=10, atom_type=True, neutral=True, keep_connect=False):
 
+    """predict partial atom charge by PACMAN Charge: https://doi.org/10.1021/acs.jctc.4c00434.
+
+    Args:
+        structure (str): path to your structure.
+        output_folder (str): the path to save CIF with predicted charges.
+        charge_type (str): models of DDEC6, Bader, CM5 or REPEAT.
+        digits (int): number of decimal places to print for partial atomic charges. ML models were trained on a 6-digit dataset.
+        atom_type (bool): keep the same partial atomic charge for the same atom types (based on the similarity of partial atomic charges up to 2 decimal places).
+        neutral (bool): keep the net charge is zero. We use "mean" method to neuralize the system where the excess charges are equally distributed across all atoms.
+        keep_connect (bool): retain the atomic and connection information (such as _atom_site_adp_type, bond) for the structure.
+
+    Returns:
+        Dictionary & cif:
+            -   predicted PBE energy and bandgap of your structure.
+            -   CIF with predicted charges.
+    """  
+        
     results_eb = {}
     
     if not os.path.exists(output_folder):
@@ -99,6 +140,18 @@ def pacman(structure, output_folder="result_pacman", charge_type="DDEC6", digits
 
 def cp(structure, T=[300, 350, 400]):
     
+    """predict heat capacity by GBR models at different temperatures: https://doi.org/10.1038/s41563-022-01374-3.
+
+    Args:
+        structure (str): path to your structure.
+        T (list): the temperatures of your system.
+
+    Returns:
+        Dictionary:
+            -   unit by ["unit"], always "J/g/K", "J/mol/K".
+            -   predicted heat capacity of your structure.    
+    """  
+        
     name = os.path.basename(structure).replace(".cif", "")
     featurize_structure(structure, verbos=False, saveto="features.csv")
     
@@ -127,16 +180,83 @@ def cp(structure, T=[300, 350, 400]):
 
 
 def precision(y_true, y_pred):
+
+    """
+    Computes the precision metric for binary classification.
+
+    Precision is defined as the ratio of correctly predicted positive observations 
+    to the total predicted positive observations. It is given by:
+
+        precision = TP / (TP + FP)
+
+    where:
+        - TP (True Positives)  : Correctly predicted positive cases
+        - FP (False Positives)  : Incorrectly predicted positive cases
+
+    Args:
+        y_true (tensor): Ground truth binary labels (0 or 1).
+        y_pred (tensor): Predicted probabilities or binary predictions.
+
+    Returns:
+        tensor: Precision score (between 0 and 1).
+    """
+        
     true_positives = K.sum(K.round(K.clip(y_true * y_pred, 0, 1)))
     predicted_positives = K.sum(K.round(K.clip(y_pred, 0, 1)))
     precision = true_positives / (predicted_positives + K.epsilon())
     return precision
+
+
 def recall(y_true, y_pred):
+
+    """
+    Computes the recall metric for binary classification.
+
+    Recall (also known as Sensitivity or True Positive Rate) measures the proportion 
+    of actual positives that are correctly identified by the model. It is given by:
+
+        recall = TP / (TP + FN)
+
+    where:
+        - TP (True Positives)  : Correctly predicted positive cases
+        - FN (False Negatives)  : Actual positive cases that were predicted as negative
+
+    Args:
+        y_true (tensor): Ground truth binary labels (0 or 1).
+        y_pred (tensor): Predicted probabilities or binary predictions.
+
+    Returns:
+        tensor: Recall score (between 0 and 1).
+    """
+
     true_positives = K.sum(K.round(K.clip(y_true * y_pred, 0, 1)))
     possible_positives = K.sum(K.round(K.clip(y_true, 0, 1)))
     recall = true_positives / (possible_positives + K.epsilon())
     return recall
+
+
 def f1(y_true, y_pred):
+
+    """
+    Computes the F1-score for binary classification.
+
+    The F1-score is the harmonic mean of precision and recall, providing a balanced 
+    metric when the dataset is imbalanced. It is given by:
+
+        F1 = 2 * (precision * recall) / (precision + recall)
+
+    where:
+        - Precision = TP / (TP + FP)
+        - Recall    = TP / (TP + FN)
+
+    Args:
+        y_true (tensor): Ground truth binary labels (0 or 1).
+        y_pred (tensor): Predicted probabilities or binary predictions.
+
+    Returns:
+        tensor: F1-score (between 0 and 1).
+    """
+        
     p = precision(y_true, y_pred)
     r = recall(y_true, y_pred)
     return 2 * ((p * r) / (p + r + K.epsilon()))
@@ -147,7 +267,18 @@ import tensorflow as tf
 
 # os.environ['CUDA_VISIBLE_DEVICES'] = '-1'
 def stability(structure):
-   
+    
+    """predict stability of MOFs: https://doi.org/10.1021/jacs.1c07217, https://doi.org/10.1021/jacs.4c05879.
+
+    Args:
+        structure (str): path to your structure.
+
+    Returns:
+        Dictionary:
+            -   unit by ["unit"], always "nan, °C, nan".
+            -   predicted thermal, solvent and water stabilities.     
+    """  
+        
     solvent_feature_names = [
                             'f-chi-0-all', 'f-chi-1-all', 'f-chi-2-all', 'f-chi-3-all', 'f-Z-0-all',
                             'f-Z-1-all', 'f-Z-2-all', 'f-Z-3-all', 'f-I-0-all', 'f-I-1-all', 'f-I-2-all',

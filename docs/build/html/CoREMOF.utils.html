@@ -6,14 +6,14 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CoREMOF.utils package &mdash; CoREMOF_tools 0.0.5 documentation</title>
+  <title>CoREMOF.utils package &mdash; CoREMOF_tools 0.0.6 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
 
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=282f96c0"></script>
+      <script src="_static/documentation_options.js?v=1fd71caa"></script>
       <script src="_static/doctools.js?v=9a2dae69"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
@@ -40,22 +40,11 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <!-- Local TOC -->
-              <div class="local-toc"><ul>
-<li><a class="reference internal" href="#">CoREMOF.utils package</a><ul>
-<li><a class="reference internal" href="#submodules">Submodules</a></li>
-<li><a class="reference internal" href="#module-CoREMOF.utils.atoms_definitions">CoREMOF.utils.atoms_definitions module</a></li>
-<li><a class="reference internal" href="#module-CoREMOF.utils.expensive_rare_metal">CoREMOF.utils.expensive_rare_metal module</a></li>
-<li><a class="reference internal" href="#module-CoREMOF.utils.ions_list">CoREMOF.utils.ions_list module</a></li>
-<li><a class="reference internal" href="#module-CoREMOF.utils.remove">CoREMOF.utils.remove module</a><ul>
-<li><a class="reference internal" href="#CoREMOF.utils.remove.remove_dir_with_permissions"><code class="docutils literal notranslate"><span class="pre">remove_dir_with_permissions()</span></code></a></li>
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">CoREMOF_tools API Documentation</a></li>
 </ul>
-</li>
-<li><a class="reference internal" href="#module-CoREMOF.utils">Module contents</a></li>
-</ul>
-</li>
-</ul>
-</div>
+
         </div>
       </div>
     </nav>
@@ -105,9 +94,11 @@ van der Waals radius of the element as used in CSD software [Å, see Note (c)]</
 </ol>
 <p>Links</p>
 <p>The Web contains many sites that provide data on the chemical elements. Links to many of these are provided at: <a class="reference external" href="http://www.chemistrycoach.com/periodic_tables.htm#PeriodicTables">http://www.chemistrycoach.com/periodic_tables.htm#PeriodicTables</a></p>
-<p>Two excellent relevant sites are:</p>
-<p><a class="reference external" href="http://www.webelements.com/">http://www.webelements.com/</a>
+<dl class="simple">
+<dt>Two excellent relevant sites are:</dt><dd><p><a class="reference external" href="http://www.webelements.com/">http://www.webelements.com/</a>
 <a class="reference external" href="http://www.rsc.org/periodic-table/">http://www.rsc.org/periodic-table/</a></p>
+</dd>
+</dl>
 </section>
 <section id="module-CoREMOF.utils.expensive_rare_metal">
 <span id="coremof-utils-expensive-rare-metal-module"></span><h2>CoREMOF.utils.expensive_rare_metal module<a class="headerlink" href="#module-CoREMOF.utils.expensive_rare_metal" title="Link to this heading"></a></h2>
@@ -115,16 +106,30 @@ van der Waals radius of the element as used in CSD software [Å, see Note (c)]</
 </section>
 <section id="module-CoREMOF.utils.ions_list">
 <span id="coremof-utils-ions-list-module"></span><h2>CoREMOF.utils.ions_list module<a class="headerlink" href="#module-CoREMOF.utils.ions_list" title="Link to this heading"></a></h2>
-<p>From CoRE MOF Database paper
-Chem. Mater. 2014, 26, 21, 6185–6192 (<a class="reference external" href="https://doi.org/10.1021/cm502594j">https://doi.org/10.1021/cm502594j</a>)
-J. Chem. Eng. Data 2019, 64, 12, 5985–5998 (<a class="reference external" href="https://pubs.acs.org/doi/full/10.1021/acs.jced.9b00835">https://pubs.acs.org/doi/full/10.1021/acs.jced.9b00835</a>)</p>
+<dl class="simple">
+<dt>From CoRE MOF Database paper</dt><dd><ul class="simple">
+<li><p>Chem. Mater. 2014, 26, 21, 6185–6192 (<a class="reference external" href="https://doi.org/10.1021/cm502594j">https://doi.org/10.1021/cm502594j</a>)</p></li>
+<li><ol class="upperalpha simple" start="10">
+<li><p>Chem. Eng. Data 2019, 64, 12, 5985–5998 (<a class="reference external" href="https://pubs.acs.org/doi/full/10.1021/acs.jced.9b00835">https://pubs.acs.org/doi/full/10.1021/acs.jced.9b00835</a>)</p></li>
+</ol>
+</li>
+</ul>
+</dd>
+</dl>
 </section>
 <section id="module-CoREMOF.utils.remove">
 <span id="coremof-utils-remove-module"></span><h2>CoREMOF.utils.remove module<a class="headerlink" href="#module-CoREMOF.utils.remove" title="Link to this heading"></a></h2>
+<p>Remove files.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="CoREMOF.utils.remove.remove_dir_with_permissions">
-<span class="sig-prename descclassname"><span class="pre">CoREMOF.utils.remove.</span></span><span class="sig-name descname"><span class="pre">remove_dir_with_permissions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dir_path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#CoREMOF.utils.remove.remove_dir_with_permissions" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<span class="sig-prename descclassname"><span class="pre">CoREMOF.utils.remove.</span></span><span class="sig-name descname"><span class="pre">remove_dir_with_permissions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dir_path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/CoREMOF/utils/remove.html#remove_dir_with_permissions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#CoREMOF.utils.remove.remove_dir_with_permissions" title="Link to this definition"></a></dt>
+<dd><p>Remove temporary files.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>dir_path</strong> (<em>str</em>) – path to your file.</p>
+</dd>
+</dl>
+</dd></dl>
 
 </section>
 <section id="module-CoREMOF.utils">
@@ -140,7 +145,7 @@ J. Chem. Eng. Data 2019, 64, 12, 5985–5998 (<a class="reference external" href
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2025, Guobin Zhao.</p>
+    <p>&#169; Copyright 2025, MTAP @ Pusan National University.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

@@ -1,3 +1,5 @@
+"""Classes used for open metal site analysis.
+"""
 
 import json
 import copy
@@ -14,19 +16,17 @@ import math
 
 
 class MofStructure(Structure):
-    """Extend the pymatgen Structure class to add MOF specific features"""
+
+    """Extend the pymatgen Structure class to add MOF specific features. Create a MOf structure. The arguments are the same as in the pymatgen Structure class with the addition of the name argument.
+    The super constructor is called and additional MOF specific properties are initialized.
+
+    Args:
+        Structure: MOF name, used to identify the structure."""
 
     def __init__(self, lattice, species, coords, charge=None,
                  validate_proximity=False, to_unit_cell=False,
                  coords_are_cartesian=False, site_properties=None, name="N/A"):
 
-        """Create a MOf structure. The arguments are the same as in the
-        pymatgen Structure class with the addition of the name argument.
-        The super constructor is called and additional MOF specific properties
-        are initialized.
-
-        :param name: MOF name, used to identify the structure.
-        """
         super().__init__(lattice, species, coords,
                          charge=charge,
                          validate_proximity=validate_proximity,
@@ -65,25 +65,18 @@ class MofStructure(Structure):
 
     @classmethod
     def from_file(cls, filename, primitive=False, sort=False, merge_tol=0.0):
-        """Create a MofStructure from a CIF file.
+        """Create a MofStructure from a CIF file. This makes use of the from_file function of the Structure class and catches the exception in case a CIF file cannot be read. If the CIF is read successfully then the MofStructure is marked as okay, and the file checksum is added to the summary. If the CIF file cannot be read then it is marked as not okay and all the other properties are set to None and because there cannot be an empty Structure a carbon atom is added as placeholder at 0,0,0.
 
-        This makes use of the from_file function of the Structure class and
-        catches the exception in case a CIF file cannot be read.
-        If the CIF is read successfully then the MofStructure is marked as okay,
-        and the file checksum is added to the summary. If the CIF file cannot be
-        read then it is marked as not okay and all the other properties are
-        set to None and because there cannot be an empty Structure a carbon atom
-        is added as placeholder at 0,0,0.
+        Args:
+            filename (str): The filename to read from.
+            primitive (bool): Whether to convert to a primitive cell Only available for cifs. Defaults to False.
+            sort (bool): Whether to sort sites. Default to False.
+            merge_tol (float): If this is some positive number, sites that are within merge_tol from each other will be merged. Usually 0.01 should be enough to deal with common numerical issues.
 
-        :param filename: (str) The filename to read from.
-        :param primitive: (bool) Whether to convert to a primitive cell
-        Only available for cifs. Defaults to False.
-        :param sort: (bool) Whether to sort sites. Default to False.
-        :param merge_tol: (float) If this is some positive number, sites that
-        are within merge_tol from each other will be merged. Usually 0.01
-        should be enough to deal with common numerical issues.
-        :return: Return the created MofStructure
+        Returns:
+            The created MofStructure
         """
+
         mof_name = os.path.splitext(os.path.basename(filename))[0]
         try:
             s = Structure.from_file(filename, primitive=primitive, sort=sort,
@@ -104,11 +97,10 @@ class MofStructure(Structure):
         return s_mof
 
     def analyze_metals(self, output_folder, verbose='normal'):
-        """Run analysis to detect all open metal sites in a MofStructure. In
-        addition the metal sites are marked as unique.
-
-        :param output_folder: Folder where OMS analysis results will be stored.
-        :param verbose: Verbosity level for the output of the analysis.
+        """Run analysis to detect all open metal sites in a MofStructure. In addition the metal sites are marked as unique.
+        Args:
+            output_folder: Folder where OMS analysis results will be stored.
+            verbose: Verbosity level for the output of the analysis.
         """
 
         Helper.make_folder(output_folder)
@@ -142,13 +134,14 @@ class MofStructure(Structure):
         os.remove(running_indicator)
 
     def write_results(self, output_folder, verbose='normal'):
-        """Store summary dictionary holding all MOF and OMS information to a
-        JSON file, store CIF files for the metal and non-metal parts of the MOF
-        as well as all the identified coordination spheres.
 
-        :param output_folder: Location to be used to store
-        :param verbose: Verbosity level (default: 'normal')
+        """Store summary dictionary holding all MOF and OMS information to a JSON file, store CIF files for the metal and non-metal parts of the MOF as well as all the identified coordination spheres.
+
+        Args:
+            output_folder: Location to be used to store.
+            verbose: Verbosity level.
         """
+
         Helper.make_folder(output_folder)
         for index, mcs in enumerate(self.metal_coord_spheres):
             mcs.write_cif_file(output_folder, index)
@@ -198,8 +191,7 @@ class MofStructure(Structure):
 
     @property
     def all_coord_spheres_indices(self):
-        """Compute the indices of the atoms in the first coordination shell
-        for all atoms in the MofStructure
+        """Compute the indices of the atoms in the first coordination shell for all atoms in the MofStructure
         """
         if self._all_coord_spheres_indices:
             return self._all_coord_spheres_indices
@@ -210,8 +202,7 @@ class MofStructure(Structure):
 
     @property
     def metal_coord_spheres(self):
-        """For all metal atoms in a MofStructure compute the first coordination
-        sphere as a MetalSite object.
+        """For all metal atoms in a MofStructure compute the first coordination sphere as a MetalSite object.
         """
         if not self._metal_coord_spheres:
             self._metal_coord_spheres = [self._find_metal_coord_sphere(c)
@@ -226,8 +217,7 @@ class MofStructure(Structure):
         self.summary['density'] = None
 
     def _split_structure_to_organic_and_metal(self):
-        """Split a MOF to two pymatgen Structures, one containing only metal
-         atoms and one containing only non-metal atoms."""
+        """Split a MOF to two pymatgen Structures, one containing only metal atoms and one containing only non-metal atoms."""
         self.metal = Structure(self.lattice, [], [])
         self.organic = Structure(self.lattice, [], [])
         i = 0
@@ -242,8 +232,11 @@ class MofStructure(Structure):
     def _find_cs_indices(self, center):
         """Find the indices of the atoms in the coordination sphere.
 
-        :param center: Central atom of coordination sphere.
-        :return: c_sphere_indices: Return in the coordination sphere of center.
+        Args:
+            center: Central atom of coordination sphere.
+
+        Returns:
+            c_sphere_indices: Return in the coordination sphere of center.
         """
         dist = list(self.all_distances[center])
         if dist[center] > 0.0000001:
@@ -257,15 +250,13 @@ class MofStructure(Structure):
         return c_sphere_indices
 
     def _find_metal_coord_sphere(self, center):
-        """Identify the atoms in the first coordination sphere of a metal atom.
 
-        Obtain all atoms connecting to the metal using the
-        all_coord_spheres_indices values and keeping only valid bonds as well as
-        center the atoms around the metal center for visualization purposes.
+        """Identify the atoms in the first coordination sphere of a metal atom. Obtain all atoms connecting to the metal using the all_coord_spheres_indices values and keeping only valid bonds as well as center the atoms around the metal center for visualization purposes.
 
-        :param center:
-        :return:
+        Args:
+            center:
         """
+
         dist = self.all_distances[center]
         if dist[center] > 0.0000001:
             sys.exit('The self distance appears to be non-zero')
@@ -290,10 +281,14 @@ class MofStructure(Structure):
         return True  # len(cs_list),
 
     def _find_coordination_sequence(self, center):
+
         """Compute the coordination sequence up to the 6th coordination shell.
 
-        :param center: Atom to compute coordination sequence for
-        :return cs: Coordination sequence for center
+        Args:
+            center: Atom to compute coordination sequence
+
+        Returns:
+            cs: Coordination sequence for center
         """
 
         shell_list = {(center, (0, 0, 0))}
@@ -407,8 +402,7 @@ class MetalSite(MofStructure):
         return _summary
 
     def keep_valid_bonds(self):
-        """Loop over atoms in the coordination sphere and remove any extraneous
-        sites.
+        """Loop over atoms in the coordination sphere and remove any extraneous sites.
         """
         if len(self) == 0:
             return
@@ -427,9 +421,7 @@ class MetalSite(MofStructure):
                 return self.keep_valid_bonds()
 
     def center_around_metal(self):
-        """Shift atoms across periodic boundary conditions to have the
-        coordination appear centered around the metal atom for visualisation
-        purposes
+        """Shift atoms across periodic boundary conditions to have the coordination appear centered around the metal atom for visualisation purposes
         """
         gc = self.lattice.get_cartesian_coords
         center = self.frac_coords[0]
@@ -452,9 +444,7 @@ class MetalSite(MofStructure):
             self.replace(i, self.species[i], c_i_centered)
 
     def check_if_open(self):
-        """Get t-factor, check if problematic based on number of linkers and
-         if necessary call to check the dihedrals to determine if the metal site
-         is open.
+        """Get t-factor, check if problematic based on number of linkers and if necessary call to check the dihedrals to determine if the metal site is open.
          """
 
         self.get_t_factor()
@@ -478,8 +468,7 @@ class MetalSite(MofStructure):
         self._is_open = True
 
     def get_t_factor(self):
-        """Compute t-factors, only meaningful for 4-,5-, and 6-coordinated
-        metals, if not the value of -1 is assigned.
+        """Compute t-factors, only meaningful for 4-,5-, and 6-coordinated metals, if not the value of -1 is assigned.
         """
         nl = self.num_sites - 1
         index_range = range(1, self.num_sites)
@@ -527,8 +516,7 @@ class MetalSite(MofStructure):
         return c / 180.0
 
     def write_cif_file(self, output_folder, index):
-        """Write MofSite to specified output_folder as a CIF file and use index
-        to name it.
+        """Write MofSite to specified output_folder as a CIF file and use index to name it.
         """
         Helper.make_folder(output_folder)
         output_fname = output_folder
@@ -536,18 +524,15 @@ class MetalSite(MofStructure):
         self.to(filename=output_fname)
 
     def _valid_pair(self, i, j, dis):
-        """Determine whether two atoms in the coordination sphere form a valid
-        pair.
 
-        A pair is not valid if it forms a bond unless both atoms are metals of
-        the same kind as the center or both atoms are carbon atoms (e.g. in the
-        case of a ferocene type coordination sphere).
+        """Determine whether two atoms in the coordination sphere form a valid pair. A pair is not valid if it forms a bond unless both atoms are metals of the same kind as the center or both atoms are carbon atoms (e.g. in the case of a ferocene type coordination sphere).
 
-        :param i:
-        :param j:
-        :param dis:
-        :return:
+        Args:
+            i:
+            j:
+            dis:
         """
+
         s_one = str(self.species[i])
         s_two = str(self.species[j])
         a_one = Atom(s_one)
@@ -563,9 +548,11 @@ class MetalSite(MofStructure):
         return (not bond) or two_same_metals or carbon_atoms
 
     def _check_planes(self, site):
-        """Determine whether a site is open using the dihedral angles
-        between the atoms in the coordination sphere.
-        :param site: Index of site to be checked.
+
+        """Determine whether a site is open using the dihedral angles between the atoms in the coordination sphere.
+
+        Args:
+            site: Index of site to be checked.
         """
 
         for i, j, k in itertools.combinations(range(self.num_sites), 3):
@@ -603,15 +590,17 @@ class MetalSite(MofStructure):
             assert self.is_open is False
 
     def _sides(self, p_i, plane):
-        """Given a plane p defined by 3 of the atoms in the MetalSite determine
-        on which side of the plane all the atoms in the MetalSite fall (-1 or 1)
-        or if it falls on the plane (0).
 
-        :param p_i: Indices of the 3 atoms that define the plane
-        :param plane: Plane constants
-        :return: List of side value for all atoms in the MetalSite, possible
-        values can -1, 0, and 1.
+        """Given a plane p defined by 3 of the atoms in the MetalSite determine on which side of the plane all the atoms in the MetalSite fall (-1 or 1) or if it falls on the plane (0).
+
+        Args:
+            p_i: Indices of the 3 atoms that define the plane
+            plane: Plane constants
+
+        Returns:
+            List of side value for all atoms in the MetalSite, possible values can -1, 0, and 1.
         """
+
         atoms_on_plane = [True if i in p_i
                           else self._is_point_on_plane(self[i].coords, p_i,
                                                        plane)
@@ -624,16 +613,17 @@ class MetalSite(MofStructure):
         return sides
 
     def _is_point_on_plane(self, point, p_i, p):
-        """Given a point and plane determine if the point falls on the plane,
-        using the angle between the projection of the point, each atom on the
-        plane and the actual position of the point with a specified tolerance
-        value.
-        :param point: Cartesian coordinates of point to check.
-        :param p: plane in the form of a list with the 4 constants defining
-        a plane.
-        :return: True if the point falls on plane and False otherwise.
 
+        """Given a point and plane determine if the point falls on the plane, using the angle between the projection of the point, each atom on the plane and the actual position of the point with a specified tolerance value.
+
+        Args:
+            point: Cartesian coordinates of point to check.
+            p: plane in the form of a list with the 4 constants defining a plane.
+
+        Returns:
+            True if the point falls on plane and False otherwise.
         """
+
         tol = self.tolerance['on_plane']
         point_on_plane = self._project_point_onto_plane(point, p)
         angles = [self._get_angle_c(point_on_plane, self[ii].coords, point)
@@ -641,27 +631,37 @@ class MetalSite(MofStructure):
         return all([a < tol for a in angles])
 
     def _get_angle_c(self, c1, c2, c3):
+
         """
         Calculates the angle between three points in degrees.
 
-        :param c1: Coordinates of first point.
-        :param c2: Coordinates of second point.
-        :param c3: Coordinates of third point.
-        :return: Angle between them in degrees.
+        Args:
+            c1: Coordinates of first point.
+            c2: Coordinates of second point.
+            c3: Coordinates of third point.
+
+        Returns:
+            Angle between them in degrees.
         """
+
         v1 = c1 - c2
         v2 = c3 - c2
         return self._get_angle_v(v1, v2)
 
     @staticmethod
     def _get_angle_v(v1, v2):
+
         """
         Calculates the angle between two vectors in degrees.
 
-        :param v1: First vector.
-        :param v2: Second vector.
-        :return: Angle between them in degrees.
+        Args:
+            v1: First vector.
+            v2: Second vector.
+
+        Returns:
+            Angle between them in degrees.
         """
+        
         if np.dot(v1, v2) == 0.0:
             return 0.0
         d = np.dot(v1, v2) / np.linalg.norm(v1) / np.linalg.norm(v2)
@@ -672,8 +672,7 @@ class MetalSite(MofStructure):
 
     @staticmethod
     def _get_distance_from_plane(point, plane):
-        """Given a point and a plane compute the distance between the point and
-        the projection of the point on the plane."""
+        """Given a point and a plane compute the distance between the point and the projection of the point on the plane."""
         plane_xyz = plane[0:3]
         distance = np.inner(plane_xyz, point) - plane[3]
         return distance / np.linalg.norm(plane_xyz)
@@ -688,8 +687,7 @@ class MetalSite(MofStructure):
 
     @staticmethod
     def _compute_plane_c(c1, c2, c3):
-        """Given three atom coordinates, compute the plane that passes
-        through them.
+        """Given three atom coordinates, compute the plane that passes through them.
         """
         ij = c1 - c2
         kj = c3 - c2
@@ -700,8 +698,7 @@ class MetalSite(MofStructure):
 
     @staticmethod
     def _project_point_onto_plane(point, plane):
-        """Given a point and plane compute the projection of the point onto the
-        plane.
+        """Given a point and plane compute the projection of the point onto the plane.
         """
         vector = plane[0:3]
         constant = plane[3]

@@ -1,0 +1,5 @@
+pip install sphinx sphinx-rtd-theme sphinx-autodoc-typehints
+
+sphinx-quickstart
+
+sphinx-apidoc -o docs/source/ CoREMOF

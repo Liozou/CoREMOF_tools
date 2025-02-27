@@ -1,18 +1,15 @@
+"""Parameters of atom used for open metal site analysis."""
 
 class Atom:
-    """A class to hold atomic information, and check bonds."""
+
+    """A class to hold atomic information, and check bonds. Covalent radii taken from DOI: Covalent radii revisited Beatriz Cordero, Verónica Gómez, Ana E. Platero-Prats, Marc Revés, Jorge Echeverría,  Eduard Cremades, Flavia Barragána and Santiago Alvarez Dalton Trans., 2008, 2832-2838. DOI: 10.1039/B801115J.
+    
+    Args:
+        element: Element of the Atom object. This determines it's properties.
+    """
 
     def __init__(self, element):
-        """Create an Atom object given an element.
-
-        :param element: Element of the Atom object. This determines it's
-        properties.
-        """
-        # Covalent radii taken from DOI: Covalent radii revisited
-        # Beatriz Cordero,   Verónica Gómez,   Ana E. Platero-Prats,
-        # Marc Revés,   Jorge Echeverría,  Eduard Cremades, Flavia Barragána
-        # and Santiago Alvarez Dalton Trans., 2008, 2832-2838
-        # DOI: 10.1039/B801115J
+  
         self._co_all = {'H': 0.31,
                         'D': 0.31,
                         'He': 0.28,
@@ -179,17 +176,17 @@ class Atom:
         return dist < max_bond
 
     def max_bond(self, ele2, bond_tol=None):
-        """Get the maximum possible distance between the Atom object and
-        another atom of type ele2.
 
-        Returns the some of covelant radii for Atom and Atom(ele2) plus their
-        covalant radii.
+        """Get the maximum possible distance between the Atom object and another atom of type ele2.
 
-        :param bond_tol: Bold tolerance to use, if not set then the default will
-        be used.
-        :param ele2: Element of the atom that the max_bond corresponds to.
-        :return:
+        Args:
+            ele2: Element of the atom that the max_bond corresponds to.
+            bond_tol: Bold tolerance to use, if not set then the default will be used.
+
+        Returns:    
+            The some of covelant radii for Atom and Atom(ele2) plus their covalant radii.
         """
+
         if bond_tol is None:
             bond_tol = self.bond_tolerance(ele2)
         return Atom(ele2).co + self.co + bond_tol

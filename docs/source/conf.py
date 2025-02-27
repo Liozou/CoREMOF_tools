@@ -7,9 +7,9 @@
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
 project = 'CoREMOF_tools'
-copyright = '2025, Guobin Zhao'
+copyright = '2025, MTAP @ Pusan National University'
 author = 'Guobin Zhao'
-release = '0.0.5'
+release = '0.0.6'
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration

@@ -1,3 +1,6 @@
+"""Download structures and query information of CoRE MOF Database.
+"""
+
 try:
     from ccdc import io
     csd_reader = io.EntryReader('CSD')
@@ -13,6 +16,7 @@ from pymatgen.symmetry.analyzer import SpacegroupAnalyzer
 package_directory = os.path.abspath(__file__).replace("structure.py","")
 
 files_to_download = {
+                    'data/CSD/list_coremof_csd_unmodified_20250227.json': 'https://raw.githubusercontent.com/mtap-research/CoRE-MOF-Tools/main/7-data4API/CSD/list_coremof_csd_unmodified_20250227.json',
                     'data/detail_of_CR.json': 'https://raw.githubusercontent.com/mtap-research/CoRE-MOF-Tools/main/7-data4API/detail_of_CR.json',
                     'data/detail_of_NCR.json': 'https://raw.githubusercontent.com/mtap-research/CoRE-MOF-Tools/main/7-data4API/detail_of_NCR.json',
                     'data/CSD/CR_CSD_REFCODE.json': 'https://raw.githubusercontent.com/mtap-research/CoRE-MOF-Tools/main/7-data4API/CSD/CR_CSD_REFCODE.json',
@@ -22,6 +26,7 @@ files_to_download = {
                     }
 
 for file_name, url in files_to_download.items():
+    
     file_path = os.path.join(package_directory, file_name)
     directory = os.path.dirname(file_path) 
 
@@ -42,6 +47,17 @@ for file_name, url in files_to_download.items():
 
 def make_primitive_p1(filename):
 
+
+    """make primitive and make P1.
+
+    Args:
+        filename (str): path to your structure.
+
+    Returns:
+        cif:
+            -   CIF after making primitive and make P1.   
+    """     
+
     atoms = read(filename)
     structure_= AseAtomsAdaptor.get_structure(atoms)
     
@@ -51,6 +67,17 @@ def make_primitive_p1(filename):
     
 
 class download_from_SI():
+
+    """download structures that we got from supporting information.
+
+    Args:
+        output_folder (str): path to save structures.
+
+    Returns:
+        cif
+            -   CoRE MOF SI dataset.   
+    """
+
     def __init__(self, output_folder="./CoREMOF2024DB"):
         
         self.SI_path = package_directory+'/data/SI/'
@@ -59,6 +86,9 @@ class download_from_SI():
 
     def run(self):
 
+        """start to run. 
+        """
+            
         CR_files = self.list_zip(self.SI_path+"CR.zip")
         NCR_files = self.list_zip(self.SI_path+"NCR.zip")
      
@@ -71,17 +101,49 @@ class download_from_SI():
             self.get_from_SI(self.SI_path+"NCR.zip", file, self.output)
 
     def list_zip(self, zip_path):
+
+        """list of files from a ZIP.
+
+        Args:
+            zip_path (str): path to ZIP.
+
+        Returns:
+            List:
+                -   name list from a ZIP.  
+        """
+            
         with zipfile.ZipFile(zip_path, 'r') as zip_ref:
             file_list = zip_ref.namelist()
             return file_list
     
     def get_from_SI(self, zip_path, entry, output_folder):
+
+        """unzip files from a ZIP.
+
+        Args:
+            zip_path (str): path to ZIP.
+            entry (str): name of structure.
+            output_folder (str): path to save structures. 
+        """
+                
         with zipfile.ZipFile(zip_path, 'r') as zip_ref:
             file_list = zip_ref.namelist()
             if entry in file_list:
                 zip_ref.extract(entry, output_folder)
             
 def download_from_CSD(refcode, output_folder="./CoREMOF2024DB"):
+
+    """download structures from CSD, you need to install [CSD python API](https://downloads.ccdc.cam.ac.uk/documentation/API/installation_notes.html) with licence.
+
+    Args:
+        refcode (str): path to refcode.
+        output_folder (str): path to save structures.
+
+    Returns:
+        cif:
+            -   downloading CIF.  
+    """
+
     cryst = csd_reader.crystal(refcode)
     data = cryst.to_string('cif')
     f = open(os.path.join(output_folder, refcode+'.cif'),'w')
@@ -90,19 +152,44 @@ def download_from_CSD(refcode, output_folder="./CoREMOF2024DB"):
 
 def get_list_CSD():
 
+    """get the name list of structures from CSD.
+
+    Returns:
+        List:
+            -   CR dataset from CSD.
+            -   NCR dataset from CSD.
+            -   unmodified dataset from CSD.
+    """
+            
     CSD_path = package_directory+'/data/CSD/'
     CR_json = CSD_path + "/CR_CSD_REFCODE.json"
     NCR_json  = CSD_path + "/NCR_CSD_REFCODE.json"
-    
+    CSD_unmodified_json  = CSD_path + "/list_coremof_csd_unmodified_20250227.json"
+
     with open (CR_json, "r") as CR_f:
         CSD_CR = json.load(CR_f)
         
     with open (NCR_json, "r") as NCR_f:
         CSD_NCR = json.load(NCR_f)
-    return CSD_CR, CSD_NCR
+
+    with open (CSD_unmodified_json, "r") as CSD_unmodified_f:
+        CSD_unmodified = json.load(CSD_unmodified_f)
+
+    return CSD_CR, CSD_NCR, CSD_unmodified
 
 
 def information(dataset, entry):
+
+    """get information of CoRE MOF database.
+
+    Args:
+        dataset (str): name of subset.
+        entry (str): name of structure
+
+    Returns:
+        Dictionary:
+            -   properties, DOI, issues and so on. 
+    """     
 
     CR_data_path = package_directory+'/data/detail_of_CR.json'
     NCR_data_path = package_directory+'/data/detail_of_NCR.json'

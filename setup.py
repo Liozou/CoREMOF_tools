@@ -2,13 +2,13 @@ from setuptools import setup, find_packages
 
 setup(
         name='CoREMOF_tools',
-        version='0.0.5',
+        version='0.0.6',
         author='Guobin Zhao',
         author_email='sxmzhaogb@gmail.com',
         description='Python API for CoRE MOF 2024 DB',
         long_description=open('README.md').read(),
         long_description_content_type='text/markdown',
-        url='https://github.com/mtap-research/CoRE-MOF-Tools',
+        # url='https://github.com/sxm13/CoREMOF_tools',
         packages=find_packages(),
         # package_data={
         # 'CoREMOF': [
@@ -50,4 +50,11 @@ setup(
         #         'coremof=CoREMOF:curate',
             # ],
         # },
+        project_urls={
+                        "Homepage": "https://coremof-tools.readthedocs.io/en/latest/index.html#",
+                        "Documentation": "https://coremof-tools.readthedocs.io/en/latest/index.html#",
+                        "Repository": "https://github.com/sxm13/CoREMOF_tools",
+                        "Issues": "https://github.com/mtap-research/CoRE-MOF-Tools/issues",
+                        "PyPI": "https://pypi.org/project/CoREMOF-tools/",
+                        },
     )

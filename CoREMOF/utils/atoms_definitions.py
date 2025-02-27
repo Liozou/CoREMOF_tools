@@ -25,9 +25,8 @@ Links
 The Web contains many sites that provide data on the chemical elements. Links to many of these are provided at: http://www.chemistrycoach.com/periodic_tables.htm#PeriodicTables 
 
 Two excellent relevant sites are:
-
-http://www.webelements.com/
-http://www.rsc.org/periodic-table/ 
+        http://www.webelements.com/
+        http://www.rsc.org/periodic-table/ 
 '''
 
 FULLNAME = {
