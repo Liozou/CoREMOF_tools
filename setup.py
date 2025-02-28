@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
         name='CoREMOF_tools',
-        version='0.0.6',
+        version='0.0.7',
         author='Guobin Zhao',
         author_email='sxmzhaogb@gmail.com',
         description='Python API for CoRE MOF 2024 DB',

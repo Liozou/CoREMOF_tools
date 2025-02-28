@@ -149,7 +149,7 @@
 <span class="sd">            merge_tol (float): If this is some positive number, sites that are within merge_tol from each other will be merged. Usually 0.01 should be enough to deal with common numerical issues.</span>
 
 <span class="sd">        Returns:</span>
-<span class="sd">            The created MofStructure</span>
+<span class="sd">            -   The created MofStructure</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="n">mof_name</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">filename</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
@@ -176,8 +176,9 @@
 <a class="viewcode-back" href="../../../CoREMOF.calculation.html#CoREMOF.calculation.mof.MofStructure.analyze_metals">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">analyze_metals</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">output_folder</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="s1">&#39;normal&#39;</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Run analysis to detect all open metal sites in a MofStructure. In addition the metal sites are marked as unique.</span>
+
 <span class="sd">        Args:</span>
-<span class="sd">            output_folder: Folder where OMS analysis results will be stored.</span>
+<span class="sd">            output_folder (str): Folder where OMS analysis results will be stored.</span>
 <span class="sd">            verbose: Verbosity level for the output of the analysis.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 

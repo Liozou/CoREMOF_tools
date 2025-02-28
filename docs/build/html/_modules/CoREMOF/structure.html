@@ -128,7 +128,7 @@
 
 <span class="sd">    Returns:</span>
 <span class="sd">        cif:</span>
-<span class="sd">            -   CIF after making primitive and make P1.   </span>
+<span class="sd">           CIF after making primitive and make P1.   </span>
 <span class="sd">    &quot;&quot;&quot;</span>     
 
     <span class="n">atoms</span> <span class="o">=</span> <span class="n">read</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
@@ -150,8 +150,8 @@
 <span class="sd">        output_folder (str): path to save structures.</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">        cif</span>
-<span class="sd">            -   CoRE MOF SI dataset.   </span>
+<span class="sd">        cif:</span>
+<span class="sd">            CoRE MOF SI dataset.   </span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">output_folder</span><span class="o">=</span><span class="s2">&quot;./CoREMOF2024DB&quot;</span><span class="p">):</span>
@@ -190,7 +190,7 @@
 
 <span class="sd">        Returns:</span>
 <span class="sd">            List:</span>
-<span class="sd">                -   name list from a ZIP.  </span>
+<span class="sd">                name list from a ZIP.  </span>
 <span class="sd">        &quot;&quot;&quot;</span>
             
         <span class="k">with</span> <span class="n">zipfile</span><span class="o">.</span><span class="n">ZipFile</span><span class="p">(</span><span class="n">zip_path</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">zip_ref</span><span class="p">:</span>
@@ -229,7 +229,7 @@
 
 <span class="sd">    Returns:</span>
 <span class="sd">        cif:</span>
-<span class="sd">            -   downloading CIF.  </span>
+<span class="sd">            downloading CIF.  </span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">cryst</span> <span class="o">=</span> <span class="n">csd_reader</span><span class="o">.</span><span class="n">crystal</span><span class="p">(</span><span class="n">refcode</span><span class="p">)</span>
@@ -282,7 +282,7 @@
 
 <span class="sd">    Returns:</span>
 <span class="sd">        Dictionary:</span>
-<span class="sd">            -   properties, DOI, issues and so on. </span>
+<span class="sd">            properties, DOI, issues and so on. </span>
 <span class="sd">    &quot;&quot;&quot;</span>     
 
     <span class="n">CR_data_path</span> <span class="o">=</span> <span class="n">package_directory</span><span class="o">+</span><span class="s1">&#39;/data/detail_of_CR.json&#39;</span>

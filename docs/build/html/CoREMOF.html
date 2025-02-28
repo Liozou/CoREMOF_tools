@@ -222,29 +222,25 @@
 <dt class="sig sig-object py" id="CoREMOF.curate.clean">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">CoREMOF.curate.</span></span><span class="sig-name descname"><span class="pre">clean</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">structure</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initial_skin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.25</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_folder</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'result_curation'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">saveto</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'clean_result.csv'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/CoREMOF/curate.html#clean"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#CoREMOF.curate.clean" title="Link to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Removing free solvent and coordinated solvent but keep ions based on a list.
-:type structure: 
-:param structure: path to your CIF.
-:type structure: str
-:type initial_skin: 
-:param initial_skin: skin distance is added to the sum of vdW radii of two atoms.
-:type initial_skin: float
-:type output_folder: 
-:param output_folder: the path to save processed CIF.
-:type output_folder: str
-:type saveto: <span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></span>
-:param saveto: the name of csv file with clean result.
-:type saveto: bool or str</p>
+<p>Removing free solvent and coordinated solvent but keep ions based on a list.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p><ul class="simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>structure</strong> (<em>str</em>) – path to your CIF.</p></li>
+<li><p><strong>initial_skin</strong> (<em>float</em>) – skin distance is added to the sum of vdW radii of two atoms.</p></li>
+<li><p><strong>output_folder</strong> (<em>str</em>) – the path to save processed CIF.</p></li>
+<li><p><strong>saveto</strong> (<em>bool</em><em> or </em><em>str</em>) – the name of csv file with clean result.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
 <li><p>result of curating (name, skin, removed solvent).</p></li>
 <li><p>CIF by curating.</p></li>
 </ul>
 </p>
 </dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>CSV or cif</p>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>CSV or cif</p>
 </dd>
 </dl>
 <dl class="py method">
@@ -624,10 +620,7 @@ of actual positives that are correctly identified by the model. It is given by:<
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><ul class="simple">
-<li><p>downloading CIF.</p></li>
-</ul>
-</p>
+<dd class="field-even"><p>downloading CIF.</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>cif</p>
@@ -645,13 +638,10 @@ of actual positives that are correctly identified by the model. It is given by:<
 <dd class="field-odd"><p><strong>output_folder</strong> (<em>str</em>) – path to save structures.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><dl class="simple">
-<dt>cif</dt><dd><ul class="simple">
-<li><p>CoRE MOF SI dataset.</p></li>
-</ul>
+<dd class="field-even"><p>CoRE MOF SI dataset.</p>
 </dd>
-</dl>
-</p>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>cif</p>
 </dd>
 </dl>
 <dl class="py method">
@@ -678,10 +668,7 @@ of actual positives that are correctly identified by the model. It is given by:<
 <dd class="field-odd"><p><strong>zip_path</strong> (<em>str</em>) – path to ZIP.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><ul class="simple">
-<li><p>name list from a ZIP.</p></li>
-</ul>
-</p>
+<dd class="field-even"><p>name list from a ZIP.</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>List</p>
@@ -728,10 +715,7 @@ of actual positives that are correctly identified by the model. It is given by:<
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><ul class="simple">
-<li><p>properties, DOI, issues and so on.</p></li>
-</ul>
-</p>
+<dd class="field-even"><p>properties, DOI, issues and so on.</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Dictionary</p>
@@ -748,10 +732,7 @@ of actual positives that are correctly identified by the model. It is given by:<
 <dd class="field-odd"><p><strong>filename</strong> (<em>str</em>) – path to your structure.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><ul class="simple">
-<li><p>CIF after making primitive and make P1.</p></li>
-</ul>
-</p>
+<dd class="field-even"><p>CIF after making primitive and make P1.</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>cif</p>
