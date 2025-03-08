@@ -6,14 +6,14 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CoREMOF.calculation package &mdash; CoREMOF_tools 0.0.6 documentation</title>
+  <title>CoREMOF.calculation package &mdash; CoREMOF_tools 0.0.8 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
 
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=1fd71caa"></script>
+      <script src="_static/documentation_options.js?v=53b53b71"></script>
       <script src="_static/doctools.js?v=9a2dae69"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
@@ -40,11 +40,113 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="modules.html">CoREMOF_tools API Documentation</a></li>
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">CoREMOF.calculation package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-CoREMOF.calculation.Zeopp">CoREMOF.calculation.Zeopp module</a><ul>
+<li><a class="reference internal" href="#CoREMOF.calculation.Zeopp.ChanDim"><code class="docutils literal notranslate"><span class="pre">ChanDim()</span></code></a></li>
+<li><a class="reference internal" href="#CoREMOF.calculation.Zeopp.FrameworkDim"><code class="docutils literal notranslate"><span class="pre">FrameworkDim()</span></code></a></li>
+<li><a class="reference internal" href="#CoREMOF.calculation.Zeopp.PoreDiameter"><code class="docutils literal notranslate"><span class="pre">PoreDiameter()</span></code></a></li>
+<li><a class="reference internal" href="#CoREMOF.calculation.Zeopp.PoreVolume"><code class="docutils literal notranslate"><span class="pre">PoreVolume()</span></code></a></li>
+<li><a class="reference internal" href="#CoREMOF.calculation.Zeopp.SurfaceArea"><code class="docutils literal notranslate"><span class="pre">SurfaceArea()</span></code></a></li>
 </ul>
-
+</li>
+<li><a class="reference internal" href="#module-CoREMOF.calculation.atomic_parameters">CoREMOF.calculation.atomic_parameters module</a><ul>
+<li><a class="reference internal" href="#CoREMOF.calculation.atomic_parameters.Atom"><code class="docutils literal notranslate"><span class="pre">Atom</span></code></a><ul>
+<li><a class="reference internal" href="#CoREMOF.calculation.atomic_parameters.Atom.bond_tolerance"><code class="docutils literal notranslate"><span class="pre">Atom.bond_tolerance()</span></code></a></li>
+<li><a class="reference internal" href="#CoREMOF.calculation.atomic_parameters.Atom.check_bond"><code class="docutils literal notranslate"><span class="pre">Atom.check_bond()</span></code></a></li>
+<li><a class="reference internal" href="#CoREMOF.calculation.atomic_parameters.Atom.co"><code class="docutils literal notranslate"><span class="pre">Atom.co</span></code></a></li>
+<li><a class="reference internal" href="#CoREMOF.calculation.atomic_parameters.Atom.is_actinide"><code class="docutils literal notranslate"><span class="pre">Atom.is_actinide</span></code></a></li>
+<li><a class="reference internal" href="#CoREMOF.calculation.atomic_parameters.Atom.is_heavy_metal"><code class="docutils literal notranslate"><span class="pre">Atom.is_heavy_metal</span></code></a></li>
+<li><a class="reference internal" href="#CoREMOF.calculation.atomic_parameters.Atom.is_lanthanide"><code class="docutils literal notranslate"><span class="pre">Atom.is_lanthanide</span></code></a></li>
+<li><a class="reference internal" href="#CoREMOF.calculation.atomic_parameters.Atom.is_lanthanide_or_actinide"><code class="docutils literal notranslate"><span class="pre">Atom.is_lanthanide_or_actinide</span></code></a></li>
+<li><a class="reference internal" href="#CoREMOF.calculation.atomic_parameters.Atom.is_metal"><code class="docutils literal notranslate"><span class="pre">Atom.is_metal</span></code></a></li>
+<li><a class="reference internal" href="#CoREMOF.calculation.atomic_parameters.Atom.max_bond"><code class="docutils literal notranslate"><span class="pre">Atom.max_bond()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-CoREMOF.calculation.mof">CoREMOF.calculation.mof module</a><ul>
+<li><a class="reference internal" href="#CoREMOF.calculation.mof.Helper"><code class="docutils literal notranslate"><span class="pre">Helper</span></code></a><ul>
+<li><a class="reference internal" href="#CoREMOF.calculation.mof.Helper.compare_lists"><code class="docutils literal notranslate"><span class="pre">Helper.compare_lists()</span></code></a></li>
+<li><a class="reference internal" href="#CoREMOF.calculation.mof.Helper.copy_folder"><code class="docutils literal notranslate"><span class="pre">Helper.copy_folder()</span></code></a></li>
+<li><a class="reference internal" href="#CoREMOF.calculation.mof.Helper.get_checksum"><code class="docutils literal notranslate"><span class="pre">Helper.get_checksum()</span></code></a></li>
+<li><a class="reference internal" href="#CoREMOF.calculation.mof.Helper.make_folder"><code class="docutils literal notranslate"><span class="pre">Helper.make_folder()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#CoREMOF.calculation.mof.MetalSite"><code class="docutils literal notranslate"><span class="pre">MetalSite</span></code></a><ul>
+<li><a class="reference internal" href="#CoREMOF.calculation.mof.MetalSite.center_around_metal"><code class="docutils literal notranslate"><span class="pre">MetalSite.center_around_metal()</span></code></a></li>
+<li><a class="reference internal" href="#CoREMOF.calculation.mof.MetalSite.check_if_open"><code class="docutils literal notranslate"><span class="pre">MetalSite.check_if_open()</span></code></a></li>
+<li><a class="reference internal" href="#CoREMOF.calculation.mof.MetalSite.get_t4_factor"><code class="docutils literal notranslate"><span class="pre">MetalSite.get_t4_factor()</span></code></a></li>
+<li><a class="reference internal" href="#CoREMOF.calculation.mof.MetalSite.get_t5_factor"><code class="docutils literal notranslate"><span class="pre">MetalSite.get_t5_factor()</span></code></a></li>
+<li><a class="reference internal" href="#CoREMOF.calculation.mof.MetalSite.get_t6_factor"><code class="docutils literal notranslate"><span class="pre">MetalSite.get_t6_factor()</span></code></a></li>
+<li><a class="reference internal" href="#CoREMOF.calculation.mof.MetalSite.get_t_factor"><code class="docutils literal notranslate"><span class="pre">MetalSite.get_t_factor()</span></code></a></li>
+<li><a class="reference internal" href="#CoREMOF.calculation.mof.MetalSite.is_open"><code class="docutils literal notranslate"><span class="pre">MetalSite.is_open</span></code></a></li>
+<li><a class="reference internal" href="#CoREMOF.calculation.mof.MetalSite.is_problematic"><code class="docutils literal notranslate"><span class="pre">MetalSite.is_problematic</span></code></a></li>
+<li><a class="reference internal" href="#CoREMOF.calculation.mof.MetalSite.is_unique"><code class="docutils literal notranslate"><span class="pre">MetalSite.is_unique</span></code></a></li>
+<li><a class="reference internal" href="#CoREMOF.calculation.mof.MetalSite.keep_valid_bonds"><code class="docutils literal notranslate"><span class="pre">MetalSite.keep_valid_bonds()</span></code></a></li>
+<li><a class="reference internal" href="#CoREMOF.calculation.mof.MetalSite.metal_summary"><code class="docutils literal notranslate"><span class="pre">MetalSite.metal_summary</span></code></a></li>
+<li><a class="reference internal" href="#CoREMOF.calculation.mof.MetalSite.metal_type"><code class="docutils literal notranslate"><span class="pre">MetalSite.metal_type</span></code></a></li>
+<li><a class="reference internal" href="#CoREMOF.calculation.mof.MetalSite.num_linkers"><code class="docutils literal notranslate"><span class="pre">MetalSite.num_linkers</span></code></a></li>
+<li><a class="reference internal" href="#CoREMOF.calculation.mof.MetalSite.tolerance"><code class="docutils literal notranslate"><span class="pre">MetalSite.tolerance</span></code></a></li>
+<li><a class="reference internal" href="#CoREMOF.calculation.mof.MetalSite.write_cif_file"><code class="docutils literal notranslate"><span class="pre">MetalSite.write_cif_file()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#CoREMOF.calculation.mof.MofStructure"><code class="docutils literal notranslate"><span class="pre">MofStructure</span></code></a><ul>
+<li><a class="reference internal" href="#CoREMOF.calculation.mof.MofStructure.all_coord_spheres_indices"><code class="docutils literal notranslate"><span class="pre">MofStructure.all_coord_spheres_indices</span></code></a></li>
+<li><a class="reference internal" href="#CoREMOF.calculation.mof.MofStructure.all_distances"><code class="docutils literal notranslate"><span class="pre">MofStructure.all_distances</span></code></a></li>
+<li><a class="reference internal" href="#CoREMOF.calculation.mof.MofStructure.analyze_metals"><code class="docutils literal notranslate"><span class="pre">MofStructure.analyze_metals()</span></code></a></li>
+<li><a class="reference internal" href="#CoREMOF.calculation.mof.MofStructure.from_file"><code class="docutils literal notranslate"><span class="pre">MofStructure.from_file()</span></code></a></li>
+<li><a class="reference internal" href="#CoREMOF.calculation.mof.MofStructure.metal_coord_spheres"><code class="docutils literal notranslate"><span class="pre">MofStructure.metal_coord_spheres</span></code></a></li>
+<li><a class="reference internal" href="#CoREMOF.calculation.mof.MofStructure.name"><code class="docutils literal notranslate"><span class="pre">MofStructure.name</span></code></a></li>
+<li><a class="reference internal" href="#CoREMOF.calculation.mof.MofStructure.tolerance"><code class="docutils literal notranslate"><span class="pre">MofStructure.tolerance</span></code></a></li>
+<li><a class="reference internal" href="#CoREMOF.calculation.mof.MofStructure.write_results"><code class="docutils literal notranslate"><span class="pre">MofStructure.write_results()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-CoREMOF.calculation.mof_collection">CoREMOF.calculation.mof_collection module</a><ul>
+<li><a class="reference internal" href="#CoREMOF.calculation.mof_collection.MofCollection"><code class="docutils literal notranslate"><span class="pre">MofCollection</span></code></a><ul>
+<li><a class="reference internal" href="#CoREMOF.calculation.mof_collection.MofCollection.analyse_mofs"><code class="docutils literal notranslate"><span class="pre">MofCollection.analyse_mofs()</span></code></a></li>
+<li><a class="reference internal" href="#CoREMOF.calculation.mof_collection.MofCollection.analysis_folder"><code class="docutils literal notranslate"><span class="pre">MofCollection.analysis_folder</span></code></a></li>
+<li><a class="reference internal" href="#CoREMOF.calculation.mof_collection.MofCollection.check_analysis_status"><code class="docutils literal notranslate"><span class="pre">MofCollection.check_analysis_status()</span></code></a></li>
+<li><a class="reference internal" href="#CoREMOF.calculation.mof_collection.MofCollection.check_structures"><code class="docutils literal notranslate"><span class="pre">MofCollection.check_structures()</span></code></a></li>
+<li><a class="reference internal" href="#CoREMOF.calculation.mof_collection.MofCollection.copy_cifs"><code class="docutils literal notranslate"><span class="pre">MofCollection.copy_cifs()</span></code></a></li>
+<li><a class="reference internal" href="#CoREMOF.calculation.mof_collection.MofCollection.copy_results"><code class="docutils literal notranslate"><span class="pre">MofCollection.copy_results()</span></code></a></li>
+<li><a class="reference internal" href="#CoREMOF.calculation.mof_collection.MofCollection.filter_collection"><code class="docutils literal notranslate"><span class="pre">MofCollection.filter_collection()</span></code></a></li>
+<li><a class="reference internal" href="#CoREMOF.calculation.mof_collection.MofCollection.from_folder"><code class="docutils literal notranslate"><span class="pre">MofCollection.from_folder()</span></code></a></li>
+<li><a class="reference internal" href="#CoREMOF.calculation.mof_collection.MofCollection.metal_site_df"><code class="docutils literal notranslate"><span class="pre">MofCollection.metal_site_df</span></code></a></li>
+<li><a class="reference internal" href="#CoREMOF.calculation.mof_collection.MofCollection.mof_oms_df"><code class="docutils literal notranslate"><span class="pre">MofCollection.mof_oms_df</span></code></a></li>
+<li><a class="reference internal" href="#CoREMOF.calculation.mof_collection.MofCollection.oms_results_folder"><code class="docutils literal notranslate"><span class="pre">MofCollection.oms_results_folder</span></code></a></li>
+<li><a class="reference internal" href="#CoREMOF.calculation.mof_collection.MofCollection.properties"><code class="docutils literal notranslate"><span class="pre">MofCollection.properties</span></code></a></li>
+<li><a class="reference internal" href="#CoREMOF.calculation.mof_collection.MofCollection.read_cif_files"><code class="docutils literal notranslate"><span class="pre">MofCollection.read_cif_files()</span></code></a></li>
+<li><a class="reference internal" href="#CoREMOF.calculation.mof_collection.MofCollection.read_oms_results"><code class="docutils literal notranslate"><span class="pre">MofCollection.read_oms_results()</span></code></a></li>
+<li><a class="reference internal" href="#CoREMOF.calculation.mof_collection.MofCollection.sample_collection"><code class="docutils literal notranslate"><span class="pre">MofCollection.sample_collection()</span></code></a></li>
+<li><a class="reference internal" href="#CoREMOF.calculation.mof_collection.MofCollection.separator"><code class="docutils literal notranslate"><span class="pre">MofCollection.separator</span></code></a></li>
+<li><a class="reference internal" href="#CoREMOF.calculation.mof_collection.MofCollection.summarize_results"><code class="docutils literal notranslate"><span class="pre">MofCollection.summarize_results()</span></code></a></li>
+<li><a class="reference internal" href="#CoREMOF.calculation.mof_collection.MofCollection.summarize_tfactors"><code class="docutils literal notranslate"><span class="pre">MofCollection.summarize_tfactors()</span></code></a></li>
+<li><a class="reference internal" href="#CoREMOF.calculation.mof_collection.MofCollection.summary_folder"><code class="docutils literal notranslate"><span class="pre">MofCollection.summary_folder</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-CoREMOF.calculation.mof_features">CoREMOF.calculation.mof_features module</a><ul>
+<li><a class="reference internal" href="#CoREMOF.calculation.mof_features.Mass"><code class="docutils literal notranslate"><span class="pre">Mass()</span></code></a></li>
+<li><a class="reference internal" href="#CoREMOF.calculation.mof_features.RACs"><code class="docutils literal notranslate"><span class="pre">RACs()</span></code></a></li>
+<li><a class="reference internal" href="#CoREMOF.calculation.mof_features.SpaceGroup"><code class="docutils literal notranslate"><span class="pre">SpaceGroup()</span></code></a></li>
+<li><a class="reference internal" href="#CoREMOF.calculation.mof_features.Volume"><code class="docutils literal notranslate"><span class="pre">Volume()</span></code></a></li>
+<li><a class="reference internal" href="#CoREMOF.calculation.mof_features.get_oms_file"><code class="docutils literal notranslate"><span class="pre">get_oms_file()</span></code></a></li>
+<li><a class="reference internal" href="#CoREMOF.calculation.mof_features.get_oms_folder"><code class="docutils literal notranslate"><span class="pre">get_oms_folder()</span></code></a></li>
+<li><a class="reference internal" href="#CoREMOF.calculation.mof_features.n_atom"><code class="docutils literal notranslate"><span class="pre">n_atom()</span></code></a></li>
+<li><a class="reference internal" href="#CoREMOF.calculation.mof_features.topology"><code class="docutils literal notranslate"><span class="pre">topology()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-CoREMOF.calculation">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
         </div>
       </div>
     </nav>

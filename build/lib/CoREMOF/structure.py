@@ -13,6 +13,8 @@ from pymatgen.io.ase import AseAtomsAdaptor
 
 from pymatgen.symmetry.analyzer import SpacegroupAnalyzer
 
+from gemmi import cif
+
 package_directory = os.path.abspath(__file__).replace("structure.py","")
 
 files_to_download = {
@@ -213,3 +215,32 @@ def information(dataset, entry):
         query_data = NR_data
 
     return query_data[entry]
+
+def read_aif(GEMC_data):
+
+    """get adsorption amount of water from GEMC.
+
+    Args:
+        GEMC_data (list): from detail_of_CR.json, for example, information("CR-ASR", "2020[Cu][sql]2[ASR]1")["GEMC"].
+
+    Returns:
+        Dictionary:
+            -   information,by ["info"] always "('_units_loading', 'Molecules/Supercell')".
+            -   pressure by ["pressure"].
+            -   uptake by ["uptake"].
+    """    
+        
+    with open("temp_gemc.aif", "w") as f:
+        f.write("".join(GEMC_data) )
+    data = cif.read_file("temp_gemc.aif")
+    os.remove("temp_gemc.aif")
+    block = data.sole_block()
+
+    item = block.find_pair_item('_units_loading')
+
+    adsorption_data = {}
+    adsorption_data["info"]=item.pair
+    adsorption_data["pressure"]=list(block.find_loop('_adsorp_pressure'))
+    adsorption_data["uptake"]=list(block.find_loop('_adsorp_amount'))
+
+    return adsorption_data

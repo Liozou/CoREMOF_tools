@@ -8,10 +8,6 @@ For using CoREMOF.calculation.Zeopp, you need to input `conda install -c conda-f
 #### Examples                                                                                     
 Available at [Github](https://github.com/mtap-research/CoRE-MOF-Tools/tree/main/7-data4API/examples) and [CoRE MOF Website](https://mof-db.pusan.ac.kr/API) to view examples.                         
                             
-#### Future                        
--   Update `clean` module by combining PACMAN and adjacency matrix.
--   Add MOFid-v2 tool.
--   Add ML model for predicting water classification.
 
 #### Citation                                          
 - [CoRE MOF](https://chemrxiv.org/engage/chemrxiv/article-details/6757ca12f9980725cf91c7e0): Zhao G, Brabson L, Chheda S, Huang J, Kim H, Liu K, et al. CoRE MOF DB: a curated experimental metal-organic framework database with machine-learned properties for integrated material-process screening. ChemRxiv. 2024; doi:10.26434/chemrxiv-2024-nvmnr.                        

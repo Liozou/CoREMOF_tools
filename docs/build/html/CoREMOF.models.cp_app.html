@@ -6,14 +6,14 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CoREMOF.models.cp_app package &mdash; CoREMOF_tools 0.0.6 documentation</title>
+  <title>CoREMOF.models.cp_app package &mdash; CoREMOF_tools 0.0.8 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
 
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=1fd71caa"></script>
+      <script src="_static/documentation_options.js?v=53b53b71"></script>
       <script src="_static/doctools.js?v=9a2dae69"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
       <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -41,11 +41,56 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="modules.html">CoREMOF_tools API Documentation</a></li>
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">CoREMOF.models.cp_app package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-CoREMOF.models.cp_app.descriptors">CoREMOF.models.cp_app.descriptors module</a></li>
+<li><a class="reference internal" href="#module-CoREMOF.models.cp_app.featurizer">CoREMOF.models.cp_app.featurizer module</a><ul>
+<li><a class="reference internal" href="#CoREMOF.models.cp_app.featurizer.LocalPropertyStatsNew"><code class="docutils literal notranslate"><span class="pre">LocalPropertyStatsNew</span></code></a><ul>
+<li><a class="reference internal" href="#CoREMOF.models.cp_app.featurizer.LocalPropertyStatsNew.citations"><code class="docutils literal notranslate"><span class="pre">LocalPropertyStatsNew.citations()</span></code></a></li>
+<li><a class="reference internal" href="#CoREMOF.models.cp_app.featurizer.LocalPropertyStatsNew.feature_labels"><code class="docutils literal notranslate"><span class="pre">LocalPropertyStatsNew.feature_labels()</span></code></a></li>
+<li><a class="reference internal" href="#CoREMOF.models.cp_app.featurizer.LocalPropertyStatsNew.featurize"><code class="docutils literal notranslate"><span class="pre">LocalPropertyStatsNew.featurize()</span></code></a></li>
+<li><a class="reference internal" href="#CoREMOF.models.cp_app.featurizer.LocalPropertyStatsNew.from_preset"><code class="docutils literal notranslate"><span class="pre">LocalPropertyStatsNew.from_preset()</span></code></a></li>
+<li><a class="reference internal" href="#CoREMOF.models.cp_app.featurizer.LocalPropertyStatsNew.implementors"><code class="docutils literal notranslate"><span class="pre">LocalPropertyStatsNew.implementors()</span></code></a></li>
 </ul>
-
+</li>
+<li><a class="reference internal" href="#CoREMOF.models.cp_app.featurizer.add_type_feature"><code class="docutils literal notranslate"><span class="pre">add_type_feature()</span></code></a></li>
+<li><a class="reference internal" href="#CoREMOF.models.cp_app.featurizer.featurize_dataset"><code class="docutils literal notranslate"><span class="pre">featurize_dataset()</span></code></a></li>
+<li><a class="reference internal" href="#CoREMOF.models.cp_app.featurizer.featurize_structure"><code class="docutils literal notranslate"><span class="pre">featurize_structure()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-CoREMOF.models.cp_app.generate_labels">CoREMOF.models.cp_app.generate_labels module</a><ul>
+<li><a class="reference internal" href="#CoREMOF.models.cp_app.generate_labels.compute_atomic_cv_dataset"><code class="docutils literal notranslate"><span class="pre">compute_atomic_cv_dataset()</span></code></a></li>
+<li><a class="reference internal" href="#CoREMOF.models.cp_app.generate_labels.compute_projected_dos_structure"><code class="docutils literal notranslate"><span class="pre">compute_projected_dos_structure()</span></code></a></li>
+<li><a class="reference internal" href="#CoREMOF.models.cp_app.generate_labels.compute_total_dos_structure"><code class="docutils literal notranslate"><span class="pre">compute_total_dos_structure()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-CoREMOF.models.cp_app.predictions">CoREMOF.models.cp_app.predictions module</a><ul>
+<li><a class="reference internal" href="#CoREMOF.models.cp_app.predictions.predict_Cv_ensemble_structure"><code class="docutils literal notranslate"><span class="pre">predict_Cv_ensemble_structure()</span></code></a></li>
+<li><a class="reference internal" href="#CoREMOF.models.cp_app.predictions.predict_Cv_ensemble_structure_multitemperatures"><code class="docutils literal notranslate"><span class="pre">predict_Cv_ensemble_structure_multitemperatures()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-CoREMOF.models.cp_app.utils">CoREMOF.models.cp_app.utils module</a><ul>
+<li><a class="reference internal" href="#CoREMOF.models.cp_app.utils.add_type_label"><code class="docutils literal notranslate"><span class="pre">add_type_label()</span></code></a></li>
+<li><a class="reference internal" href="#CoREMOF.models.cp_app.utils.cv_from_dos"><code class="docutils literal notranslate"><span class="pre">cv_from_dos()</span></code></a></li>
+<li><a class="reference internal" href="#CoREMOF.models.cp_app.utils.cv_from_frequencies"><code class="docutils literal notranslate"><span class="pre">cv_from_frequencies()</span></code></a></li>
+<li><a class="reference internal" href="#CoREMOF.models.cp_app.utils.cv_from_pdos"><code class="docutils literal notranslate"><span class="pre">cv_from_pdos()</span></code></a></li>
+<li><a class="reference internal" href="#CoREMOF.models.cp_app.utils.cv_from_pdos_site"><code class="docutils literal notranslate"><span class="pre">cv_from_pdos_site()</span></code></a></li>
+<li><a class="reference internal" href="#CoREMOF.models.cp_app.utils.read_atoms_from_mesh"><code class="docutils literal notranslate"><span class="pre">read_atoms_from_mesh()</span></code></a></li>
+<li><a class="reference internal" href="#CoREMOF.models.cp_app.utils.read_frequencies_from_mesh"><code class="docutils literal notranslate"><span class="pre">read_frequencies_from_mesh()</span></code></a></li>
+<li><a class="reference internal" href="#CoREMOF.models.cp_app.utils.read_pdos"><code class="docutils literal notranslate"><span class="pre">read_pdos()</span></code></a></li>
+<li><a class="reference internal" href="#CoREMOF.models.cp_app.utils.read_totaldos"><code class="docutils literal notranslate"><span class="pre">read_totaldos()</span></code></a></li>
+<li><a class="reference internal" href="#CoREMOF.models.cp_app.utils.read_vibspectrum"><code class="docutils literal notranslate"><span class="pre">read_vibspectrum()</span></code></a></li>
+<li><a class="reference internal" href="#CoREMOF.models.cp_app.utils.select_structures"><code class="docutils literal notranslate"><span class="pre">select_structures()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-CoREMOF.models.cp_app.versions">CoREMOF.models.cp_app.versions module</a></li>
+<li><a class="reference internal" href="#module-CoREMOF.models.cp_app">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
         </div>
       </div>
     </nav>
@@ -223,8 +268,65 @@ Jain”, “email”: “<a class="reference external" href="mailto:ajain&#37;&#
 </dd></dl>
 
 </section>
-<section id="coremof-models-cp-app-generate-labels-module">
-<h2>CoREMOF.models.cp_app.generate_labels module<a class="headerlink" href="#coremof-models-cp-app-generate-labels-module" title="Link to this heading"></a></h2>
+<section id="module-CoREMOF.models.cp_app.generate_labels">
+<span id="coremof-models-cp-app-generate-labels-module"></span><h2>CoREMOF.models.cp_app.generate_labels module<a class="headerlink" href="#module-CoREMOF.models.cp_app.generate_labels" title="Link to this heading"></a></h2>
+<p>The methods to compute labels for machine learning the heat capacity.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="CoREMOF.models.cp_app.generate_labels.compute_atomic_cv_dataset">
+<span class="sig-prename descclassname"><span class="pre">CoREMOF.models.cp_app.generate_labels.</span></span><span class="sig-name descname"><span class="pre">compute_atomic_cv_dataset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">phonopy_params</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cifs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">temperatures</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbos</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">saveto</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'labels.csv'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/CoREMOF/models/cp_app/generate_labels.html#compute_atomic_cv_dataset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#CoREMOF.models.cp_app.generate_labels.compute_atomic_cv_dataset" title="Link to this definition"></a></dt>
+<dd><p>Compute atomic contribution to total cv from phonopy parameter file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>phonopy_params</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]</span>) – <p>list of phonopy parameter files (output of DFT).</p>
+<p>cifs: list of crystal structure in cif format.
+temperatures: the target temperature .</p>
+</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="CoREMOF.models.cp_app.generate_labels.compute_projected_dos_structure">
+<span class="sig-prename descclassname"><span class="pre">CoREMOF.models.cp_app.generate_labels.</span></span><span class="sig-name descname"><span class="pre">compute_projected_dos_structure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">phonopy_params</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unitfactor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">112.10515666024465</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fmax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">freq_pitch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">saveto</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/CoREMOF/models/cp_app/generate_labels.html#compute_projected_dos_structure"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#CoREMOF.models.cp_app.generate_labels.compute_projected_dos_structure" title="Link to this definition"></a></dt>
+<dd><p>Compute projected dos from phonopy parameter file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>phonopy_params</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></span>) – list of phonopy parameter files (output of DFT).</p></li>
+<li><p><strong>cif</strong> – list of crystal structure in cif format.</p></li>
+<li><p><strong>temperatures</strong> – the target temperature.</p></li>
+<li><p><strong>factor</strong> – the unit conversion factor.</p></li>
+<li><p><strong>dx</strong> – spacing to compute dos.</p></li>
+<li><p><strong>fmax</strong> – max frequency in dos calculations.</p></li>
+<li><p><strong>freq_pitch</strong> – pitch frequency in dos calculations.</p></li>
+<li><p><strong>saveto</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]</span>) – save the projected dos to a file.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="CoREMOF.models.cp_app.generate_labels.compute_total_dos_structure">
+<span class="sig-prename descclassname"><span class="pre">CoREMOF.models.cp_app.generate_labels.</span></span><span class="sig-name descname"><span class="pre">compute_total_dos_structure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">phonopy_params</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unitfactor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">112.10515666024465</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fmax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">freq_pitch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">saveto</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/CoREMOF/models/cp_app/generate_labels.html#compute_total_dos_structure"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#CoREMOF.models.cp_app.generate_labels.compute_total_dos_structure" title="Link to this definition"></a></dt>
+<dd><p>Compute projected dos from phonopy parameter file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>phonopy_params</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></span>) – list of phonopy parameter files (output of DFT).</p></li>
+<li><p><strong>cif</strong> – list of crystal structure in cif format.</p></li>
+<li><p><strong>temperatures</strong> – the target temperature .</p></li>
+<li><p><strong>factor</strong> – the unit conversion factor.</p></li>
+<li><p><strong>dx</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></span>) – spacing to compute dos.</p></li>
+<li><p><strong>fmax</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></span>) – max frequency in dos calculations.</p></li>
+<li><p><strong>freq_pitch</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></span>) – pitch frequency in dos calculations.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
 <section id="module-CoREMOF.models.cp_app.predictions">
 <span id="coremof-models-cp-app-predictions-module"></span><h2>CoREMOF.models.cp_app.predictions module<a class="headerlink" href="#module-CoREMOF.models.cp_app.predictions" title="Link to this heading"></a></h2>

@@ -6,14 +6,14 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CoREMOF package &mdash; CoREMOF_tools 0.0.6 documentation</title>
+  <title>CoREMOF package &mdash; CoREMOF_tools 0.0.8 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
 
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=1fd71caa"></script>
+      <script src="_static/documentation_options.js?v=53b53b71"></script>
       <script src="_static/doctools.js?v=9a2dae69"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
       <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -41,11 +41,70 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="modules.html">CoREMOF_tools API Documentation</a></li>
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">CoREMOF package</a><ul>
+<li><a class="reference internal" href="#subpackages">Subpackages</a></li>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-CoREMOF.curate">CoREMOF.curate module</a><ul>
+<li><a class="reference internal" href="#CoREMOF.curate.clean"><code class="docutils literal notranslate"><span class="pre">clean</span></code></a><ul>
+<li><a class="reference internal" href="#CoREMOF.curate.clean.CustomMatrix"><code class="docutils literal notranslate"><span class="pre">clean.CustomMatrix()</span></code></a></li>
+<li><a class="reference internal" href="#CoREMOF.curate.clean.all_clean"><code class="docutils literal notranslate"><span class="pre">clean.all_clean()</span></code></a></li>
+<li><a class="reference internal" href="#CoREMOF.curate.clean.build_ASE_neighborlist"><code class="docutils literal notranslate"><span class="pre">clean.build_ASE_neighborlist()</span></code></a></li>
+<li><a class="reference internal" href="#CoREMOF.curate.clean.cluster_to_formula"><code class="docutils literal notranslate"><span class="pre">clean.cluster_to_formula()</span></code></a></li>
+<li><a class="reference internal" href="#CoREMOF.curate.clean.cmp"><code class="docutils literal notranslate"><span class="pre">clean.cmp()</span></code></a></li>
+<li><a class="reference internal" href="#CoREMOF.curate.clean.find_clusters"><code class="docutils literal notranslate"><span class="pre">clean.find_clusters()</span></code></a></li>
+<li><a class="reference internal" href="#CoREMOF.curate.clean.find_metal_connected_atoms"><code class="docutils literal notranslate"><span class="pre">clean.find_metal_connected_atoms()</span></code></a></li>
+<li><a class="reference internal" href="#CoREMOF.curate.clean.free_clean"><code class="docutils literal notranslate"><span class="pre">clean.free_clean()</span></code></a></li>
+<li><a class="reference internal" href="#CoREMOF.curate.clean.mod_adjacency_matrix"><code class="docutils literal notranslate"><span class="pre">clean.mod_adjacency_matrix()</span></code></a></li>
+<li><a class="reference internal" href="#CoREMOF.curate.clean.process"><code class="docutils literal notranslate"><span class="pre">clean.process()</span></code></a></li>
+<li><a class="reference internal" href="#CoREMOF.curate.clean.run_asr"><code class="docutils literal notranslate"><span class="pre">clean.run_asr()</span></code></a></li>
+<li><a class="reference internal" href="#CoREMOF.curate.clean.run_fsr"><code class="docutils literal notranslate"><span class="pre">clean.run_fsr()</span></code></a></li>
 </ul>
-
+</li>
+<li><a class="reference internal" href="#CoREMOF.curate.mof_check"><code class="docutils literal notranslate"><span class="pre">mof_check</span></code></a><ul>
+<li><a class="reference internal" href="#CoREMOF.curate.mof_check.Chen_Manz"><code class="docutils literal notranslate"><span class="pre">mof_check.Chen_Manz()</span></code></a></li>
+<li><a class="reference internal" href="#CoREMOF.curate.mof_check.check"><code class="docutils literal notranslate"><span class="pre">mof_check.check()</span></code></a></li>
+<li><a class="reference internal" href="#CoREMOF.curate.mof_check.mof_checker"><code class="docutils literal notranslate"><span class="pre">mof_check.mof_checker()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#CoREMOF.curate.preprocess"><code class="docutils literal notranslate"><span class="pre">preprocess</span></code></a><ul>
+<li><a class="reference internal" href="#CoREMOF.curate.preprocess.process"><code class="docutils literal notranslate"><span class="pre">preprocess.process()</span></code></a></li>
+<li><a class="reference internal" href="#CoREMOF.curate.preprocess.split_pri_p1"><code class="docutils literal notranslate"><span class="pre">preprocess.split_pri_p1()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-CoREMOF.prediction">CoREMOF.prediction module</a><ul>
+<li><a class="reference internal" href="#CoREMOF.prediction.cp"><code class="docutils literal notranslate"><span class="pre">cp()</span></code></a></li>
+<li><a class="reference internal" href="#CoREMOF.prediction.download_file"><code class="docutils literal notranslate"><span class="pre">download_file()</span></code></a></li>
+<li><a class="reference internal" href="#CoREMOF.prediction.f1"><code class="docutils literal notranslate"><span class="pre">f1()</span></code></a></li>
+<li><a class="reference internal" href="#CoREMOF.prediction.get_files_from_github"><code class="docutils literal notranslate"><span class="pre">get_files_from_github()</span></code></a></li>
+<li><a class="reference internal" href="#CoREMOF.prediction.pacman"><code class="docutils literal notranslate"><span class="pre">pacman()</span></code></a></li>
+<li><a class="reference internal" href="#CoREMOF.prediction.precision"><code class="docutils literal notranslate"><span class="pre">precision()</span></code></a></li>
+<li><a class="reference internal" href="#CoREMOF.prediction.recall"><code class="docutils literal notranslate"><span class="pre">recall()</span></code></a></li>
+<li><a class="reference internal" href="#CoREMOF.prediction.stability"><code class="docutils literal notranslate"><span class="pre">stability()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-CoREMOF.structure">CoREMOF.structure module</a><ul>
+<li><a class="reference internal" href="#CoREMOF.structure.download_from_CSD"><code class="docutils literal notranslate"><span class="pre">download_from_CSD()</span></code></a></li>
+<li><a class="reference internal" href="#CoREMOF.structure.download_from_SI"><code class="docutils literal notranslate"><span class="pre">download_from_SI</span></code></a><ul>
+<li><a class="reference internal" href="#CoREMOF.structure.download_from_SI.get_from_SI"><code class="docutils literal notranslate"><span class="pre">download_from_SI.get_from_SI()</span></code></a></li>
+<li><a class="reference internal" href="#CoREMOF.structure.download_from_SI.list_zip"><code class="docutils literal notranslate"><span class="pre">download_from_SI.list_zip()</span></code></a></li>
+<li><a class="reference internal" href="#CoREMOF.structure.download_from_SI.run"><code class="docutils literal notranslate"><span class="pre">download_from_SI.run()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#CoREMOF.structure.get_list_CSD"><code class="docutils literal notranslate"><span class="pre">get_list_CSD()</span></code></a></li>
+<li><a class="reference internal" href="#CoREMOF.structure.information"><code class="docutils literal notranslate"><span class="pre">information()</span></code></a></li>
+<li><a class="reference internal" href="#CoREMOF.structure.make_primitive_p1"><code class="docutils literal notranslate"><span class="pre">make_primitive_p1()</span></code></a></li>
+<li><a class="reference internal" href="#CoREMOF.structure.read_aif"><code class="docutils literal notranslate"><span class="pre">read_aif()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-CoREMOF">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
         </div>
       </div>
     </nav>
@@ -185,7 +244,7 @@
 <li class="toctree-l4"><a class="reference internal" href="CoREMOF.models.cp_app.html#submodules">Submodules</a></li>
 <li class="toctree-l4"><a class="reference internal" href="CoREMOF.models.cp_app.html#module-CoREMOF.models.cp_app.descriptors">CoREMOF.models.cp_app.descriptors module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="CoREMOF.models.cp_app.html#module-CoREMOF.models.cp_app.featurizer">CoREMOF.models.cp_app.featurizer module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="CoREMOF.models.cp_app.html#coremof-models-cp-app-generate-labels-module">CoREMOF.models.cp_app.generate_labels module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="CoREMOF.models.cp_app.html#module-CoREMOF.models.cp_app.generate_labels">CoREMOF.models.cp_app.generate_labels module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="CoREMOF.models.cp_app.html#module-CoREMOF.models.cp_app.predictions">CoREMOF.models.cp_app.predictions module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="CoREMOF.models.cp_app.html#module-CoREMOF.models.cp_app.utils">CoREMOF.models.cp_app.utils module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="CoREMOF.models.cp_app.html#module-CoREMOF.models.cp_app.versions">CoREMOF.models.cp_app.versions module</a></li>
@@ -736,6 +795,28 @@ of actual positives that are correctly identified by the model. It is given by:<
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>cif</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="CoREMOF.structure.read_aif">
+<span class="sig-prename descclassname"><span class="pre">CoREMOF.structure.</span></span><span class="sig-name descname"><span class="pre">read_aif</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">GEMC_data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/CoREMOF/structure.html#read_aif"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#CoREMOF.structure.read_aif" title="Link to this definition"></a></dt>
+<dd><p>get adsorption amount of water from GEMC.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>GEMC_data</strong> (<em>list</em>) – from detail_of_CR.json, for example, information(“CR-ASR”, “2020[Cu][sql]2[ASR]1”)[“GEMC”].</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p>information,by [“info”] always “(‘_units_loading’, ‘Molecules/Supercell’)”.</p></li>
+<li><p>pressure by [“pressure”].</p></li>
+<li><p>uptake by [“uptake”].</p></li>
+</ul>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Dictionary</p>
 </dd>
 </dl>
 </dd></dl>

@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
         name='CoREMOF_tools',
-        version='0.0.7',
+        version='0.0.8',
         author='Guobin Zhao',
         author_email='sxmzhaogb@gmail.com',
         description='Python API for CoRE MOF 2024 DB',
@@ -31,13 +31,14 @@ setup(
             'matminer',
             'xgboost',
             'scikit-learn==1.3.2',
-            'mofchecker'
+            'mofchecker',
+            'gemmi==0.7.0'
         ],
         extras_require={
             'zeopp': ['zeopp-lsmo']
         },
         classifiers=[
-            'Development Status :: 3 - Alpha',
+            'Development Status :: 6 - Mature',
             'Intended Audience :: Developers',
             'Topic :: Software Development :: Build Tools',
             'License :: OSI Approved :: MIT License',
