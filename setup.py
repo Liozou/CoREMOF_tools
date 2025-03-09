@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
         name='CoREMOF_tools',
-        version='0.0.8',
+        version='0.0.9',
         author='Guobin Zhao',
         author_email='sxmzhaogb@gmail.com',
         description='Python API for CoRE MOF 2024 DB',
@@ -32,7 +32,8 @@ setup(
             'xgboost',
             'scikit-learn==1.5.1',
             'mofchecker',
-            'gemmi==0.7.0'
+            'gemmi==0.7.0',
+            'phonopy'
         ],
         extras_require={
             'zeopp': ['zeopp-lsmo']

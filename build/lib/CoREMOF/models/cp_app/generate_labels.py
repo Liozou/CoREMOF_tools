@@ -73,7 +73,7 @@ def compute_atomic_cv_dataset(phonopy_params: list[str], cifs: list[str], temper
         cifs: list of crystal structure in cif format.
         temperatures: the target temperature .
     """
-
+    th2cm=33.35641
     labels={}
     for phonopy_param,cif in zip(phonopy_params,cifs):
         if verbos:

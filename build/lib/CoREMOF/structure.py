@@ -138,7 +138,7 @@ def download_from_CSD(refcode, output_folder="./CoREMOF2024DB"):
     """download structures from CSD, you need to install [CSD python API](https://downloads.ccdc.cam.ac.uk/documentation/API/installation_notes.html) with licence.
 
     Args:
-        refcode (str): path to refcode.
+        refcode (str): CSD refcode.
         output_folder (str): path to save structures.
 
     Returns:
