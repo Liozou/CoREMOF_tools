@@ -30,7 +30,7 @@ setup(
             'cloudpickle',
             'matminer',
             'xgboost',
-            'scikit-learn==1.5.1',
+            'scikit-learn==1.3.2',
             'mofchecker',
             'gemmi==0.7.0',
             'phonopy'
