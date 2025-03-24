@@ -213,7 +213,7 @@ def get_oms_folder(input_folder, n_batch = 1):
 
 def RACs(structure):
 
-    """Analysis open metal site of folder with structures from CoRE MOF 2019 (https://github.com/emmhald/open_metal_detector).
+    """Revised Autocorrelation features (https://github.com/hjkgrp/molSimplify).
 
     Args:
         input_folder (str): path to your folder.
