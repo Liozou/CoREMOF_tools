@@ -1,5 +1,7 @@
 <img src="https://raw.githubusercontent.com/mtap-research/CoRE-MOF-Tools/main/figs/logo.png" alt="coremof2024" width="500">
-                                 
+
+[![Static Badge](https://img.shields.io/badge/chemrxiv-2024-nvmnr-v2-brightgreen?style=flat)](https://doi.org/10.26434/chemrxiv-2024-nvmnr-v2)
+                         
 #### Installation                                                                                    
 This API includes tools developed to collect, curate, and classify Computation-Ready, Experimental MOF database.    
 You need to install the [CSD software and python API](https://downloads.ccdc.cam.ac.uk/documentation/API/installation_notes.html) before downloading the full CoRE MOF database.                                                            
