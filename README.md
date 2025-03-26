@@ -1,6 +1,10 @@
 <img src="https://raw.githubusercontent.com/mtap-research/CoRE-MOF-Tools/main/figs/logo.png" alt="coremof2024" width="500">
 
-[![Static Badge](https://img.shields.io/badge/chemrxiv-2024.nvmnr.v2-brightgreen?style=flat)](https://doi.org/10.26434/chemrxiv-2024-nvmnr-v2)
+[![Static Badge](https://img.shields.io/badge/chemrxiv-2024.nvmnr.v2-brightgreen?style=flat)](https://doi.org/10.26434/chemrxiv-2024-nvmnr-v2)                                     
+[![Docs](https://img.shields.io/badge/API-Docs-blue?logo=readthedocs&logoColor=white)]([https://chgnet.lbl.gov](https://coremof-tools.readthedocs.io/en/latest/index.html#))                                            
+![GitHub repo size](https://img.shields.io/github/repo-size/sxm13/CoREMOF_tools?logo=github&logoColor=white&label=Repo%20Size)
+[![PyPI](https://img.shields.io/pypi/v/CoREMOF-tools?logo=pypi&logoColor=white)](https://pypi.org/project/CoREMOF-tools?logo=pypi&logoColor=white)                                     
+[![Requires Python 3.9](https://img.shields.io/badge/Python-3.9+-blue.svg?logo=python&logoColor=white)](https://python.org/downloads)                             
                          
 #### Installation                                                                                    
 This API includes tools developed to collect, curate, and classify Computation-Ready, Experimental MOF database.    
