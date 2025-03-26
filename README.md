@@ -7,6 +7,8 @@
 [![Requires Python 3.9](https://img.shields.io/badge/Python-3.9-blue.svg?logo=python&logoColor=white)](https://python.org/downloads)
 [![GitHub license](https://img.shields.io/github/license/sxm13/CoREMOF_tools)](https://github.com/sxm13/CoREMOF_tools/blob/main/LICENSE)
 [![Downloads](https://pepy.tech/badge/CoREMOF_tools)](https://pepy.tech/project/CoREMOF_tools)
+[![GitHub issues](https://img.shields.io/github/issues/sxm13/CoREMOF_tools.svg)](https://GitHub.com/sxm13/CoREMOF_tools/issues/)
+[![DOI](https://zenodo.org/badge/15055758.svg)](https://doi.org/10.5281/zenodo.15055758)
                          
 #### Installation                                                                                    
 This API includes tools developed to collect, curate, and classify Computation-Ready, Experimental MOF database.    
