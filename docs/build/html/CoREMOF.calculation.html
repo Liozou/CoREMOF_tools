@@ -183,7 +183,7 @@ You need install Zeo++ package independently from source (<a class="reference ex
 Befor run this class please test “network” commond is works or not.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="CoREMOF.calculation.Zeopp.ChanDim">
-<span class="sig-prename descclassname"><span class="pre">CoREMOF.calculation.Zeopp.</span></span><span class="sig-name descname"><span class="pre">ChanDim</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">structure</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">probe_radius</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">high_accuracy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/CoREMOF/calculation/Zeopp.html#ChanDim"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#CoREMOF.calculation.Zeopp.ChanDim" title="Link to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">CoREMOF.calculation.Zeopp.</span></span><span class="sig-name descname"><span class="pre">ChanDim</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">structure</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">probe_radius</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">high_accuracy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'tmp_chan'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/CoREMOF/calculation/Zeopp.html#ChanDim"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#CoREMOF.calculation.Zeopp.ChanDim" title="Link to this definition"></a></dt>
 <dd><p>Analysis dimension of channel.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -191,6 +191,7 @@ Befor run this class please test “network” commond is works or not.</p>
 <li><p><strong>structure</strong> (<em>str</em>) – path to your CIF.</p></li>
 <li><p><strong>probe_radius</strong> (<em>float</em>) – probe of radiu.</p></li>
 <li><p><strong>high_accuracy</strong> (<em>bool</em>) – use high accuracy or not.</p></li>
+<li><p><strong>prefix</strong> (<em>str</em>) – temporary file.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -208,13 +209,14 @@ Befor run this class please test “network” commond is works or not.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="CoREMOF.calculation.Zeopp.FrameworkDim">
-<span class="sig-prename descclassname"><span class="pre">CoREMOF.calculation.Zeopp.</span></span><span class="sig-name descname"><span class="pre">FrameworkDim</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">structure</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">high_accuracy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/CoREMOF/calculation/Zeopp.html#FrameworkDim"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#CoREMOF.calculation.Zeopp.FrameworkDim" title="Link to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">CoREMOF.calculation.Zeopp.</span></span><span class="sig-name descname"><span class="pre">FrameworkDim</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">structure</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">high_accuracy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'tmp_strinfo'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/CoREMOF/calculation/Zeopp.html#FrameworkDim"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#CoREMOF.calculation.Zeopp.FrameworkDim" title="Link to this definition"></a></dt>
 <dd><p>Analysis dimension of framework.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>structure</strong> (<em>str</em>) – path to your CIF.</p></li>
 <li><p><strong>high_accuracy</strong> (<em>bool</em>) – use high accuracy or not.</p></li>
+<li><p><strong>prefix</strong> (<em>str</em>) – temporary file.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -235,13 +237,14 @@ Befor run this class please test “network” commond is works or not.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="CoREMOF.calculation.Zeopp.PoreDiameter">
-<span class="sig-prename descclassname"><span class="pre">CoREMOF.calculation.Zeopp.</span></span><span class="sig-name descname"><span class="pre">PoreDiameter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">structure</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">high_accuracy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/CoREMOF/calculation/Zeopp.html#PoreDiameter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#CoREMOF.calculation.Zeopp.PoreDiameter" title="Link to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">CoREMOF.calculation.Zeopp.</span></span><span class="sig-name descname"><span class="pre">PoreDiameter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">structure</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">high_accuracy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'tmp_pd'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/CoREMOF/calculation/Zeopp.html#PoreDiameter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#CoREMOF.calculation.Zeopp.PoreDiameter" title="Link to this definition"></a></dt>
 <dd><p>Analysis pore diameter of structure.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>structure</strong> (<em>str</em>) – path to your CIF.</p></li>
 <li><p><strong>high_accuracy</strong> (<em>bool</em>) – use high accuracy or not.</p></li>
+<li><p><strong>prefix</strong> (<em>str</em>) – temporary file.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -261,7 +264,7 @@ Befor run this class please test “network” commond is works or not.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="CoREMOF.calculation.Zeopp.PoreVolume">
-<span class="sig-prename descclassname"><span class="pre">CoREMOF.calculation.Zeopp.</span></span><span class="sig-name descname"><span class="pre">PoreVolume</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">structure</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chan_radius</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">probe_radius</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_samples</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">high_accuracy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/CoREMOF/calculation/Zeopp.html#PoreVolume"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#CoREMOF.calculation.Zeopp.PoreVolume" title="Link to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">CoREMOF.calculation.Zeopp.</span></span><span class="sig-name descname"><span class="pre">PoreVolume</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">structure</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chan_radius</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">probe_radius</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_samples</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">high_accuracy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'tmp_pv'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/CoREMOF/calculation/Zeopp.html#PoreVolume"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#CoREMOF.calculation.Zeopp.PoreVolume" title="Link to this definition"></a></dt>
 <dd><p>Analysis pore volume of structure.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -271,6 +274,7 @@ Befor run this class please test “network” commond is works or not.</p>
 <li><p><strong>probe_radius</strong> (<em>float</em>) – probe of radiu.</p></li>
 <li><p><strong>num_samples</strong> (<em>int</em>) – number of MC samples per atom.</p></li>
 <li><p><strong>high_accuracy</strong> (<em>bool</em>) – use high accuracy or not.</p></li>
+<li><p><strong>prefix</strong> (<em>str</em>) – temporary file.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -291,7 +295,7 @@ Befor run this class please test “network” commond is works or not.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="CoREMOF.calculation.Zeopp.SurfaceArea">
-<span class="sig-prename descclassname"><span class="pre">CoREMOF.calculation.Zeopp.</span></span><span class="sig-name descname"><span class="pre">SurfaceArea</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">structure</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chan_radius</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.655</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">probe_radius</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.655</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_samples</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">high_accuracy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/CoREMOF/calculation/Zeopp.html#SurfaceArea"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#CoREMOF.calculation.Zeopp.SurfaceArea" title="Link to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">CoREMOF.calculation.Zeopp.</span></span><span class="sig-name descname"><span class="pre">SurfaceArea</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">structure</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chan_radius</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.655</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">probe_radius</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.655</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_samples</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">high_accuracy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'tmp_sa'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/CoREMOF/calculation/Zeopp.html#SurfaceArea"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#CoREMOF.calculation.Zeopp.SurfaceArea" title="Link to this definition"></a></dt>
 <dd><p>Analysis surface area of structure.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -301,6 +305,7 @@ Befor run this class please test “network” commond is works or not.</p>
 <li><p><strong>probe_radius</strong> (<em>float</em>) – probe of radiu.</p></li>
 <li><p><strong>num_samples</strong> (<em>int</em>) – number of MC samples per atom.</p></li>
 <li><p><strong>high_accuracy</strong> (<em>bool</em>) – use high accuracy or not.</p></li>
+<li><p><strong>prefix</strong> (<em>str</em>) – temporary file.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>

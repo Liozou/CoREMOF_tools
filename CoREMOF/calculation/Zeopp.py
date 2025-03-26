@@ -6,7 +6,7 @@ Befor run this class please test "network" commond is works or not.
 import os
 import subprocess
 
-def ChanDim(structure, probe_radius = 0, high_accuracy = True):
+def ChanDim(structure, probe_radius = 0, high_accuracy = True, prefix="tmp_chan"):
 
     """Analysis dimension of channel.
 
@@ -14,6 +14,7 @@ def ChanDim(structure, probe_radius = 0, high_accuracy = True):
         structure (str): path to your CIF.
         probe_radius (float): probe of radiu.
         high_accuracy (bool): use high accuracy or not.
+        prefix (str): temporary file.
 
     Returns:
         Dictionary:
@@ -24,10 +25,12 @@ def ChanDim(structure, probe_radius = 0, high_accuracy = True):
     results_chan = {}
     results_chan["unit"]="nan"
     
+    tmp_file = f"{prefix}.txt"
+    
     if high_accuracy:
-        cmd = f'network -ha -chan {probe_radius} tmp_chan.txt {structure}'
+        cmd = f'network -ha -chan {probe_radius} {tmp_file} {structure}'
     else:
-        cmd = f'network -chan {probe_radius} tmp_chan.txt {structure}'
+        cmd = f'network -chan {probe_radius} {tmp_file} {structure}'
     _ = subprocess.run(
                         cmd,
                         shell=True,
@@ -36,24 +39,25 @@ def ChanDim(structure, probe_radius = 0, high_accuracy = True):
                         check=True,
                     )
 
-    with open('tmp_chan.txt') as f:
+    with open(tmp_file) as f:
         for i, row in enumerate(f):
             if i == 0:
                 dim = int(row.split('dimensionality')[1].split()[0])
 
     results_chan["Dimention"] = dim
 
-    os.remove("tmp_chan.txt")
+    os.remove(tmp_file)
 
     return results_chan
 
-def FrameworkDim(structure, high_accuracy = True):
+def FrameworkDim(structure, high_accuracy = True, prefix="tmp_strinfo"):
 
     """Analysis dimension of framework.
 
     Args:
         structure (str): path to your CIF.
         high_accuracy (bool): use high accuracy or not.
+        prefix (str): temporary file.
 
     Returns:
         Dictionary:
@@ -66,11 +70,13 @@ def FrameworkDim(structure, high_accuracy = True):
 
     results_strinfo = {}
     results_strinfo["unit"]="nan"
+
+    tmp_file = f"{prefix}.txt"
     
     if high_accuracy:
-        cmd = f'network -ha -strinfo tmp_strinfo.txt {structure}'
+        cmd = f'network -ha -strinfo {tmp_file} {structure}'
     else:
-        cmd = f'network -strinfo tmp_strinfo.txt {structure}'
+        cmd = f'network -strinfo {tmp_file} {structure}'
     _ = subprocess.run(
                         cmd,
                         shell=True,
@@ -79,7 +85,7 @@ def FrameworkDim(structure, high_accuracy = True):
                         check=True,
                     )
 
-    with open('tmp_strinfo.txt') as f:
+    with open(tmp_file) as f:
         line = f.readline().split()
         try:
             dim = int(line[-1])
@@ -96,17 +102,18 @@ def FrameworkDim(structure, high_accuracy = True):
     results_strinfo["N_2D"] = two_dim
     results_strinfo["N_3D"] = three_dim
 
-    os.remove("tmp_strinfo.txt")
+    os.remove(tmp_file)
 
     return results_strinfo
 
-def PoreDiameter(structure, high_accuracy = True):
+def PoreDiameter(structure, high_accuracy = True, prefix="tmp_pd"):
 
     """Analysis pore diameter of structure.
 
     Args:
         structure (str): path to your CIF.
         high_accuracy (bool): use high accuracy or not.
+        prefix (str): temporary file.
 
     Returns:
         Dictionary:
@@ -118,11 +125,13 @@ def PoreDiameter(structure, high_accuracy = True):
 
     results_pd = {}
     results_pd["unit"]="angstrom, Å"
+
+    tmp_file = f"{prefix}.txt"
     
     if high_accuracy:
-        cmd = f'network -ha -res tmp_pd.txt {structure}'
+        cmd = f'network -ha -res {tmp_file} {structure}'
     else:
-        cmd = f'network -res tmp_pd.txt {structure}'
+        cmd = f'network -res {tmp_file} {structure}'
     _ = subprocess.run(
                         cmd,
                         shell=True,
@@ -130,14 +139,14 @@ def PoreDiameter(structure, high_accuracy = True):
                         stderr=subprocess.PIPE,
                         check=True,
                     )
-    with open('tmp_pd.txt') as f:
+    with open(tmp_file) as f:
         line = f.readline().split()
         results_pd["LCD"], results_pd["PLD"], results_pd["LFPD"] = map(float, line[1:4])
-    os.remove('tmp_pd.txt')
+    os.remove(tmp_file)
 
     return results_pd
 
-def SurfaceArea(structure, chan_radius = 1.655, probe_radius = 1.655, num_samples = 5000, high_accuracy = True):
+def SurfaceArea(structure, chan_radius = 1.655, probe_radius = 1.655, num_samples = 5000, high_accuracy = True, prefix="tmp_sa"):
 
     """Analysis surface area of structure.
 
@@ -147,6 +156,7 @@ def SurfaceArea(structure, chan_radius = 1.655, probe_radius = 1.655, num_sample
         probe_radius (float): probe of radiu.
         num_samples (int): number of MC samples per atom.
         high_accuracy (bool): use high accuracy or not.
+        prefix (str): temporary file.
 
     Returns:
         Dictionary:
@@ -157,11 +167,13 @@ def SurfaceArea(structure, chan_radius = 1.655, probe_radius = 1.655, num_sample
 
     results_sa = {}
     results_sa["unit"]="Å^2, m^2/cm^3, m^2/g"
+
+    tmp_file = f"{prefix}.txt"
     
     if high_accuracy:
-        cmd = f'network -ha -sa {chan_radius} {probe_radius} {num_samples} tmp_sa.txt {structure}'
+        cmd = f'network -ha -sa {chan_radius} {probe_radius} {num_samples} {tmp_file} {structure}'
     else:
-        cmd = f'network -sa {chan_radius} {probe_radius} {num_samples} tmp_sa.txt {structure}'
+        cmd = f'network -sa {chan_radius} {probe_radius} {num_samples} {tmp_file} {structure}'
     _ = subprocess.run(
                         cmd,
                         shell=True,
@@ -169,7 +181,7 @@ def SurfaceArea(structure, chan_radius = 1.655, probe_radius = 1.655, num_sample
                         stderr=subprocess.PIPE,
                         check=True,
                     )
-    with open('tmp_sa.txt') as f:
+    with open(tmp_file) as f:
         for i, row in enumerate(f):
             if i == 0:
                 ASA = float(row.split('ASA_A^2:')[1].split()[0])
@@ -182,11 +194,11 @@ def SurfaceArea(structure, chan_radius = 1.655, probe_radius = 1.655, num_sample
     results_sa["ASA"] = [ASA, VSA, GSA]
     results_sa["NASA"] = [NASA, NVSA, NGSA]
 
-    os.remove("tmp_sa.txt")
+    os.remove(tmp_file)
 
     return results_sa
 
-def PoreVolume(structure, chan_radius = 0, probe_radius = 0, num_samples = 5000, high_accuracy = True):
+def PoreVolume(structure, chan_radius = 0, probe_radius = 0, num_samples = 5000, high_accuracy = True, prefix="tmp_pv"):
 
     """Analysis pore volume of structure.
 
@@ -196,6 +208,7 @@ def PoreVolume(structure, chan_radius = 0, probe_radius = 0, num_samples = 5000,
         probe_radius (float): probe of radiu.
         num_samples (int): number of MC samples per atom.
         high_accuracy (bool): use high accuracy or not.
+        prefix (str): temporary file.
 
     Returns:
         Dictionary:
@@ -208,11 +221,13 @@ def PoreVolume(structure, chan_radius = 0, probe_radius = 0, num_samples = 5000,
 
     results_pv = {}
     results_pv["unit"]="PV: Å^3, cm^3/g; VF: nan"
+
+    tmp_file = f"{prefix}.txt"
     
     if high_accuracy:
-        cmd = f'network -ha -volpo {chan_radius} {probe_radius} {num_samples} tmp_pv.txt {structure}'
+        cmd = f'network -ha -volpo {chan_radius} {probe_radius} {num_samples} {tmp_file} {structure}'
     else:
-        cmd = f'network -volpo {chan_radius} {probe_radius} {num_samples} tmp_pv.txt {structure}'
+        cmd = f'network -volpo {chan_radius} {probe_radius} {num_samples} {tmp_file} {structure}'
     _ = subprocess.run(
                         cmd,
                         shell=True,
@@ -220,7 +235,7 @@ def PoreVolume(structure, chan_radius = 0, probe_radius = 0, num_samples = 5000,
                         stderr=subprocess.PIPE,
                         check=True,
                     )
-    with open('tmp_pv.txt') as f:
+    with open(tmp_file) as f:
         for i, row in enumerate(f):
             if i == 0:
                 POAV = float(row.split('POAV_A^3:')[1].split()[0])
@@ -234,6 +249,6 @@ def PoreVolume(structure, chan_radius = 0, probe_radius = 0, num_samples = 5000,
     results_pv["VF"] = POAV_volume_fraction
     results_pv["NVF"] = PONAV_volume_fraction
 
-    os.remove("tmp_pv.txt")
+    os.remove(tmp_file)
 
     return results_pv

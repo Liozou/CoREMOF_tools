@@ -1,4 +1,10 @@
-"Preventing errors"
+from CoREMOF.calculation import Zeopp
 
-def test_dummy():
-    assert 1 + 1 == 2
+
+example_cif = "./IRMOF-1.cif"
+
+results_strinfo = Zeopp.FrameworkDim(structure=example_cif,
+                                        high_accuracy=True,
+                                        prefix="test_strinfo") 
+print(results_strinfo["Dimention"])
+   
