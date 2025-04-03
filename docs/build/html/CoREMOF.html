@@ -62,6 +62,20 @@
 <li><a class="reference internal" href="#CoREMOF.curate.clean.run_fsr"><code class="docutils literal notranslate"><span class="pre">clean.run_fsr()</span></code></a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#CoREMOF.curate.clean_pacman"><code class="docutils literal notranslate"><span class="pre">clean_pacman</span></code></a><ul>
+<li><a class="reference internal" href="#CoREMOF.curate.clean_pacman.CustomMatrix"><code class="docutils literal notranslate"><span class="pre">clean_pacman.CustomMatrix()</span></code></a></li>
+<li><a class="reference internal" href="#CoREMOF.curate.clean_pacman.all_clean"><code class="docutils literal notranslate"><span class="pre">clean_pacman.all_clean()</span></code></a></li>
+<li><a class="reference internal" href="#CoREMOF.curate.clean_pacman.build_ASE_neighborlist"><code class="docutils literal notranslate"><span class="pre">clean_pacman.build_ASE_neighborlist()</span></code></a></li>
+<li><a class="reference internal" href="#CoREMOF.curate.clean_pacman.cluster_to_formula"><code class="docutils literal notranslate"><span class="pre">clean_pacman.cluster_to_formula()</span></code></a></li>
+<li><a class="reference internal" href="#CoREMOF.curate.clean_pacman.find_clusters"><code class="docutils literal notranslate"><span class="pre">clean_pacman.find_clusters()</span></code></a></li>
+<li><a class="reference internal" href="#CoREMOF.curate.clean_pacman.free_clean"><code class="docutils literal notranslate"><span class="pre">clean_pacman.free_clean()</span></code></a></li>
+<li><a class="reference internal" href="#CoREMOF.curate.clean_pacman.process"><code class="docutils literal notranslate"><span class="pre">clean_pacman.process()</span></code></a></li>
+<li><a class="reference internal" href="#CoREMOF.curate.clean_pacman.run_asr"><code class="docutils literal notranslate"><span class="pre">clean_pacman.run_asr()</span></code></a></li>
+<li><a class="reference internal" href="#CoREMOF.curate.clean_pacman.run_clean"><code class="docutils literal notranslate"><span class="pre">clean_pacman.run_clean()</span></code></a></li>
+<li><a class="reference internal" href="#CoREMOF.curate.clean_pacman.run_fsr"><code class="docutils literal notranslate"><span class="pre">clean_pacman.run_fsr()</span></code></a></li>
+<li><a class="reference internal" href="#CoREMOF.curate.clean_pacman.run_pacman"><code class="docutils literal notranslate"><span class="pre">clean_pacman.run_pacman()</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#CoREMOF.curate.mof_check"><code class="docutils literal notranslate"><span class="pre">mof_check</span></code></a><ul>
 <li><a class="reference internal" href="#CoREMOF.curate.mof_check.Chen_Manz"><code class="docutils literal notranslate"><span class="pre">mof_check.Chen_Manz()</span></code></a></li>
 <li><a class="reference internal" href="#CoREMOF.curate.mof_check.check"><code class="docutils literal notranslate"><span class="pre">mof_check.check()</span></code></a></li>
@@ -372,6 +386,88 @@
 <span class="sig-name descname"><span class="pre">run_fsr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mof</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_folder</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initial_skin</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metal_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ions_list</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/CoREMOF/curate.html#clean.run_fsr"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#CoREMOF.curate.clean.run_fsr" title="Link to this definition"></a></dt>
 <dd><p>free solvent function.</p>
 </dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="CoREMOF.curate.clean_pacman">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">CoREMOF.curate.</span></span><span class="sig-name descname"><span class="pre">clean_pacman</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">structure</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initial_skin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.25</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_folder</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'result_curation'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">saveto</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'clean_result.csv'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/CoREMOF/curate.html#clean_pacman"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#CoREMOF.curate.clean_pacman" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Removing free solvent and coordinated solvent but keep ions based on PACMAN-charge.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>structure</strong> (<em>str</em>) – path to your CIF.</p></li>
+<li><p><strong>initial_skin</strong> (<em>float</em>) – skin distance is added to the sum of vdW radii of two atoms.</p></li>
+<li><p><strong>output_folder</strong> (<em>str</em>) – the path to save processed CIF.</p></li>
+<li><p><strong>saveto</strong> (<em>bool</em><em> or </em><em>str</em>) – the name of csv file with clean result.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p>result of curating (name, skin, removed solvent, charge of solvent).</p></li>
+<li><p>CIF by curating.</p></li>
+</ul>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>CSV or cif</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="CoREMOF.curate.clean_pacman.CustomMatrix">
+<span class="sig-name descname"><span class="pre">CustomMatrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">neighborlist</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">atom_count</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/CoREMOF/curate.html#clean_pacman.CustomMatrix"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#CoREMOF.curate.clean_pacman.CustomMatrix" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="CoREMOF.curate.clean_pacman.all_clean">
+<span class="sig-name descname"><span class="pre">all_clean</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_folder</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">skin</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/CoREMOF/curate.html#clean_pacman.all_clean"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#CoREMOF.curate.clean_pacman.all_clean" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="CoREMOF.curate.clean_pacman.build_ASE_neighborlist">
+<span class="sig-name descname"><span class="pre">build_ASE_neighborlist</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cif</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">skin</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/CoREMOF/curate.html#clean_pacman.build_ASE_neighborlist"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#CoREMOF.curate.clean_pacman.build_ASE_neighborlist" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="CoREMOF.curate.clean_pacman.cluster_to_formula">
+<span class="sig-name descname"><span class="pre">cluster_to_formula</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cluster</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">atoms</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/CoREMOF/curate.html#clean_pacman.cluster_to_formula"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#CoREMOF.curate.clean_pacman.cluster_to_formula" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="CoREMOF.curate.clean_pacman.find_clusters">
+<span class="sig-name descname"><span class="pre">find_clusters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">adjacency_matrix</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">atom_count</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/CoREMOF/curate.html#clean_pacman.find_clusters"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#CoREMOF.curate.clean_pacman.find_clusters" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="CoREMOF.curate.clean_pacman.free_clean">
+<span class="sig-name descname"><span class="pre">free_clean</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_folder</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">skin</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/CoREMOF/curate.html#clean_pacman.free_clean"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#CoREMOF.curate.clean_pacman.free_clean" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="CoREMOF.curate.clean_pacman.process">
+<span class="sig-name descname"><span class="pre">process</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/CoREMOF/curate.html#clean_pacman.process"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#CoREMOF.curate.clean_pacman.process" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="CoREMOF.curate.clean_pacman.run_asr">
+<span class="sig-name descname"><span class="pre">run_asr</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/CoREMOF/curate.html#clean_pacman.run_asr"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#CoREMOF.curate.clean_pacman.run_asr" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="CoREMOF.curate.clean_pacman.run_clean">
+<span class="sig-name descname"><span class="pre">run_clean</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'FSR'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/CoREMOF/curate.html#clean_pacman.run_clean"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#CoREMOF.curate.clean_pacman.run_clean" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="CoREMOF.curate.clean_pacman.run_fsr">
+<span class="sig-name descname"><span class="pre">run_fsr</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/CoREMOF/curate.html#clean_pacman.run_fsr"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#CoREMOF.curate.clean_pacman.run_fsr" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="CoREMOF.curate.clean_pacman.run_pacman">
+<span class="sig-name descname"><span class="pre">run_pacman</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/CoREMOF/curate.html#clean_pacman.run_pacman"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#CoREMOF.curate.clean_pacman.run_pacman" title="Link to this definition"></a></dt>
+<dd></dd></dl>
 
 </dd></dl>
 

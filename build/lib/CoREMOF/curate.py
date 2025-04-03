@@ -21,6 +21,9 @@ from pymatgen.io.ase import AseAtomsAdaptor
 from mofchecker import MOFChecker
 from CoREMOF.utils.atoms_definitions import ATR, Coef_A, Coef_C #, BO_list, metals4check
 
+from gemmi import cif as CIF
+from PACMANCharge import pmcharge
+
 
 class preprocess():
 
@@ -595,3 +598,185 @@ class mof_check():
                 return ["no issues"]
         except Exception as e:
             return ["unknown"]
+
+
+
+class clean_pacman():
+
+    """Removing free solvent and coordinated solvent but keep ions based on PACMAN-charge.         
+    
+    Args:
+        structure (str): path to your CIF.
+        initial_skin (float): skin distance is added to the sum of vdW radii of two atoms.
+        output_folder (str): the path to save processed CIF.
+        saveto (bool or str): the name of csv file with clean result.
+
+    Returns:
+        CSV or cif:
+            -   result of curating (name, skin, removed solvent, charge of solvent).
+            -   CIF by curating.
+    """
+    def __init__(self, structure, initial_skin=0.25, output_folder="result_curation", saveto: str="clean_result.csv") -> pd.DataFrame:
+        self.structure = structure
+        self.initial_skin = initial_skin
+        self.output = output_folder
+        self.saveto = saveto
+        self.cambridge_radii = COVALENTRADII
+        self.metal_list = [element for element, is_metal in METAL.items() if is_metal]
+
+        os.makedirs(self.output, exist_ok=True)
+        if self.saveto:
+            self.csv_path = os.path.join(self.output, self.saveto)
+
+        self.run_pacman()
+        self.process()
+        
+    def run_pacman(self):
+        pmcharge.predict(
+            cif_file=self.structure,
+            charge_type="DDEC6",
+            digits=10,
+            atom_type=True,
+            neutral=False,
+            keep_connect=False
+        )
+        src = self.structure.replace(".cif", "_pacman.cif")
+        dst = os.path.join(self.output, os.path.basename(src))
+        if os.path.exists(src):
+            os.rename(src, dst)
+
+    def process(self):
+        try:
+            fsr_skin, fsr_solvent, fsr_ion, fsr_ion_charge = self.run_fsr()
+            asr_skin, asr_solvent, asr_ion, asr_ion_charge = self.run_asr()
+
+            if self.saveto:
+                mode = 'a' if os.path.exists(self.csv_path) else 'w'
+                with open(self.csv_path, mode=mode, newline='') as f:
+                    writer = csv.writer(f)
+                    if mode == 'w':
+                        writer.writerow(["Name", "Skin_FSR", "Skin_ASR", "FSR_Solvent", "ASR_Solvent", "FSR_Ion", "ASR_Ion", "FSR_Ion_Charge", "ASR_Ion_Charge"])
+                    writer.writerow([
+                        os.path.basename(self.structure), str(fsr_skin), str(asr_skin),
+                        fsr_solvent, asr_solvent, fsr_ion, asr_ion, fsr_ion_charge, asr_ion_charge
+                    ])
+            os.remove(os.path.join(self.output, os.path.basename(self.structure.replace(".cif","")) + "_pacman.cif"))
+        except Exception as e:
+            print("[clean_pacman.process] Error:", e)
+
+    def run_fsr(self):
+        return self.run_clean(mode="FSR")
+
+    def run_asr(self):
+        return self.run_clean(mode="ASR")
+
+    def run_clean(self, mode="FSR"):
+        file_prefix = self.structure.replace(".cif", "")
+        skin = self.initial_skin
+        clean_func = self.free_clean if mode == "FSR" else self.all_clean
+
+        while True:
+            result = clean_func(file_prefix, self.output, skin)
+            if result is None:
+                break
+            cleaned_skin, solvents, ions, ion_charges = result
+            has_metals = any(
+                any(e in self.metal_list for e in re.findall(r'([A-Z][a-z]?)\d*', formula))
+                for formula in solvents
+            )
+            if has_metals:
+                skin += 0.05
+            else:
+                break
+        return skin, solvents, ions, ion_charges
+
+    def build_ASE_neighborlist(self, cif, skin):
+        radii = [self.cambridge_radii[i] for i in cif.get_chemical_symbols()]
+        neighborlist = NeighborList(radii, self_interaction=False, bothways=True, skin=skin)
+        neighborlist.update(cif)
+        return neighborlist
+
+    def find_clusters(self, adjacency_matrix, atom_count):
+        _, labels = connected_components(adjacency_matrix, directed=True)
+        return [[i for i in range(atom_count) if labels[i] == n] for n in set(labels)]
+
+    def CustomMatrix(self, neighborlist, atom_count):
+        mat = np.zeros((atom_count, atom_count), dtype=int)
+        for i in range(atom_count):
+            neighbors, _ = neighborlist.get_neighbors(i)
+            for j in neighbors:
+                mat[i][j] = 1
+        return mat
+
+    def cluster_to_formula(self, cluster, atoms):
+        symbols = [atoms[i].symbol for i in cluster]
+        count = collections.Counter(symbols)
+        return ''.join([el + (str(count[el]) if count[el] > 1 else '') for el in sorted(count)])
+
+    def free_clean(self, input_file, save_folder, skin):
+        try:
+            cif = read(input_file + ".cif")
+            charges = list(CIF.read_file(os.path.join(save_folder, os.path.basename(input_file) + "_pacman.cif")).sole_block().find_loop('_atom_site_charge'))
+
+            neighborlist = self.build_ASE_neighborlist(cif, skin)
+            matrix = self.CustomMatrix(neighborlist, len(cif))
+            clusters = sorted(self.find_clusters(matrix, len(cif)), key=lambda x: len(x), reverse=True)
+
+            main_clusters, ions, solvents = [], [], []
+            ion_formulas, ion_charges = [], []
+
+            for cl in clusters:
+                formula = self.cluster_to_formula(cl, cif)
+                cluster_charge = sum([float(charges[i]) for i in cl if i < len(charges)])
+
+                if not main_clusters:
+                    main_clusters.append(cl)
+                elif len(cl) > 0.5 * len(main_clusters[0]):
+                    main_clusters.append(cl)
+                elif abs(cluster_charge) > 0.1:
+                    ions.append(cl)
+                    ion_formulas.append(formula)
+                    ion_charges.append(cluster_charge)
+                else:
+                    solvents.append(formula)
+
+            final_atoms = list(itertools.chain.from_iterable(main_clusters + ions))
+            suffix = "_FSR_ION.cif" if ions else "_FSR.cif"
+            write(os.path.join(save_folder, os.path.basename(input_file) + suffix), cif[final_atoms])
+            return skin, solvents, ion_formulas, ion_charges
+        except Exception as e:
+            print("[free_clean]", input_file, "failed:", e)
+
+    def all_clean(self, input_file, save_folder, skin):
+        try:
+            cif = read(input_file + ".cif")
+            charges = list(CIF.read_file(os.path.join(save_folder, os.path.basename(input_file) + "_pacman.cif")).sole_block().find_loop('_atom_site_charge'))
+
+            neighborlist = self.build_ASE_neighborlist(cif, skin)
+            matrix = self.CustomMatrix(neighborlist, len(cif))
+            clusters = sorted(self.find_clusters(matrix, len(cif)), key=lambda x: len(x), reverse=True)
+
+            main_clusters, ions, solvents = [], [], []
+            ion_formulas, ion_charges = [], []
+
+            for cl in clusters:
+                formula = self.cluster_to_formula(cl, cif)
+                cluster_charge = sum([float(charges[i]) for i in cl if i < len(charges)])
+
+                if not main_clusters:
+                    main_clusters.append(cl)
+                elif len(cl) > 0.5 * len(main_clusters[0]):
+                    main_clusters.append(cl)
+                elif abs(cluster_charge) > 0.1:
+                    ions.append(cl)
+                    ion_formulas.append(formula)
+                    ion_charges.append(cluster_charge)
+                else:
+                    solvents.append(formula)
+
+            final_atoms = list(itertools.chain.from_iterable(main_clusters + ions))
+            suffix = "_ASR_ION.cif" if ions else "_ASR.cif"
+            write(os.path.join(save_folder, os.path.basename(input_file) + suffix), cif[final_atoms])
+            return skin, solvents, ion_formulas, ion_charges
+        except Exception as e:
+            print("[all_clean]", input_file, "failed:", e)
