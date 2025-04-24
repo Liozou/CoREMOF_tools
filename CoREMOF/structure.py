@@ -8,21 +8,14 @@ except:
     print("You need to install CSD software with the license if you want to download all structures")
 
 import os, json, requests, zipfile
-from ase.io import read
-from pymatgen.io.ase import AseAtomsAdaptor
-
-from pymatgen.symmetry.analyzer import SpacegroupAnalyzer
 
 from gemmi import cif
 
 package_directory = os.path.abspath(__file__).replace("structure.py","")
 
 files_to_download = {
-                    'data/CSD/list_coremof_csd_unmodified_20250227.json': 'https://raw.githubusercontent.com/sxm13/CoREMOF_tools/main/data/CSD/list_coremof_csd_unmodified_20250227.json',
-                    'data/detail_of_CR.json': 'https://raw.githubusercontent.com/sxm13/CoREMOF_tools/main/data/detail_of_CR.json',
-                    'data/detail_of_NCR.json': 'https://raw.githubusercontent.com/sxm13/CoREMOF_tools/main/data/detail_of_NCR.json',
-                    'data/CSD/CR_CSD_REFCODE.json': 'https://raw.githubusercontent.com/sxm13/CoREMOF_tools/main/data/CSD/CR_CSD_REFCODE.json',
-                    'data/CSD/NCR_CSD_REFCODE.json': 'https://raw.githubusercontent.com/sxm13/CoREMOF_tools/main/data/CSD/NCR_CSD_REFCODE.json',
+                    'data/CR.json': 'https://raw.githubusercontent.com/sxm13/CoREMOF_tools/main/CoREMOF/data/info/CR.json',
+                    'data/NCR.json': 'https://raw.githubusercontent.com/sxm13/CoREMOF_tools/main/CoREMOF/data/info/NCR.json',
                     'data/SI/CR.zip': 'https://raw.githubusercontent.com/sxm13/CoREMOF_tools/main/data/SI/CR.zip',
                     'data/SI/NCR.zip': 'https://raw.githubusercontent.com/sxm13/CoREMOF_tools/main/data/SI/NCR.zip'
                     }
@@ -45,27 +38,6 @@ for file_name, url in files_to_download.items():
             print(f"Failed to download {file_name} from {url}")
     else:
         pass
-
-
-def make_primitive_p1(filename):
-
-    """make primitive and make P1.
-
-    Args:
-        filename (str): path to your structure.
-
-    Returns:
-        cif:
-           CIF after making primitive and make P1.   
-    """     
-
-    atoms = read(filename)
-    structure_= AseAtomsAdaptor.get_structure(atoms)
-    
-    sga = SpacegroupAnalyzer(structure_)
-    structure_prep = sga.get_primitive_standard_structure(international_monoclinic=True, keep_site_properties=False)
-    structure_prep.to(filename=filename)
-    
 
 class download_from_SI():
 
@@ -151,33 +123,6 @@ def download_from_CSD(refcode, output_folder="./CoREMOF2024DB"):
     f.write(data)
     f.close()
 
-def get_list_CSD():
-
-    """get the name list of structures from CSD.
-
-    Returns:
-        List:
-            -   CR dataset from CSD.
-            -   NCR dataset from CSD.
-            -   unmodified dataset from CSD.
-    """
-            
-    CSD_path = package_directory+'/data/CSD/'
-    CR_json = CSD_path + "/CR_CSD_REFCODE.json"
-    NCR_json  = CSD_path + "/NCR_CSD_REFCODE.json"
-    CSD_unmodified_json  = CSD_path + "/list_coremof_csd_unmodified_20250227.json"
-
-    with open (CR_json, "r") as CR_f:
-        CSD_CR = json.load(CR_f)
-        
-    with open (NCR_json, "r") as NCR_f:
-        CSD_NCR = json.load(NCR_f)
-
-    with open (CSD_unmodified_json, "r") as CSD_unmodified_f:
-        CSD_unmodified = json.load(CSD_unmodified_f)
-
-    return CSD_CR, CSD_NCR, CSD_unmodified
-
 
 def information(dataset, entry):
 
@@ -192,8 +137,8 @@ def information(dataset, entry):
             properties, DOI, issues and so on. 
     """     
 
-    CR_data_path = package_directory+'/data/detail_of_CR.json'
-    NCR_data_path = package_directory+'/data/detail_of_NCR.json'
+    CR_data_path = package_directory+'/data/CR.json'
+    NCR_data_path = package_directory+'/data/NCR.json'
 
     with open (CR_data_path, "r") as CR_f:
         CR_data = json.load(CR_f)

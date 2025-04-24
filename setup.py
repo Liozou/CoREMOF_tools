@@ -1,4 +1,5 @@
 from setuptools import setup, find_packages
+from pathlib import Path
 
 setup(
         name='CoREMOF_tools',
@@ -6,7 +7,8 @@ setup(
         author='Guobin Zhao',
         author_email='sxmzhaogb@gmail.com',
         description='Python API for CoRE MOF 2024 DB',
-        long_description=open('README.md').read(),
+        readme_file = Path(__file__).parent / "README.md"
+        long_description = readme_file.read_text() if readme_file.exists() else ""
         long_description_content_type='text/markdown',
         # url='https://github.com/sxm13/CoREMOF_tools',
         packages=find_packages(),
@@ -35,7 +37,8 @@ setup(
             'gemmi==0.7.0',
             'phonopy',
             'networkx',
-            'selfies'
+            'selfies',
+            'mendeleev'
         ],
         extras_require={
             'zeopp': ['zeopp-lsmo'],

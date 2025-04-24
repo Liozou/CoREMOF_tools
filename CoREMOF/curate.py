@@ -1,7 +1,7 @@
 """Process your CIF to "CoRE MOF" CIF.
 """
 
-import os, re, csv, functools, warnings, itertools, collections
+import os, re, csv, json, requests, functools, warnings, itertools, collections, subprocess
 from ase.io import read, write
 
 from pymatgen.symmetry.analyzer import SpacegroupAnalyzer
@@ -15,7 +15,6 @@ from ase.neighborlist import NeighborList
 from scipy.sparse.csgraph import connected_components
 warnings.filterwarnings('ignore')
 
-import json
 
 from pymatgen.io.ase import AseAtomsAdaptor
 from mofchecker import MOFChecker
@@ -780,3 +779,64 @@ class clean_pacman():
             return skin, solvents, ion_formulas, ion_charges
         except Exception as e:
             print("[all_clean]", input_file, "failed:", e)
+
+try:
+    from ccdc import io
+except:
+    print("Before using MOSAEC to check your structure, please install CSD Python API with license")
+
+
+class MOSAEC():
+    """Check MOF by Metal Oxidation State Automated Error Checker [MOSAEC](https://github.com/uowoolab/MOSAEC).         
+    
+    Args:
+        folder (str): path to your folder contain MOFs.
+        saveto (bool or str): the name of csv file with clean result.
+
+    Returns:
+        CSV:
+            -   result of MOSAEC.
+    """
+
+    FILES_TO_DOWNLOAD = {
+        "Ionization_Energies.csv": "https://raw.githubusercontent.com/uowoolab/MOSAEC/main/Ionization_Energies.csv",
+        "KnownON.csv": "https://raw.githubusercontent.com/uowoolab/MOSAEC/main/KnownON.csv",
+        "Oxidation_Probabilities.csv": "https://raw.githubusercontent.com/uowoolab/MOSAEC/main/Oxidation_Probabilities.csv",
+        "mosaec.py": "https://raw.githubusercontent.com/uowoolab/MOSAEC/main/mosaec.py"
+    }
+
+    def __init__(self, folder: str, saveto: str = "mosaec.csv"):
+        self.folder = folder
+        self.saveto = saveto
+        os.makedirs(self.folder, exist_ok=True)
+
+        for filename, url in self.FILES_TO_DOWNLOAD.items():
+            path = os.path.join(self.folder, filename)
+            if not os.path.exists(path):
+                response = requests.get(url)
+                if response.status_code == 200:
+                    with open(path, "wb") as f:
+                        f.write(response.content)
+                    print(f"✅ Downloaded: {filename}")
+                else:
+                    print(f"❌ Failed to download {filename}: {response.status_code}")
+            else:
+                print(f"🔁 Skipped (already exists): {filename}")
+        self.run_mosaec()
+        if saveto:
+            os.rename(self.folder + "/OxStatesOutput.csv", self.folder + "/" + saveto)
+    def run_mosaec(self):
+        script_path = "mosaec.py"
+        print(f"🚀 Running {script_path}...")
+
+        result = subprocess.run(
+            ["python", script_path],
+            cwd=self.folder,
+            capture_output=True,
+            text=True
+        )
+
+        if result.returncode == 0:
+            print(result.stdout)
+        else:
+            print(result.stderr)

@@ -6,10 +6,10 @@
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-project = 'CoREMOF_tools'
+project = 'CoREMOF'
 copyright = '2025, MTAP @ Pusan National University'
 author = 'Guobin Zhao'
-release = '0.0.9'
+release = '0.1.3'
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration

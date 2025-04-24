@@ -22,6 +22,14 @@ CoREMOF.curate module
    :undoc-members:
    :show-inheritance:
 
+CoREMOF.get_mofid module
+---------------------
+
+.. automodule:: CoREMOF.get_mofid
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 CoREMOF.prediction module
 -------------------------
 

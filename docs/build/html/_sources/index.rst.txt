@@ -31,6 +31,7 @@ For more details on CoREMOF_tools, please refer to the following paper:
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
+   
    CoREMOF
    setup
    modules

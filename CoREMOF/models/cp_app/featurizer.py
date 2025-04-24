@@ -22,6 +22,7 @@ def featurize_dataset(cifs: list, verbos=False, saveto: str="features.csv")-> pd
         cifs: list of paths to crystal structure in cif format.
         verbos: printing the steps.
         saveto: filename to save the generated features.
+        
     """
 
     features={}
