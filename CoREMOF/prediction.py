@@ -57,12 +57,12 @@ def download_file(url, save_path):
     else:
         pass
 
-repo = 'mtap-research/CoRE-MOF-Tools'
+repo = 'sxm13/CoREMOF_tools'
 github_paths = [
-    '4-MLFeatures/cp_app/ensemble_models_smallML_120_100/300',
-    '4-MLFeatures/cp_app/ensemble_models_smallML_120_100/350',
-    '4-MLFeatures/cp_app/ensemble_models_smallML_120_100/400',
-    '4-MLFeatures/models'
+    'models/cp_app/ensemble_models_smallML_120_100/300',
+    'models/cp_app/ensemble_models_smallML_120_100/350',
+    'models/cp_app/ensemble_models_smallML_120_100/400',
+    'models/stability'
 ]
 local_directories = [
     '/models/cp_app/ensemble_models_smallML_120_100/300',

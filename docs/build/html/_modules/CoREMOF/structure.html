@@ -86,13 +86,13 @@
 <span class="n">package_directory</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;structure.py&quot;</span><span class="p">,</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
 
 <span class="n">files_to_download</span> <span class="o">=</span> <span class="p">{</span>
-                    <span class="s1">&#39;data/CSD/list_coremof_csd_unmodified_20250227.json&#39;</span><span class="p">:</span> <span class="s1">&#39;https://raw.githubusercontent.com/mtap-research/CoRE-MOF-Tools/main/7-data4API/CSD/list_coremof_csd_unmodified_20250227.json&#39;</span><span class="p">,</span>
-                    <span class="s1">&#39;data/detail_of_CR.json&#39;</span><span class="p">:</span> <span class="s1">&#39;https://raw.githubusercontent.com/mtap-research/CoRE-MOF-Tools/main/7-data4API/detail_of_CR.json&#39;</span><span class="p">,</span>
-                    <span class="s1">&#39;data/detail_of_NCR.json&#39;</span><span class="p">:</span> <span class="s1">&#39;https://raw.githubusercontent.com/mtap-research/CoRE-MOF-Tools/main/7-data4API/detail_of_NCR.json&#39;</span><span class="p">,</span>
-                    <span class="s1">&#39;data/CSD/CR_CSD_REFCODE.json&#39;</span><span class="p">:</span> <span class="s1">&#39;https://raw.githubusercontent.com/mtap-research/CoRE-MOF-Tools/main/7-data4API/CSD/CR_CSD_REFCODE.json&#39;</span><span class="p">,</span>
-                    <span class="s1">&#39;data/CSD/NCR_CSD_REFCODE.json&#39;</span><span class="p">:</span> <span class="s1">&#39;https://raw.githubusercontent.com/mtap-research/CoRE-MOF-Tools/main/7-data4API/CSD/NCR_CSD_REFCODE.json&#39;</span><span class="p">,</span>
-                    <span class="s1">&#39;data/SI/CR.zip&#39;</span><span class="p">:</span> <span class="s1">&#39;https://raw.githubusercontent.com/mtap-research/CoRE-MOF-Tools/main/7-data4API/SI/CR.zip&#39;</span><span class="p">,</span>
-                    <span class="s1">&#39;data/SI/NCR.zip&#39;</span><span class="p">:</span> <span class="s1">&#39;https://raw.githubusercontent.com/mtap-research/CoRE-MOF-Tools/main/7-data4API/SI/NCR.zip&#39;</span>
+                    <span class="s1">&#39;data/CSD/list_coremof_csd_unmodified_20250227.json&#39;</span><span class="p">:</span> <span class="s1">&#39;https://raw.githubusercontent.com/sxm13/CoREMOF_tools/main/data/CSD/list_coremof_csd_unmodified_20250227.json&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;data/detail_of_CR.json&#39;</span><span class="p">:</span> <span class="s1">&#39;https://raw.githubusercontent.com/sxm13/CoREMOF_tools/main/data/detail_of_CR.json&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;data/detail_of_NCR.json&#39;</span><span class="p">:</span> <span class="s1">&#39;https://raw.githubusercontent.com/sxm13/CoREMOF_tools/main/data/detail_of_NCR.json&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;data/CSD/CR_CSD_REFCODE.json&#39;</span><span class="p">:</span> <span class="s1">&#39;https://raw.githubusercontent.com/sxm13/CoREMOF_tools/main/data/CSD/CR_CSD_REFCODE.json&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;data/CSD/NCR_CSD_REFCODE.json&#39;</span><span class="p">:</span> <span class="s1">&#39;https://raw.githubusercontent.com/sxm13/CoREMOF_tools/main/data/CSD/NCR_CSD_REFCODE.json&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;data/SI/CR.zip&#39;</span><span class="p">:</span> <span class="s1">&#39;https://raw.githubusercontent.com/sxm13/CoREMOF_tools/main/data/SI/CR.zip&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;data/SI/NCR.zip&#39;</span><span class="p">:</span> <span class="s1">&#39;https://raw.githubusercontent.com/sxm13/CoREMOF_tools/main/data/SI/NCR.zip&#39;</span>
                     <span class="p">}</span>
 
 <span class="k">for</span> <span class="n">file_name</span><span class="p">,</span> <span class="n">url</span> <span class="ow">in</span> <span class="n">files_to_download</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
@@ -118,7 +118,6 @@
 <div class="viewcode-block" id="make_primitive_p1">
 <a class="viewcode-back" href="../../CoREMOF.html#CoREMOF.structure.make_primitive_p1">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">make_primitive_p1</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
-
 
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;make primitive and make P1.</span>
 

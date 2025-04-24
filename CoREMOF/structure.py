@@ -18,13 +18,13 @@ from gemmi import cif
 package_directory = os.path.abspath(__file__).replace("structure.py","")
 
 files_to_download = {
-                    'data/CSD/list_coremof_csd_unmodified_20250227.json': 'https://raw.githubusercontent.com/mtap-research/CoRE-MOF-Tools/main/7-data4API/CSD/list_coremof_csd_unmodified_20250227.json',
-                    'data/detail_of_CR.json': 'https://raw.githubusercontent.com/mtap-research/CoRE-MOF-Tools/main/7-data4API/detail_of_CR.json',
-                    'data/detail_of_NCR.json': 'https://raw.githubusercontent.com/mtap-research/CoRE-MOF-Tools/main/7-data4API/detail_of_NCR.json',
-                    'data/CSD/CR_CSD_REFCODE.json': 'https://raw.githubusercontent.com/mtap-research/CoRE-MOF-Tools/main/7-data4API/CSD/CR_CSD_REFCODE.json',
-                    'data/CSD/NCR_CSD_REFCODE.json': 'https://raw.githubusercontent.com/mtap-research/CoRE-MOF-Tools/main/7-data4API/CSD/NCR_CSD_REFCODE.json',
-                    'data/SI/CR.zip': 'https://raw.githubusercontent.com/mtap-research/CoRE-MOF-Tools/main/7-data4API/SI/CR.zip',
-                    'data/SI/NCR.zip': 'https://raw.githubusercontent.com/mtap-research/CoRE-MOF-Tools/main/7-data4API/SI/NCR.zip'
+                    'data/CSD/list_coremof_csd_unmodified_20250227.json': 'https://raw.githubusercontent.com/sxm13/CoREMOF_tools/main/data/CSD/list_coremof_csd_unmodified_20250227.json',
+                    'data/detail_of_CR.json': 'https://raw.githubusercontent.com/sxm13/CoREMOF_tools/main/data/detail_of_CR.json',
+                    'data/detail_of_NCR.json': 'https://raw.githubusercontent.com/sxm13/CoREMOF_tools/main/data/detail_of_NCR.json',
+                    'data/CSD/CR_CSD_REFCODE.json': 'https://raw.githubusercontent.com/sxm13/CoREMOF_tools/main/data/CSD/CR_CSD_REFCODE.json',
+                    'data/CSD/NCR_CSD_REFCODE.json': 'https://raw.githubusercontent.com/sxm13/CoREMOF_tools/main/data/CSD/NCR_CSD_REFCODE.json',
+                    'data/SI/CR.zip': 'https://raw.githubusercontent.com/sxm13/CoREMOF_tools/main/data/SI/CR.zip',
+                    'data/SI/NCR.zip': 'https://raw.githubusercontent.com/sxm13/CoREMOF_tools/main/data/SI/NCR.zip'
                     }
 
 for file_name, url in files_to_download.items():
@@ -48,7 +48,6 @@ for file_name, url in files_to_download.items():
 
 
 def make_primitive_p1(filename):
-
 
     """make primitive and make P1.
 
