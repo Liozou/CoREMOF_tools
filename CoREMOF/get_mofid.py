@@ -39,7 +39,7 @@ def run_v1(structure):
 
     Returns:
         String:
-            -   mofid-v1
+            -   mofid-v1.
     """
 
     mofid_v1 = cif2mofid(structure)
@@ -50,11 +50,21 @@ def dict2str(dct):
     """
     return ''.join(symb + (str(n)) for symb, n in dct.items())
 
-def split_nodes_from_cif(cifpath, prefix='Output'):
+def split_nodes_from_cif(structure, prefix='Output'):
+    """Split nodes (CIF) to single XYZ.
+
+    Args:
+        structure (str): path to your CIF.
+        prefix (str): the path to save processed XYZ.
+
+    Returns:
+        int:
+            -   0: sucess; 1: fail.
+    """
     try:
-        atoms = ase_read(cifpath)
+        atoms = ase_read(structure)
     except:
-        print('Error with reading CIF in {}'.format(cifpath))
+        print('Error with reading CIF in {}'.format(structure))
         return 1
     cutOff = neighborlist.natural_cutoffs(atoms)
     neighborList = neighborlist.NeighborList(cutOff, self_interaction=False, bothways=True, skin=0.3)
@@ -90,11 +100,21 @@ def split_nodes_from_cif(cifpath, prefix='Output'):
         ase_write('{}/node{}.xyz'.format(prefix, index), nodes[index]) # /AllNode/nodes.cif
     return 0
 
-def split_linkers_from_cif(cifpath, prefix='Output'):
+def split_linkers_from_cif(structure, prefix='Output'):
+    """Split linkers (CIF) to single XYZ.
+
+    Args:
+        structure (str): path to your CIF.
+        prefix (str): the path to save processed XYZ.
+
+    Returns:
+        int:
+            -   0: sucess; 1: fail.
+    """
     try:
-        atoms = ase_read(cifpath)
+        atoms = ase_read(structure)
     except:
-        print('Error with reading CIF in {}'.format(cifpath))
+        print('Error with reading CIF in {}'.format(structure))
         return 1
     cutOff = neighborlist.natural_cutoffs(atoms)
     neighborList = neighborlist.NeighborList(cutOff, self_interaction=False, bothways=True, skin=0.3)
@@ -128,11 +148,30 @@ def split_linkers_from_cif(cifpath, prefix='Output'):
         ase_write('{}_MetalOxolinker{}.xyz'.format(prefix, index), nodes[index]) # /MetalOxo/linkers.cif
     return 0
 
-def get_node_linker_files(cifpath, prefix='Output'):
+def get_node_linker_files(structure, prefix='Output'):
+    """Split MOF to sbu + linker.
+
+    Args:
+        structure (str): path to your CIF.
+        prefix (str): the path to save processed XYZ.
+
+    Returns:
+        files:
+            -   structure, node, linker, ...
+    """
     os.makedirs(prefix, exist_ok=True)
-    extract_fragments(cifpath, prefix)
+    extract_fragments(structure, prefix)
 
 def xyz2fomula(xyzpath):
+    """from XYZ to chemical fomula based on A-Z.
+
+    Args:
+        xyzpath (str): path to your XYZ.
+
+    Returns:
+        str:
+            -   fomula.
+    """
     atoms = ase_read(xyzpath)
     symbols = atoms.get_chemical_symbols()
     counts = Counter(symbols)
@@ -141,6 +180,15 @@ def xyz2fomula(xyzpath):
     return formula
 
 def convert_ase_pymat(ase_objects):
+    """convert to ase to pymatgen atoms.
+
+    Args:
+        ase_objects (str): ase-type atoms.
+
+    Returns:
+        atoms:
+            -   pymatgen-type atoms.
+    """
     structure_lattice = Lattice(ase_objects.cell)
     structure_species = ase_objects.get_chemical_symbols()
     structure_positions = ase_objects.get_positions()
@@ -210,7 +258,18 @@ def remove_pbc_cuts(atoms):
     except:
         return atoms
 
-def run_v2(cifpath, nodes_dataset, refname):
+def run_v2(structure, nodes_dataset, refname):
+    """run mofidv2 from CIF.
+
+    Args:
+        structure (str): path to your MOF.
+        nodes_dataset (str): path to your node dataset.
+        refname (str): file name of your structure or define by yourself.
+
+    Returns:
+        str:
+            -   mofid-v2.
+    """
     # get list of nodes
     nodes_type = glob.glob(nodes_dataset+"/*xyz")
     nodes = []
@@ -218,14 +277,14 @@ def run_v2(cifpath, nodes_dataset, refname):
         nodes.append(node_file.split("/")[-1].split("_")[0])
     nodes = list(set(nodes))
     # get information of mofid-v1
-    mofidv1 = run_v1(cifpath)
+    mofidv1 = run_v1(structure)
     linkers = mofidv1["smiles_linkers"]
     all_linkers = []
     for linker in linkers:
         all_linkers.append(sf.encoder(linker))
     topology = mofidv1["topology"]
     cat = mofidv1["cat"]
-    get_node_linker_files(cifpath)
+    # get_node_linker_files(structure)
     check = split_nodes_from_cif("Output/AllNode/nodes.cif", "Output")
     if check == 1:
         print("nan")
