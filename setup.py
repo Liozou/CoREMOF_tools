@@ -33,10 +33,13 @@ setup(
             'scikit-learn==1.3.2',
             'mofchecker',
             'gemmi==0.7.0',
-            'phonopy'
+            'phonopy',
+            'networkx',
+            'selfies'
         ],
         extras_require={
-            'zeopp': ['zeopp-lsmo']
+            'zeopp': ['zeopp-lsmo'],
+            "openbabel": ["openbabel-wheel"]
         },
         classifiers=[
             'Development Status :: 6 - Mature',

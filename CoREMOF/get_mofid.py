@@ -1,3 +1,6 @@
+"""Process your CIF to get mofid v1 and v2.
+"""
+
 from ase.io import read as ase_read
 from ase.io import write as ase_write
 from ase import neighborlist
