@@ -333,7 +333,7 @@ def run_v2(structure, nodes_dataset, refname):
 
     linkers_part = ".".join(all_linkers)
     nodes_part = ".".join(f"[{node}]" for node in all_nodes_part)
-    mofidv2 = nodes_part + "." + linkers_part + " " + "MOFidv2." + topology + ".cat" + cat + ";" + refname
+    mofidv2 = nodes_part + "." + linkers_part + " " + "MOFid-v2." + topology + ".cat" + cat + ";" + refname
     try:
         shutil.rmtree("Output")
     except:
