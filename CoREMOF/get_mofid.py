@@ -183,10 +183,10 @@ def convert_ase_pymat(ase_objects):
     """convert to ase to pymatgen atoms.
 
     Args:
-        ase_objects (str): ase-type atoms.
+        ase_objects (ase.Atoms): ase-type atoms.
 
     Returns:
-        atoms:
+        ase.Atoms:
             -   pymatgen-type atoms.
     """
     structure_lattice = Lattice(ase_objects.cell)
@@ -198,16 +198,14 @@ def remove_pbc_cuts(atoms):
     """Remove building block cuts due to periodic boundary conditions. After the
     removal, the atoms object is centered at the center of the unit cell.
 
-    Parameters
-    ----------
-    atoms : ase.Atoms
-        The atoms object to be processed.
+    Args:
+        atoms (ase.Atoms): aase.Atoms.
 
-    Returns
-    -------
-    ase.Atoms
-        The processed atoms object.
+    Returns:
+        ase.Atoms:
+            -   The processed atoms object.
     """
+
     try:
         # setting cuttoff parameter
         scale = 1.4
