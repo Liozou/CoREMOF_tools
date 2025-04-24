@@ -272,6 +272,11 @@ def run_v2(structure, nodes_dataset, refname):
             -   mofid-v2.
     """
     # get list of nodes
+    try:
+        shutil.rmtree("Output")
+    except:
+        pass
+    # get list of nodes
     nodes_type = glob.glob(nodes_dataset+"/*xyz")
     nodes = []
     for node_file in nodes_type:
@@ -285,7 +290,7 @@ def run_v2(structure, nodes_dataset, refname):
         all_linkers.append(sf.encoder(linker))
     topology = mofidv1["topology"]
     cat = mofidv1["cat"]
-    # get_node_linker_files(structure)
+    # get_node_linker_files(cifpath)
     check = split_nodes_from_cif("Output/AllNode/nodes.cif", "Output")
     if check == 1:
         print("nan")
@@ -304,7 +309,7 @@ def run_v2(structure, nodes_dataset, refname):
                                            comparator=ElementComparator()) 
                 matched = False
                 known_nodes = glob.glob(nodes_dataset+ "/" + node_formula + "*xyz")
-                print(node_formula, "the node can be found in nodes dataset")
+                
                 mof = remove_pbc_cuts(ase_read(node_xyz))
                 a = convert_ase_pymat(mof)
                 for i in range(len(known_nodes)):
@@ -312,8 +317,9 @@ def run_v2(structure, nodes_dataset, refname):
                     if matcher.fit(a, b):
                         node_part = os.path.basename(known_nodes[i].replace(".xyz", ""))
                         all_nodes_part.append(node_part)
-                    matched = True
-                    break
+                        matched = True
+                        print(node_formula, "the node can be found in nodes dataset")
+                        break
                 if not matched:
                     node_part = node_formula + "_Type-" + str(len(known_nodes) + 1)
                     all_nodes_part.append(node_part)
@@ -324,10 +330,14 @@ def run_v2(structure, nodes_dataset, refname):
                 all_nodes_part.append(node_part)
                 shutil.move(node_xyz, nodes_dataset + "/" + node_part + ".xyz")
                 print("new node found, has moved the nodes dataset")
+
     linkers_part = ".".join(all_linkers)
     nodes_part = ".".join(f"[{node}]" for node in all_nodes_part)
     mofidv2 = nodes_part + "." + linkers_part + " " + "MOFidv2." + topology + ".cat" + cat + ";" + refname
-    shutil.rmtree("Output")
+    try:
+        shutil.rmtree("Output")
+    except:
+        pass
     return mofidv2
 
 def are_identical_smiles(smiles1, smiles2):
