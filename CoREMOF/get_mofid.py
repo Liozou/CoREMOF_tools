@@ -264,7 +264,7 @@ def run_v2(structure, nodes_dataset, refname):
 
     Args:
         structure (str): path to your MOF.
-        nodes_dataset (str): path to your node dataset.
+        nodes_dataset (str): path to your node dataset (download from https://github.com/sxm13/CoREMOF_tools/tree/main/CoREMOF/data/mofid/nodes.zip).
         refname (str): file name of your structure or define by yourself.
 
     Returns:
