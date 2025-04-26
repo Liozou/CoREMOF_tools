@@ -817,17 +817,17 @@ class MOSAEC():
                 if response.status_code == 200:
                     with open(path, "wb") as f:
                         f.write(response.content)
-                    print(f"✅ Downloaded: {filename}")
+                    print(f"Downloaded: {filename}")
                 else:
-                    print(f"❌ Failed to download {filename}: {response.status_code}")
+                    print(f"Failed to download {filename}: {response.status_code}")
             else:
-                print(f"🔁 Skipped (already exists): {filename}")
+                print(f"Skipped (already exists): {filename}")
         self.run_mosaec()
         if saveto:
             os.rename(self.folder + "/OxStatesOutput.csv", self.folder + "/" + saveto)
     def run_mosaec(self):
         script_path = "mosaec.py"
-        print(f"🚀 Running {script_path}...")
+        print(f"Running {script_path}...")
 
         result = subprocess.run(
             ["python", script_path],
