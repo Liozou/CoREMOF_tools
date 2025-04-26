@@ -840,3 +840,25 @@ class MOSAEC():
             print(result.stdout)
         else:
             print(result.stderr)
+
+    def check_result(self, saveto):
+        df = pd.read_csv(saveto)
+        status_cols = df.columns[-10:]
+
+        def merge_group(group):
+            result = {}
+            for col in status_cols:
+                if all(group[col] == 'GOOD'):
+                    result[col] = 'GOOD'
+                else:
+                    result[col] = 'NOT_GOOD'
+            return pd.Series(result)
+
+
+        merged_df = df.groupby('CIF').apply(merge_group).reset_index()
+
+        binary_df = merged_df.copy()
+        for col in status_cols:
+            binary_df[col] = binary_df[col].apply(lambda x: True if x == 'GOOD' else False)
+
+        binary_df.to_csv(saveto, index=False)
