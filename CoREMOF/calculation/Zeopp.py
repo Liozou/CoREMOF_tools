@@ -29,6 +29,7 @@ def ChanDim(structure, probe_radius = 0, high_accuracy = True, prefix="tmp_chan"
     
     if high_accuracy:
         cmd = f'network -ha -chan {probe_radius} {tmp_file} {structure}'
+        # cmd = f'network -ha S50 -chan {probe_radius} {tmp_file} {structure}'
     else:
         cmd = f'network -chan {probe_radius} {tmp_file} {structure}'
     _ = subprocess.run(
@@ -75,6 +76,7 @@ def FrameworkDim(structure, high_accuracy = True, prefix="tmp_strinfo"):
     
     if high_accuracy:
         cmd = f'network -ha -strinfo {tmp_file} {structure}'
+        # cmd = f'network -ha S50 -strinfo {tmp_file} {structure}'
     else:
         cmd = f'network -strinfo {tmp_file} {structure}'
     _ = subprocess.run(
@@ -130,6 +132,7 @@ def PoreDiameter(structure, high_accuracy = True, prefix="tmp_pd"):
     
     if high_accuracy:
         cmd = f'network -ha -res {tmp_file} {structure}'
+        # cmd = f'network -ha S50 -res {tmp_file} {structure}'
     else:
         cmd = f'network -res {tmp_file} {structure}'
     _ = subprocess.run(
@@ -172,6 +175,7 @@ def SurfaceArea(structure, chan_radius = 1.655, probe_radius = 1.655, num_sample
     
     if high_accuracy:
         cmd = f'network -ha -sa {chan_radius} {probe_radius} {num_samples} {tmp_file} {structure}'
+        # cmd = f'network -ha S50 -sa {chan_radius} {probe_radius} {num_samples} {tmp_file} {structure}'
     else:
         cmd = f'network -sa {chan_radius} {probe_radius} {num_samples} {tmp_file} {structure}'
     _ = subprocess.run(
@@ -226,6 +230,7 @@ def PoreVolume(structure, chan_radius = 0, probe_radius = 0, num_samples = 5000,
     
     if high_accuracy:
         cmd = f'network -ha -volpo {chan_radius} {probe_radius} {num_samples} {tmp_file} {structure}'
+        # cmd = f'network -ha S50 -volpo {chan_radius} {probe_radius} {num_samples} {tmp_file} {structure}'
     else:
         cmd = f'network -volpo {chan_radius} {probe_radius} {num_samples} {tmp_file} {structure}'
     _ = subprocess.run(
