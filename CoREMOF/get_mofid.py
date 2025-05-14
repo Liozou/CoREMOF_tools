@@ -179,7 +179,8 @@ def xyz2fomula(xyzpath):
     symbols = atoms.get_chemical_symbols()
     counts = Counter(symbols)
     sorted_items = sorted(counts.items(), key=lambda x: x[0])
-    formula = ''.join(f"{el}{n if n > 1 else ''}" for el, n in sorted_items)
+    # formula = ''.join(f"{el}{n if n > 1 else ''}" for el, n in sorted_items)
+    formula = ''.join(f"{el}{n}" for el, n in sorted_items)
     return formula
 
 def convert_ase_pymat(ase_objects):
