@@ -16,6 +16,7 @@
 This API includes tools developed to collect, curate, and classify Computation-Ready, Experimental MOF database.    
 You need to install the [CSD software and python API](https://downloads.ccdc.cam.ac.uk/documentation/API/installation_notes.html) before downloading the full CoRE MOF database.                                                            
 For using CoREMOF.calculation.Zeopp, you need to input `conda install -c conda-forge zeopp-lsmo` to install Zeo++.   
+For using CoREMOF.get_mofid, you need to install MOFid following the [manual](https://snurr-group.github.io/mofid/compiling/#installation). 
 
 #### Examples                                                                                     
 Available at [Github](https://github.com/mtap-research/CoRE-MOF-Tools/tree/main/7-data4API/examples) and [CoRE MOF Website](https://mof-db.pusan.ac.kr/API) to view examples.                         
