@@ -28,7 +28,8 @@ setup(
         'phonopy',
         'networkx',
         'selfies',
-        'mendeleev'
+        'mendeleev',
+        'requests'
     ],
     extras_require={
         'zeopp': ['zeopp-lsmo'],
