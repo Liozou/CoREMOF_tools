@@ -1,15 +1,16 @@
 from setuptools import setup, find_packages
 from pathlib import Path
 
-readme_path = Path(__file__).parent / "README.md"
+here = Path(__file__).parent
+readme_path = here / "README.md"
 long_description = readme_path.read_text(encoding="utf-8") if readme_path.exists() else ""
 
 setup(
     name='CoREMOF_tools',
-    version='0.1.3',
+    version='0.1.4',
     author='Guobin Zhao',
     author_email='sxmzhaogb@gmail.com',
-    description='Python API for CoRE MOF 2024 DB',
+    description='Python API for CoRE MOF DB',
     long_description=long_description,
     long_description_content_type='text/markdown',
     packages=find_packages(),
